@@ -1,0 +1,158 @@
+.landing_section {
+  padding: 8em 0em;
+  position: relative;
+  padding-top: 12em;
+  /* background-color: black; */
+  overflow-x: hidden;
+}
+
+.landing_area {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+}
+.landing_area_txts {
+  width: 100%;
+}
+.landing_area_img {
+  width: 100%;
+}
+
+img.hero_img {
+  width: 100%;
+  margin: auto;
+  margin-left: 50px;
+}
+
+.modal_form_sectiona {
+  display: block;
+}
+.not_modal_form_sectiona {
+  display: none;
+}
+
+.landing_area_txts_heading {
+  font-size: 54px;
+  font-weight: 700;
+}
+
+.landing_area_txts_sub_heading {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #e4a788;
+}
+
+img.big_hero_img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  z-index: -1;
+}
+.big_hero_img2 {
+  position: absolute;
+  left: 0;
+  width: 20%;
+  bottom: 0px;
+  z-index: -1;
+}
+/* 
+.not_openModal {
+  display: none !important;
+}
+.openModal {
+  display: block;
+} */
+
+.big_hero_img3 {
+  left: 0;
+  position: absolute;
+  top: 110px;
+  z-index: -1;
+}
+
+.gtpartnersSection {
+  /* position: relative; */
+  background: #ace8c24f;
+  overflow: hidden;
+  /* position: absolute; */
+  width: 100%;
+  bottom: 80px;
+  backdrop-filter: blur(25px);
+  border-top: solid;
+  border-color: #ffffff59;
+}
+
+.gtPartnersArea {
+  transform: translateZ(0);
+  min-width: 2800px;
+  animation: nonStop 60s linear 0s infinite normal none running;
+  -webkit-animation: nonStop 60s linear 0s infinite normal none running;
+  display: flex;
+  margin-top: 0px;
+  position: relative;
+  z-index: 5;
+}
+
+@keyframes nonStop {
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+/* .gtPartnersArea .react-multiple-carousel__arrow--left,
+.gtPartnersArea .react-multiple-carousel__arrow--right {
+  display: none !important;
+}
+.gtPartnersArea .react-multiple-carousel__arrow::before {
+  font-weight: 900;
+  color: #000;
+}
+.gtPartnersArea .react-multi-carousel-track {
+  align-items: center !important;
+} */
+.gtpaid {
+  width: 300px;
+}
+.gtpartnersCircle {
+  right: 0;
+  bottom: 10%;
+  position: absolute;
+  z-index: 2;
+}
+.gtpatLogo {
+  text-align: center;
+
+  padding: 2em 1em;
+  border-radius: 20px;
+  position: relative;
+  width: 250px;
+  margin: auto;
+}
+
+.gtpartnerLogos {
+  text-align: center;
+  width: 150px;
+  filter: grayscale();
+}
+.gtpartnerLogos:hover {
+  filter: none;
+}
+
+.not_button {
+  display: none;
+}
+
+.error_message_div {
+  color: red;
+  background: #fff;
+  padding: 0.8em;
+  box-shadow: 0px 3px 3px #e7e7e7;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.not_error_message_div {
+  display: none;
+}

@@ -1,0 +1,26 @@
+.header_section {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 500;
+  backdrop-filter: blur(40px);
+  background: #fff0;
+  border-bottom: solid;
+  border-color: #fff;
+}
+
+.header_area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 4em;
+  padding-bottom: 1em;
+}
+.buttons-login {
+  display: flex;
+  align-items: center;
+}
+
+.connect_btn1 {
+  margin-right: 10px !important;
+}
