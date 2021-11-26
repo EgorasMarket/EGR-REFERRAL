@@ -8,17 +8,20 @@ const Header = () => {
       <section className="header_section">
         <div className="container-fluid">
           <div className="header_area">
-            <img src="/img/egoras-logo.svg" alt="" />
+            <a href="/">
+              {" "}
+              <img src="/img/egoras-logo.svg" alt="" />
+            </a>
 
             <div className="buttons-login">
-              <div className="connect_btn1">
+              <a href="/login" className="connect_btn1">
                 {" "}
                 <Buttons name="Login" />
-              </div>
-              <div className="connect_btn1">
+              </a>
+              <a href="/signup" className="connect_btn1">
                 {" "}
                 <Buttons2 name="Sign up" />
-              </div>
+              </a>
             </div>
           </div>
         </div>

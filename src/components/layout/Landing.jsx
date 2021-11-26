@@ -13,11 +13,14 @@ import { getSocialHandles } from "../../actions/getreferer";
 const Landing = ({ getSocialHandles }) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
+  const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
+  const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
+  const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [openJoin, setOpenJoin] = useState("button");
   const [isLoading, setIsLoading] = useState(true);
   const [reason, setReason] = useState("");
   const [userData, setUserData] = useState({
-    username: "Samuel-digitalyyrr",
+    username: "Samuel-eth",
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
@@ -37,7 +40,85 @@ const Landing = ({ getSocialHandles }) => {
 
   const onChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
+
+    if (e.target.value === "") {
+      console.log("input something here");
+    } else {
+      console.log("something is here");
+    }
+
+    const { name, value, id } = e.target;
+
+    switch (name) {
+      case "twitterHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage("error_message_div");
+        } else {
+          console.log("something is here");
+          setErrorMessage("not_error_message_div");
+        }
+
+        break;
+      case "telegramHandle":
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage1("error_message_div1");
+        } else {
+          console.log("something is here");
+          setErrorMessage1("not_error_message_div1");
+        }
+        // code block
+        break;
+      case "facebookHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage2("error_message_div2");
+        } else {
+          console.log("something is here");
+          setErrorMessage2("not_error_message_div2");
+        }
+
+        break;
+      case "linkedInHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage3("error_message_div3");
+        } else {
+          console.log("something is here");
+          setErrorMessage3("not_error_message_div3");
+        }
+
+        break;
+      default:
+      // code block
+    }
   };
+  // const onChange1 = (e) => {
+  //   setUserData({ ...userData, [e.target.name]: e.target.value });
+
+  //   if (e.target.value === "") {
+  //     setErrorMessage1("error_message_div1");
+  //     console.log("input something here");
+  //   } else {
+  //     console.log("something is here");
+  //     setErrorMessage1("not_error_message_div1");
+  //   }
+  // };
+  // const onChange2 = (e) => {
+  //   setUserData({ ...userData, [e.target.name]: e.target.value });
+
+  //   if (e.target.value === "") {
+  //     setErrorMessage2("error_message_div2");
+  //     console.log("input something here");
+  //   } else {
+  //     console.log("something is here");
+  //     setErrorMessage2("not_error_message_div2");
+  //   }
+  // };
 
   // const onChange = (e) => {
   //   setUserData(e.target.value);
@@ -69,12 +150,34 @@ const Landing = ({ getSocialHandles }) => {
       username
     );
 
-    if (facebookHandle.target.value === "") {
+    if (
+      twitterHandle === "" &&
+      telegramHandle === "" &&
+      facebookHandle === "" &&
+      linkedInHandle === ""
+    ) {
+      console.log("please supply");
       setErrorMessage("error_message_div");
-      console.log("input something here");
+      setErrorMessage1("error_message_div1");
+      setErrorMessage2("error_message_div2");
+      setErrorMessage3("error_message_div3");
+    } else if (twitterHandle === "") {
+      console.log("please supply");
+      setErrorMessage("error_message_div");
+    } else if (telegramHandle === "") {
+      console.log("please supply");
+      setErrorMessage1("error_message_div1");
+    } else if (facebookHandle === "") {
+      console.log("please supply");
+      setErrorMessage2("error_message_div2");
+    } else if (linkedInHandle === "") {
+      console.log("please supply");
+      setErrorMessage3("error_message_div3");
     } else {
-      console.log("something is here");
       setErrorMessage("not_error_message_div");
+      setErrorMessage1("not_error_message_div1");
+      setErrorMessage2("not_error_message_div2");
+      setErrorMessage3("not_error_message_div3");
       let res = await getSocialHandles({
         username,
         twitterHandle,
@@ -83,12 +186,8 @@ const Landing = ({ getSocialHandles }) => {
         facebookHandle,
         walletAddress,
       });
-      // setModalDiv("modal_div");
     }
 
-    // if (res.status === 200) {
-    //   setOpenModal("not_modal_form_section");
-    // }
   };
   return (
     <div>
@@ -369,7 +468,7 @@ const Landing = ({ getSocialHandles }) => {
                   id="twitterHandle"
                   name="twitterHandle"
                   value={twitterHandle}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   className="modal_form_area1_input1"
                 />
                 <div
@@ -396,14 +495,14 @@ const Landing = ({ getSocialHandles }) => {
                   placeholder="@JohnDoe "
                   name="telegramHandle"
                   value={telegramHandle}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   className="modal_form_area1_input1"
                 />
                 <div
                   className={
-                    errorMessage == "not_error_message_div"
-                      ? "not_error_message_div"
-                      : "error_message_div"
+                    errorMessage1 == "not_error_message_div1"
+                      ? "not_error_message_div1"
+                      : "error_message_div1"
                   }
                 >
                   Please input at least 1 character.
@@ -423,14 +522,14 @@ const Landing = ({ getSocialHandles }) => {
                   placeholder="JohnDoe12 "
                   name="facebookHandle"
                   value={facebookHandle}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   className="modal_form_area1_input1"
                 />
                 <div
                   className={
-                    errorMessage == "not_error_message_div"
-                      ? "not_error_message_div"
-                      : "error_message_div"
+                    errorMessage2 == "not_error_message_div2"
+                      ? "not_error_message_div2"
+                      : "error_message_div2"
                   }
                 >
                   Please input at least 1 character.
@@ -450,14 +549,14 @@ const Landing = ({ getSocialHandles }) => {
                   placeholder="@JohnDoe "
                   name="linkedInHandle"
                   value={linkedInHandle}
-                  onChange={(e) => onChange(e)}
+                  onChange={onChange}
                   className="modal_form_area1_input1"
                 />
                 <div
                   className={
-                    errorMessage == "not_error_message_div"
-                      ? "not_error_message_div"
-                      : "error_message_div"
+                    errorMessage3 == "not_error_message_div3"
+                      ? "not_error_message_div3"
+                      : "error_message_div3"
                   }
                 >
                   Please input at least 1 character.

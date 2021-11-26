@@ -145,7 +145,10 @@ img.big_hero_img {
   display: none;
 }
 
-.error_message_div {
+.error_message_div,
+.error_message_div1,
+.error_message_div2,
+.error_message_div3 {
   color: red;
   background: #fff;
   padding: 0.8em;
@@ -153,6 +156,10 @@ img.big_hero_img {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.not_error_message_div {
+
+.not_error_message_div,
+.not_error_message_div1,
+.not_error_message_div2,
+.not_error_message_div3 {
   display: none;
 }
