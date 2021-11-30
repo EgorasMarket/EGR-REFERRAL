@@ -158,24 +158,26 @@ export const reset =
     try {
       const res = await axios.post(api_url + "/v1/user/reset", body, config);
       console.log(res);
-      console.log("yyyyy");
-
-      return res;
+      
+      return {
+        status: true,
+        data: res.data,
+      };
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
 
       console.log("ok");
 
-      // const errors = err.response.data.errors;
+      const errors = err.response.data.errors;
       // console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
 
-      //   return {
-      //   status: false,
-      //   id: null
-      // }
+        return {
+        status: false,
+        data: errors
+      }
     }
   };
 

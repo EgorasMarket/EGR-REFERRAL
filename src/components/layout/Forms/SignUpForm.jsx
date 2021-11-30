@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import "./signup-form.css";
 
+import { setAlert } from "../../../actions/alert";
+
 import { getAuthentication } from "../../../actions/Auth";
 
-const SignUpForm = ({ getAuthentication }) => {
+const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [visibility, setVisibility] = useState(false);
@@ -17,12 +19,13 @@ const SignUpForm = ({ getAuthentication }) => {
     lastname: "",
     email: "",
     password: "",
+    confirmpassword: "",
     walletAddress: "",
     ref: "",
     // applicant_businessAddress: "",
   });
 
-  const { username, firstname, lastname, email, password, walletAddress, ref } =
+  const { username, firstname, lastname, email, password, confirmpassword, walletAddress, ref } =
     userAuth;
 
   const onChange = (e) => {
@@ -36,6 +39,7 @@ const SignUpForm = ({ getAuthentication }) => {
   };
 
   const submitData = async (e) => {
+    
     setIsLoading(true);
     console.log(
       username,
@@ -47,40 +51,35 @@ const SignUpForm = ({ getAuthentication }) => {
       ref
     );
 
-    let res = await getAuthentication({
-      username,
-      firstname,
-      lastname,
-      email,
-      password,
-      walletAddress,
-      ref,
-    });
-    // console.log(res.data);
-    if (res.data.success === true) {
-      setIsSuccessful(true);
-      console.log("okay Good Server");
+    if (username === '' || firstname === '' || lastname === '' || email === '' || password === '' || confirmpassword === '' || walletAddress === '') {
+      setAlert('All fields are required', "danger");
     } else {
-      console.log("Nooo Bad Server");
+      if (password !== confirmpassword) {
+        setAlert('Passwords do not match', "danger");
+      } else {
+        let res = await getAuthentication({
+          username,
+          firstname,
+          lastname,
+          email,
+          password,
+          walletAddress,
+          ref,
+        });
+        // console.log(res.data);
+        if (res.data.success === true) {
+          setIsSuccessful(true);
+          console.log("okay Good Server");
+        } else {
+          setAlert(res.data.data.errors[0].msg, "danger");
+          
+        }
+    
+        
+      }
     }
 
-    if (
-      res.data.data.errors[0].msg ===
-      "Username must be more than 7 characters long"
-    ) {
-      window.alert("Username must be more than 7 characters long");
-    }
-
-    // else {
-    //   console.log("kk");
-    // }
-
-    if (res.data.data.errors[0].msg == "Email already exist.") {
-      window.alert("This Email Already Exists");
-    }
-    console.log(res.data);
-    // console.log(res.data.data.errors[0].msg);
-    // console.log(res.data.data.errors[0].msg);
+    
   };
 
   const setPasswordVisibilty = () => {
@@ -210,10 +209,10 @@ const SignUpForm = ({ getAuthentication }) => {
                       <input
                         type={visibility2 ? "text" : "password"}
                         placeholder="Re-Enter Password"
-                        name="password"
+                        name="confirmpassword"
                         required
                         className="input_me show"
-                        value={password}
+                        value={confirmpassword}
                         onChange={onChange}
                       />
 
@@ -341,4 +340,4 @@ const SignUpForm = ({ getAuthentication }) => {
     </div>
   );
 };
-export default connect(null, { getAuthentication })(SignUpForm);
+export default connect(null, { getAuthentication, setAlert })(SignUpForm);

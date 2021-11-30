@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { reset } from "../../../actions/Auth";
+import { setAlert } from "../../../actions/alert";
 
-const ResetPassword = ({ match, reset }) => {
+const ResetPassword = ({ match, reset, setAlert }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [visibility2, setVisibility2] = useState(false);
@@ -16,9 +17,10 @@ const ResetPassword = ({ match, reset }) => {
   const [formData, setFormData] = useState({
     email_auth: match.params.id,
     password: "",
+    confirmpassword: "",
   });
 
-  const { password, email_auth } = formData;
+  const { password, confirmpassword, email_auth } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,17 +33,28 @@ const ResetPassword = ({ match, reset }) => {
   };
 
   const submitData = async (e) => {
+    
     // setIsLoading(true);
     // if (res)
     console.log(email_auth, password);
-    // let res = await reset({ password, email_auth });
-    // console.log(email);
-    // if (res.data.success === true) {
-    //   setIsSuccessful(true);
-    //   console.log("okay Good Server");
-    // } else {
-    //   console.log("Nooo Bad Server");
-    // }
+    
+
+    if (password === '' || confirmpassword === '') {
+      setAlert('All fields are required', "danger");
+    } else {
+      if (password !== confirmpassword) {
+        setAlert('Passwords do not match', "danger");
+      } else {
+        let res = await reset({ password, email_auth });
+        console.log(res);
+        if (res.data.success === true) {
+          setIsSuccessful(true);
+          console.log("okay Good Server");
+        } else {
+          setAlert(res.data[0].msg, "danger");
+        }
+      }
+    }
   };
 
   const setPasswordVisibilty = () => {
@@ -72,7 +85,8 @@ const ResetPassword = ({ match, reset }) => {
         <div className="container">
           <div className="activation_area">
             <div className="sign_up_cont  success_div">
-              <div className="sign_up_area2">
+              {!isSuccessful ? (
+                <div className="sign_up_area2">
                 <div className="forgot_password_div center_me">
                   <h1 className="check_mail"> Update your password </h1>
                   <div className="">
@@ -120,10 +134,10 @@ const ResetPassword = ({ match, reset }) => {
                       <input
                         type={visibility2 ? "text" : "password"}
                         placeholder="Re-Enter Password"
-                        name="password"
+                        name="confirmpassword"
                         required
                         className="input_me show"
-                        value={password}
+                        value={confirmpassword}
                         onChange={onChange}
                       />
 
@@ -169,6 +183,26 @@ const ResetPassword = ({ match, reset }) => {
                   </button>
                 </div>
               </div>
+              ) : (
+                <div className="forgot_password_div center_me">
+                  <img
+                    src="/img/success-mail-icon.svg"
+                    alt=""
+                    className="success_img"
+                  />
+                  <h4 className="check_mail">Congratulations</h4>
+
+                  <p>
+                    You have successfully reset your password
+                  </p>
+                  <p className="note">
+                    {" "}
+                    * If the email doesn’t show up soon, check your spam
+                    folder or make sure you enter the email you used for
+                    registration.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -176,4 +210,4 @@ const ResetPassword = ({ match, reset }) => {
     </div>
   );
 };
-export default connect(null, { reset })(ResetPassword);
+export default connect(null, { reset, setAlert })(ResetPassword);

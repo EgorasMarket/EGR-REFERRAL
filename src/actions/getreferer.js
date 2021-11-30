@@ -34,7 +34,7 @@ export const getSocialHandles =
 
     try {
       const res = await axios.post(api_url + "/v1/user/giveaway", body, config);
-      console.log(res);
+      // console.log(data);
 
       if (res.data.error === false) {
         dispatch({
@@ -56,7 +56,7 @@ export const getSocialHandles =
         };
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err.response);
 
       // const errors = err.response.data.errors;
       // console.log(errors);

@@ -20,12 +20,12 @@ const Landing = ({ getSocialHandles }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [reason, setReason] = useState("");
   const [userData, setUserData] = useState({
-    username: "Samuel-eth",
+    username: "Travi33rr5",
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
     facebookHandle: "",
-    walletAddress: "0xa48240065a359cc115cAFe30683571b7528271da",
+    walletAddress: "ytghghfrrrgffffsdfdfdfffdd",
     // applicant_businessAddress: "",
   });
 
@@ -186,8 +186,8 @@ const Landing = ({ getSocialHandles }) => {
         facebookHandle,
         walletAddress,
       });
+      // console.log(data.data);
     }
-
   };
   return (
     <div>
