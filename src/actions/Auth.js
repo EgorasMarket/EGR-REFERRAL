@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setAlert } from './alert';
+import { setAlert } from "./alert";
 
 import {
   // REGISTER_SUCCESS,
@@ -9,28 +9,25 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   // LOG_OUT,
-  API_URL as api_url
-} from './types';
-
-
-
+  API_URL as api_url,
+} from "./types";
 
 // Load User
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     // setAuthToken(localStorage.token);
     const res = localStorage.token;
-    console.log('Load User is called');
+    console.log("Load User is called");
     dispatch({
       type: USER_LOADED,
-      payload: res
+      payload: res,
     });
   } else {
     // const res = localStorage.token;
     // console.log('Load User is empty');
     dispatch({
       type: AUTH_ERROR,
-      payload: ''
+      payload: "",
     });
   }
 
@@ -244,30 +241,30 @@ export const getLoginAuthentication =
       console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
-      
+
       return {
         status: true,
-        data: res.data
-      }
+        data: res.data,
+      };
       // return res;
     } catch (err) {
       // console.log(err.response);
 
       const errors = err.response.data.errors;
-      // console.log(errors[0].msg);
+      console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
       dispatch({
         type: LOGIN_FAIL,
-        payload: errors[0].msg
+        payload: errors[0].msg,
       });
 
       return {
         status: false,
-        data: err.response
-      }
+        data: err.response,
+      };
     }
   };

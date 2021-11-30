@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import { setAlert } from "../../actions/alert";
 import { setAlert } from "../../../actions/alert";
 import "./signup-form.css";
@@ -9,8 +9,8 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getLoginAuthentication } from "../../../actions/Auth";
 
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
 
 const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
   const [visibility, setVisibility] = useState(false);
@@ -27,12 +27,11 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 
   // console.log(isAuthenticated);
 
-
   // ggggggg
   const [state, setState] = React.useState({
     open: false,
-    vertical: 'top',
-    horizontal: 'center',
+    vertical: "top",
+    horizontal: "center",
   });
 
   const { vertical, horizontal, open } = state;
@@ -45,61 +44,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
     setState({ ...state, open: false });
   };
 
-  const buttons = (
-    <React.Fragment>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'center',
-        })}
-      >
-        Top-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'right',
-        })}
-      >
-        Top-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'right',
-        })}
-      >
-        Bottom-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'center',
-        })}
-      >
-        Bottom-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'left',
-        })}
-      >
-        Bottom-Left
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'left',
-        })}
-      >
-        Top-Left
-      </Button>
-    </React.Fragment>
-  );
   // hghfhgjhghf
-
-
 
   const { email, password } = userAuth;
 
@@ -173,14 +118,11 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
     // }
   };
 
-
   // Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
     // return window.location.replace("/dashboard");
   }
-
-
 
   const setPasswordVisibilty = () => {
     setVisibility(true);
@@ -189,15 +131,6 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
   const closetPasswordVisibilty = () => {
     setVisibility(false);
     setPassImg("show_pass");
-  };
-  const setPasswordVisibilty2 = () => {
-    setVisibility2(true);
-    setPassImg2("hide_pass2");
-  };
-  const closetPasswordVisibilty2 = () => {
-    setVisibility2(false);
-
-    setPassImg2("show_pass2");
   };
 
   // Redirect if logged in
@@ -210,16 +143,6 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
     <div>
       <section className="sign_up_section">
         <div className="container">
-        <div>
-      {buttons}
-      <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        open={open}
-        onClose={handleClose}
-        message="I love snacks"
-        key={vertical + horizontal}
-      />
-    </div>
           <div className="sign_up_area">
             <div className="sign_up_cont">
               <div className="sign_up_area1">
@@ -339,15 +262,16 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 };
 // export default connect(null, { getLoginAuthentication })(LoginForm);
 
-
 LoginForm.propTypes = {
   getLoginAuthentication: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { getLoginAuthentication, setAlert })(LoginForm);
+export default connect(mapStateToProps, { getLoginAuthentication, setAlert })(
+  LoginForm
+);
