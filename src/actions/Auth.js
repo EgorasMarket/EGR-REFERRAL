@@ -181,6 +181,49 @@ export const reset =
       // }
     }
   };
+
+  export const changePassword =
+  ({ oldpassword, newpassword }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        Accept: "*",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+
+    const body = JSON.stringify({
+      oldpassword, newpassword
+    });
+
+    console.log(body);
+
+    try {
+      const res = await axios.post(api_url + "/v1/user/change/password", body, config);
+      console.log(res);
+      // console.log("yyyyy");
+
+      return res;
+    } catch (err) {
+      console.log(err.response);
+
+      console.log("ok");
+
+      // const errors = err.response.data.errors;
+      // console.log(errors);
+      // if (errors) {
+      //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      // }
+
+      //   return {
+      //   status: false,
+      //   id: null
+      // }
+    }
+  };
+
+
 export const ForgetPassword = (email) => async (dispatch) => {
   const config = {
     headers: {
