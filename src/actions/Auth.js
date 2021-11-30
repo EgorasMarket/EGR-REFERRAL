@@ -37,6 +37,11 @@ export const getAuthentication =
     } catch (err) {
       console.log(err.response);
 
+      return {
+        success: false,
+        data: err.response,
+      };
+
       // const errors = err.response.data.errors;
       // console.log(errors);
       // if (errors) {

@@ -56,13 +56,31 @@ const SignUpForm = ({ getAuthentication }) => {
       walletAddress,
       ref,
     });
-    console.log(res);
+    // console.log(res.data);
     if (res.data.success === true) {
       setIsSuccessful(true);
       console.log("okay Good Server");
     } else {
       console.log("Nooo Bad Server");
     }
+
+    if (
+      res.data.data.errors[0].msg ===
+      "Username must be more than 7 characters long"
+    ) {
+      window.alert("Username must be more than 7 characters long");
+    }
+
+    // else {
+    //   console.log("kk");
+    // }
+
+    if (res.data.data.errors[0].msg == "Email already exist.") {
+      window.alert("This Email Already Exists");
+    }
+    console.log(res.data);
+    // console.log(res.data.data.errors[0].msg);
+    // console.log(res.data.data.errors[0].msg);
   };
 
   const setPasswordVisibilty = () => {

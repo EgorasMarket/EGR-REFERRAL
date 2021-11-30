@@ -12,6 +12,7 @@ import SignUpForm from "./components/layout/Forms/SignUpForm";
 import { Provider } from "react-redux";
 import Activation from "./components/layout/Forms/Activation.jsx";
 import ResetPassword from "./components/layout/Forms/ResetPassword";
+import Admin from "./components/layout/Admin/Admin";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
+            <Route exact path="/all-registered/users" component={Admin} />
             <Route
               exact
               path="/forgot-password"

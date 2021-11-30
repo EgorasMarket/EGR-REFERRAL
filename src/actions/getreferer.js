@@ -79,12 +79,16 @@ export const getSocialHandles =
 // Get Social Media Handles
 export const getUsersData =
   ({
+    id,
     username,
     twitterHandle,
     telegramHandle,
     linkedInHandle,
     facebookHandle,
     walletAddress,
+    referal_hash,
+    createdAt,
+    updatedAt,
   }) =>
   async (dispatch) => {
     const config = {
@@ -96,15 +100,19 @@ export const getUsersData =
     };
 
     const body = JSON.stringify({
+      id,
       username,
       twitterHandle,
       telegramHandle,
       linkedInHandle,
       facebookHandle,
       walletAddress,
+      referal_hash,
+      createdAt,
+      updatedAt,
     });
 
-    console.log(body);
+    console.log(`${body} working fineoooooooo`);
 
     try {
       const res = await axios.get(
