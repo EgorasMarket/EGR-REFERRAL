@@ -18,10 +18,11 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/Auth";
 // import Alert from "./components/layout/Alert";
 import Alert from "./components/Alert";
+import ChangePassword from "./components/layout/Forms/ChangePassword";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
-  // setAuthToken
+  console.log('setAuthToken')
 }
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
+            <Route exact path="/change/password" component={ChangePassword} />
             <Route exact path="/all-registered/users" component={Admin} />
             <Route
               exact
