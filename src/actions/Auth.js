@@ -1,6 +1,52 @@
 import axios from "axios";
+import { setAlert } from './alert';
 
-import { API_URL as api_url } from "./types";
+import {
+  // REGISTER_SUCCESS,
+  // REGISTER_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  // LOG_OUT,
+  API_URL as api_url
+} from './types';
+
+
+
+
+// Load User
+export const loadUser = () => async dispatch => {
+  if (localStorage.token) {
+    // setAuthToken(localStorage.token);
+    const res = localStorage.token;
+    console.log('Load User is called');
+    dispatch({
+      type: USER_LOADED,
+      payload: res
+    });
+  } else {
+    // const res = localStorage.token;
+    // console.log('Load User is empty');
+    dispatch({
+      type: AUTH_ERROR,
+      payload: ''
+    });
+  }
+
+  // try {
+  //   const res = await axios.get(api_url+'/auth/employee/signin');
+
+  //   dispatch({
+  //     type: USER_LOADED,
+  //     payload: res.data
+  //   });
+  // } catch (err) {
+  //   dispatch({
+  //     type: AUTH_ERROR
+  //   });
+  // }
+};
 
 // Get Social Media Handles
 export const getAuthentication =
@@ -196,20 +242,32 @@ export const getLoginAuthentication =
     try {
       const res = await axios.post(api_url + "/v1/user/login", body, config);
       console.log(res);
-
-      return res;
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+      
+      return {
+        status: true,
+        data: res.data
+      }
+      // return res;
     } catch (err) {
-      console.log(err);
+      // console.log(err.response);
 
-      // const errors = err.response.data.errors;
-      // console.log(errors);
+      const errors = err.response.data.errors;
+      // console.log(errors[0].msg);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: errors[0].msg
+      });
 
-      //   return {
-      //   status: false,
-      //   id: null
-      // }
+      return {
+        status: false,
+        data: err.response
+      }
     }
   };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
+// import { loadUser } from "./actions/auth";
 import store from "./store";
 import Landing from "./components/layout/Landing";
 import Header from "./components/layout/Header";
@@ -13,13 +14,26 @@ import { Provider } from "react-redux";
 import Activation from "./components/layout/Forms/Activation.jsx";
 import ResetPassword from "./components/layout/Forms/ResetPassword";
 import Admin from "./components/layout/Admin/Admin";
+import setAuthToken from "./utils/setAuthToken";
+import { loadUser } from "./actions/Auth";
+// import Alert from "./components/layout/Alert";
+import Alert from "./components/Alert";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+  // setAuthToken
+}
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   return (
     <Provider store={store}>
       <Router>
         <div>
           <Header />
+          <Alert />
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignUpForm} />
