@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
+import jwt from "jsonwebtoken";
 
 import { Buttons } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
@@ -10,17 +11,37 @@ import "./Forms/forms.css";
 import "../../css/landing.css";
 
 import { getSocialHandles } from "../../actions/getreferer";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Landing = ({ getSocialHandles, setAlert }) => {
+const Landing = ({ getSocialHandles, setAlert, auth }) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
+  const [openModal2, setOpenModal2] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
   const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [openJoin, setOpenJoin] = useState("button");
+  const [visibility, setVisibility] = useState(false);
+  const [passImg, setPassImg] = useState("show_pass");
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [getUsername, setGetUsername] = useState("");
+
+  useEffect(() => {
+    // fetchDepositLinks();
+
+    if (auth.user !== null) {
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+        complete: true,
+      });
+      setGetUsername(decoded.payload.user.username);
+    }
+  }, [auth]);
+
   const [userData, setUserData] = useState({
-    username: "Samuel-Codfder",
+    username: getUsername,
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
@@ -97,47 +118,6 @@ const Landing = ({ getSocialHandles, setAlert }) => {
       // code block
     }
   };
-  // const onChange1 = (e) => {
-  //   setUserData({ ...userData, [e.target.name]: e.target.value });
-
-  //   if (e.target.value === "") {
-  //     setErrorMessage1("error_message_div1");
-  //     console.log("input something here");
-  //   } else {
-  //     console.log("something is here");
-  //     setErrorMessage1("not_error_message_div1");
-  //   }
-  // };
-  // const onChange2 = (e) => {
-  //   setUserData({ ...userData, [e.target.name]: e.target.value });
-
-  //   if (e.target.value === "") {
-  //     setErrorMessage2("error_message_div2");
-  //     console.log("input something here");
-  //   } else {
-  //     console.log("something is here");
-  //     setErrorMessage2("not_error_message_div2");
-  //   }
-  // };
-
-  // const onChange = (e) => {
-  //   setUserData(e.target.value);
-  // };
-
-  //   useEffect(() => {
-  //     if (setOpenModal("not_modal_form_sectiona")) {
-  //       setOpenJoin("not_button");
-  //     } else {
-  //       setOpenJoin("button");
-  //     }
-  //   }, []);
-
-  const toggleCloseIcon = () => {
-    setOpenModal("not_modal_form_section");
-  };
-  const toggleOpenIcon = () => {
-    setOpenModal("modal_form_section");
-  };
 
   const first = "Test String";
 
@@ -188,6 +168,31 @@ const Landing = ({ getSocialHandles, setAlert }) => {
       }
     }
   };
+
+  const setPasswordVisibilty = () => {
+    setVisibility(true);
+    setPassImg("hide_pass");
+  };
+  const closetPasswordVisibilty = () => {
+    setVisibility(false);
+    setPassImg("show_pass");
+  };
+
+  const toggleCloseIcon = () => {
+    setOpenModal("not_modal_form_section");
+    setOpenModal2("not_modal_form_section");
+  };
+  const toggleOpenIcon = () => {
+    setOpenModal("modal_form_section");
+    setOpenModal2("not_modal_form_section");
+  };
+  // const toggleCloseIcon2 = () => {
+  //   setOpenModal("not_modal_form_section");
+  // };
+  // const toggleOpenIcon2= () => {
+  //   setOpenModal("modal_form_section");
+  // };
+
   return (
     <div>
       <section className="landing_section">
@@ -221,6 +226,10 @@ const Landing = ({ getSocialHandles, setAlert }) => {
         <img src="/img/spiky-circle.png" alt="" className="big_hero_img2" />
         <img src="/img/bg-hero-dots.svg" alt="" className="big_hero_img3" />
       </section>
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
       {/* Partners Section start  */}
       <section className="gtpartnersSection">
         <div className="container">
@@ -436,12 +445,16 @@ const Landing = ({ getSocialHandles, setAlert }) => {
           className="gtpartnersCircle"
         />
       </section>
-
       {/* Partners Section end  */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/*========= modal div start============ */}
       <div>
         <section
           className={
-            openModal == "not_modal_form_section"
+            openModal2 == "not_modal_form_section"
               ? "not_modal_form_section"
               : "modal_form_section"
           }
@@ -714,11 +727,132 @@ const Landing = ({ getSocialHandles, setAlert }) => {
             )}
           </div>
         </section>{" "}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        <section
+          className={
+            openModal == "not_modal_form_section"
+              ? "not_modal_form_section"
+              : "modal_form_section"
+          }
+        >
+          <div className="container">
+            <div className="form_area2">
+              <div className="modal_form_head" onClick={toggleCloseIcon}>
+                Login to continue
+                <CloseIcon />
+              </div>
+
+              {/* ========= */}
+              {/* ========= */}
+              {/* ========= */}
+              {/* ========= */}
+              <form class="sign_up_form2" action="/action_page.php">
+                <label for="email"></label>
+                <input
+                  type="text"
+                  placeholder="Enter Email"
+                  name="email"
+                  required
+                  className="input_me2"
+                  // value={email}
+                  onChange={onChange}
+                />
+
+                <label for="psw"></label>
+                <div className="input_area_field">
+                  <input
+                    type={visibility ? "text" : "password"}
+                    placeholder="Enter Password"
+                    name="password"
+                    required
+                    className="input_me2 show"
+                    // value={password}
+                    onChange={onChange}
+                    placeholder="***********"
+                    minLength="8"
+                  />
+
+                  <div className="show_pass_div">
+                    <img
+                      src="/img/show-icon.svg"
+                      alt=""
+                      onClick={setPasswordVisibilty}
+                      className={
+                        passImg == "show_pass" ? "show_pass" : "not_show_pass"
+                      }
+                    />
+                    <img
+                      src="/img/close-pass.svg"
+                      alt=""
+                      onClick={closetPasswordVisibilty}
+                      className={
+                        passImg == "hide_pass" ? "hide_pass" : "not_hide_pass"
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div className="forgot_link2">
+                  <a href="/forgot-password" className="forgot_password">
+                    Forgot Password?
+                  </a>
+                </div>
+              </form>
+              {/* ========== */}
+              {/* ========== */}
+              {/* ========== */}
+
+              <div className="sign_up_btns sign_up_login">
+                <button
+                  type="submit"
+                  className="signupbtn"
+                  // onClick={submitData}
+                  // disabled={disable}
+                  // disabled={isLoading ? "true" : null}
+                  value="Login"
+                >
+                  {isLoading ? (
+                    <span>
+                      Logging in{" "}
+                      <FontAwesomeIcon className="ml-2" icon={faSpinner} spin />
+                    </span>
+                  ) : (
+                    <span>Login</span>
+                  )}{" "}
+                </button>
+              </div>
+              {/* ========== */}
+              {/* ===== */}
+              {/* ===== */}
+              {/* ===== */}
+              {/* ===== */}
+              {/* ===== */}
+              {/* ===== */}
+              {/* ===== */}
+            </div>
+          </div>
+        </section>{" "}
       </div>
+      {/*========= modal div end============ */}
+      {/* ========================= */}
+      {/* ========================= */}
+      {/* ========================= */}
+      {/* ========================= */}
+      {/* ========================= */}
     </div>
   );
 };
 
-// export default Landing;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(null, { getSocialHandles, setAlert })(Landing);
+export default connect(mapStateToProps, { getSocialHandles, setAlert })(
+  Landing
+);
