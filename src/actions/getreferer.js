@@ -36,38 +36,25 @@ export const getSocialHandles =
       const res = await axios.post(api_url + "/v1/user/giveaway", body, config);
       console.log(res);
 
-      if (res.data.error === false) {
-        dispatch({
-          //  type: LOAN_AUTH_REQUEST,
-          payload: res.data,
-        });
-        return {
-          success: true,
-          data: res.data,
-        };
-      } else {
-        dispatch({
-          //  type: LOAN_AUTH_REQUEST_FAIL,
-          payload: res.data,
-        });
-        return {
-          success: false,
-          data: res.data,
-        };
-      }
+      
+      return {
+        success: true,
+        data: res.data,
+      };
+      
     } catch (err) {
-      console.log(err.message);
+      console.log(err.response);
 
-      // const errors = err.response.data.errors;
+      const errors = err.response.data.errors;
       // console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
 
-      //   return {
-      //   status: false,
-      //   id: null
-      // }
+        return {
+        success: false,
+        data: errors
+      }
     }
   };
 
