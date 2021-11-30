@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
+import jwt from 'jsonwebtoken';
 
 import { Buttons } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
@@ -11,7 +12,7 @@ import "../../css/landing.css";
 
 import { getSocialHandles } from "../../actions/getreferer";
 
-const Landing = ({ getSocialHandles, setAlert }) => {
+const Landing = ({ getSocialHandles, setAlert, auth }) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
   const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
@@ -19,8 +20,24 @@ const Landing = ({ getSocialHandles, setAlert }) => {
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [openJoin, setOpenJoin] = useState("button");
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [getUsername, setGetUsername] = useState('');
+
+  useEffect(() => {
+    // fetchDepositLinks();
+
+    if (auth.user !== null) {
+        var todecoded = auth.user;
+        var decoded = jwt.decode(todecoded, {
+            complete: true
+        });
+        setGetUsername(decoded.payload.user.username)
+
+    }
+  }, [auth]);
+
+
   const [userData, setUserData] = useState({
-    username: "Samuel-kextlh",
+    username: getUsername,
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
@@ -97,40 +114,8 @@ const Landing = ({ getSocialHandles, setAlert }) => {
       // code block
     }
   };
-  // const onChange1 = (e) => {
-  //   setUserData({ ...userData, [e.target.name]: e.target.value });
+ 
 
-  //   if (e.target.value === "") {
-  //     setErrorMessage1("error_message_div1");
-  //     console.log("input something here");
-  //   } else {
-  //     console.log("something is here");
-  //     setErrorMessage1("not_error_message_div1");
-  //   }
-  // };
-  // const onChange2 = (e) => {
-  //   setUserData({ ...userData, [e.target.name]: e.target.value });
-
-  //   if (e.target.value === "") {
-  //     setErrorMessage2("error_message_div2");
-  //     console.log("input something here");
-  //   } else {
-  //     console.log("something is here");
-  //     setErrorMessage2("not_error_message_div2");
-  //   }
-  // };
-
-  // const onChange = (e) => {
-  //   setUserData(e.target.value);
-  // };
-
-  //   useEffect(() => {
-  //     if (setOpenModal("not_modal_form_sectiona")) {
-  //       setOpenJoin("not_button");
-  //     } else {
-  //       setOpenJoin("button");
-  //     }
-  //   }, []);
 
   const toggleCloseIcon = () => {
     setOpenModal("not_modal_form_section");
@@ -713,6 +698,9 @@ const Landing = ({ getSocialHandles, setAlert }) => {
   );
 };
 
-// export default Landing;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default connect(null, { getSocialHandles, setAlert })(Landing);
+export default connect(mapStateToProps, { getSocialHandles, setAlert })(Landing);
+

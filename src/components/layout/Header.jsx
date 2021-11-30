@@ -28,6 +28,13 @@ const Header = ({auth}) => {
     } 
 }, [auth]);
 
+const triggerLogout = (event) => {
+  // setBusinessDuration(event.target.value);
+  // console.log('okkkk');
+  localStorage.removeItem("token");
+  window.location.href = "/login"
+};
+
   return (
     <div>
       <section className="header_section">
@@ -52,9 +59,9 @@ const Header = ({auth}) => {
                   <Buttons2 name="Sign up" />
                 </a>
               ) : (
-                <a href="/signup" className="connect_btn1">
+                <a href="#" onClick={triggerLogout} className="connect_btn1">
                 {" "}
-                <Buttons2 name="Log Out" />
+                <Buttons2 onClick={triggerLogout} name="Log Out" />
               </a>
               )}
               
