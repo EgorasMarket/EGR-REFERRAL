@@ -12,6 +12,9 @@ function Footer1() {
     if (windowsPath === "/login") {
       document.getElementById("footerId").style.display = "none";
     }
+    if (windowsPath === "/") {
+      document.getElementById("footerId").style.display = "block";
+    }
     if (windowsPath === "/forgot-password") {
       document.getElementById("footerId").style.display = "none";
     }

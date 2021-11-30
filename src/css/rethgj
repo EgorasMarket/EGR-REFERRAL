@@ -1,0 +1,40 @@
+  const [staffData, setstaffData] = useState({
+    id: "",
+    username: "",
+    twitterHandle: "",
+    telegramHandle: "",
+    linkedInHandle: "",
+    facebookHandle: "",
+    walletAddress: "",
+    referal_hash: "",
+    createdAt: "",
+    updatedAt: "",
+    // applicant_businessAddress: "",
+  });
+
+  const {
+    id,
+    username,
+    twitterHandle,
+    telegramHandle,
+    linkedInHandle,
+    facebookHandle,
+    walletAddress,
+    referal_hash,
+    createdAt,
+    updatedAt,
+  } = staffData;
+
+
+          setstaffData({
+          id: data.data.id,
+          username: data.data.username,
+          twitterHandle: data.data.twitterHandle,
+          telegramHandle: data.data.telegramHandle,
+          linkedInHandle: data.data.linkedInHandle,
+          facebookHandle: data.data.facebookHandle,
+          walletAddress: data.data.walletAddress,
+          referal_hash: data.data.referal_hash,
+          createdAt: data.data.createdAt,
+          updatedAt: data.data.updatedAt,
+        });
