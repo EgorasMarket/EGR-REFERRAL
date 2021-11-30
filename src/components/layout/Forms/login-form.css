@@ -55,7 +55,7 @@
 .main_style {
   width: 50%;
   position: absolute;
-  z-index: 600;
+  z-index: 1000;
   display: flex;
   bottom: 0%;
   padding-bottom: 1em;

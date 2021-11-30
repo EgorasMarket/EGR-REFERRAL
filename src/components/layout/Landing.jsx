@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
 
 import { Buttons } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
@@ -10,22 +11,21 @@ import "../../css/landing.css";
 
 import { getSocialHandles } from "../../actions/getreferer";
 
-const Landing = ({ getSocialHandles }) => {
+const Landing = ({ getSocialHandles, setAlert }) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
   const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [openJoin, setOpenJoin] = useState("button");
-  const [isLoading, setIsLoading] = useState(true);
-  const [reason, setReason] = useState("");
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [userData, setUserData] = useState({
-    username: "Travi33rr5",
+    username: "Samuel-Codfder",
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
     facebookHandle: "",
-    walletAddress: "ytghghfrrrgffffsdfdfdfffdd",
+    walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
     // applicant_businessAddress: "",
   });
 
@@ -142,14 +142,6 @@ const Landing = ({ getSocialHandles }) => {
   const first = "Test String";
 
   const submitData = async (e) => {
-    console.log(
-      twitterHandle,
-      telegramHandle,
-      linkedInHandle,
-      facebookHandle,
-      username
-    );
-
     if (
       twitterHandle === "" &&
       telegramHandle === "" &&
@@ -186,7 +178,14 @@ const Landing = ({ getSocialHandles }) => {
         facebookHandle,
         walletAddress,
       });
-      // console.log(data.data);
+
+      console.log(res);
+
+      if (res.success === true) {
+        setIsSuccessful(true);
+      } else {
+        setAlert(res.data[0].msg, "danger");
+      }
     }
   };
   return (
@@ -448,142 +447,271 @@ const Landing = ({ getSocialHandles }) => {
           }
         >
           <div className="container">
-            <div className="form_area">
-              <div className="modal_form_head" onClick={toggleCloseIcon}>
-                Join $600k+ EGR Airdrop!
-                <CloseIcon />
-              </div>
+            {!isSuccessful ? (
+              <div className="form_area">
+                <div className="modal_form_head" onClick={toggleCloseIcon}>
+                  Join $600k+ EGR Airdrop!
+                  <CloseIcon />
+                </div>
 
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              <div className="modal_form_area1">
-                <div className="modal_form_area1_input_heading">
-                  Twitter Handle
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Twitter Handle
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="@JohnDoe "
+                    id="twitterHandle"
+                    name="twitterHandle"
+                    value={twitterHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage == "not_error_message_div"
+                        ? "not_error_message_div"
+                        : "error_message_div"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  placeholder="@JohnDoe "
-                  id="twitterHandle"
-                  name="twitterHandle"
-                  value={twitterHandle}
-                  onChange={onChange}
-                  className="modal_form_area1_input1"
-                />
-                <div
-                  className={
-                    errorMessage == "not_error_message_div"
-                      ? "not_error_message_div"
-                      : "error_message_div"
-                  }
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Telegram Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="telegramHandle"
+                    placeholder="@JohnDoe "
+                    name="telegramHandle"
+                    value={telegramHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage1 == "not_error_message_div1"
+                        ? "not_error_message_div1"
+                        : "error_message_div1"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Facebook Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="facebookHandle"
+                    placeholder="JohnDoe12 "
+                    name="facebookHandle"
+                    value={facebookHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage2 == "not_error_message_div2"
+                        ? "not_error_message_div2"
+                        : "error_message_div2"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    LinkedIn Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="linkedInHandle"
+                    placeholder="@JohnDoe "
+                    name="linkedInHandle"
+                    value={linkedInHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage3 == "not_error_message_div3"
+                        ? "not_error_message_div3"
+                        : "error_message_div3"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  onClick={submitData}
+                  className="generate_ref_link"
                 >
-                  Please input at least 1 character.
+                  Submit
+                </button>
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                <div className="referral_area">
+                  <div className="referral_heading">
+                    Invite People to get 30% EGR on every airdrop.
+                  </div>
+                  <div className="modal_form_area1"></div>
+                  <button className="generate_ref_link">Get Ref Link</button>
                 </div>
               </div>
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              <div className="modal_form_area1">
-                <div className="modal_form_area1_input_heading">
-                  Telegram Handle
+            ) : (
+              <div className="form_area">
+                <div className="modal_form_head" onClick={toggleCloseIcon}>
+                  Join $600k+ EGR Airdrop!
+                  <CloseIcon />
                 </div>
-                <input
-                  type="text"
-                  id="telegramHandle"
-                  placeholder="@JohnDoe "
-                  name="telegramHandle"
-                  value={telegramHandle}
-                  onChange={onChange}
-                  className="modal_form_area1_input1"
-                />
-                <div
-                  className={
-                    errorMessage1 == "not_error_message_div1"
-                      ? "not_error_message_div1"
-                      : "error_message_div1"
-                  }
-                >
-                  Please input at least 1 character.
+
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Twitter Handle
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="@JohnDoe "
+                    id="twitterHandle"
+                    name="twitterHandle"
+                    value={twitterHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage == "not_error_message_div"
+                        ? "not_error_message_div"
+                        : "error_message_div"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Telegram Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="telegramHandle"
+                    placeholder="@JohnDoe "
+                    name="telegramHandle"
+                    value={telegramHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage1 == "not_error_message_div1"
+                        ? "not_error_message_div1"
+                        : "error_message_div1"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Facebook Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="facebookHandle"
+                    placeholder="JohnDoe12 "
+                    name="facebookHandle"
+                    value={facebookHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage2 == "not_error_message_div2"
+                        ? "not_error_message_div2"
+                        : "error_message_div2"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    LinkedIn Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="linkedInHandle"
+                    placeholder="@JohnDoe "
+                    name="linkedInHandle"
+                    value={linkedInHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage3 == "not_error_message_div3"
+                        ? "not_error_message_div3"
+                        : "error_message_div3"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                <div className="activation_div no_bg">
+                  <img
+                    src="/img/activate.svg"
+                    alt=""
+                    className="activate_img"
+                  />
+                  <h1>Success</h1>
+                  <div className="">
+                    Your entry have been successfully recorded.
+                  </div>
                 </div>
               </div>
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              <div className="modal_form_area1">
-                <div className="modal_form_area1_input_heading">
-                  Facebook Handle
-                </div>
-                <input
-                  type="text"
-                  id="facebookHandle"
-                  placeholder="JohnDoe12 "
-                  name="facebookHandle"
-                  value={facebookHandle}
-                  onChange={onChange}
-                  className="modal_form_area1_input1"
-                />
-                <div
-                  className={
-                    errorMessage2 == "not_error_message_div2"
-                      ? "not_error_message_div2"
-                      : "error_message_div2"
-                  }
-                >
-                  Please input at least 1 character.
-                </div>
-              </div>
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              <div className="modal_form_area1">
-                <div className="modal_form_area1_input_heading">
-                  LinkedIn Handle
-                </div>
-                <input
-                  type="text"
-                  id="linkedInHandle"
-                  placeholder="@JohnDoe "
-                  name="linkedInHandle"
-                  value={linkedInHandle}
-                  onChange={onChange}
-                  className="modal_form_area1_input1"
-                />
-                <div
-                  className={
-                    errorMessage3 == "not_error_message_div3"
-                      ? "not_error_message_div3"
-                      : "error_message_div3"
-                  }
-                >
-                  Please input at least 1 character.
-                </div>
-              </div>
-              <button
-                type="submit"
-                onClick={submitData}
-                className="generate_ref_link"
-              >
-                Submit
-              </button>
-              {/* ===== */}
-              {/* ===== */}
-              {/* ===== */}
-              {/* ===== */}
-              {/* ===== */}
-              {/* ===== */}
-              {/* ===== */}
-              <div className="referral_area">
-                <div className="referral_heading">
-                  Invite People to get 30% EGR on every airdrop.
-                </div>
-                <div className="modal_form_area1"></div>
-                <button className="generate_ref_link">Get Ref Link</button>
-              </div>
-            </div>
+            )}
           </div>
         </section>{" "}
       </div>
@@ -593,4 +721,4 @@ const Landing = ({ getSocialHandles }) => {
 
 // export default Landing;
 
-export default connect(null, { getSocialHandles })(Landing);
+export default connect(null, { getSocialHandles, setAlert })(Landing);

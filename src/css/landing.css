@@ -163,3 +163,9 @@ img.big_hero_img {
 .not_error_message_div3 {
   display: none;
 }
+
+.no_bg {
+  background: none !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+}
