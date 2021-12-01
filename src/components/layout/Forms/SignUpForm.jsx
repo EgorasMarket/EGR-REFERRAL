@@ -25,8 +25,16 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     // applicant_businessAddress: "",
   });
 
-  const { username, firstname, lastname, email, password, confirmpassword, walletAddress, ref } =
-    userAuth;
+  const {
+    username,
+    firstname,
+    lastname,
+    email,
+    password,
+    confirmpassword,
+    walletAddress,
+    ref,
+  } = userAuth;
 
   const onChange = (e) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
@@ -39,7 +47,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
   };
 
   const submitData = async (e) => {
-    
     setIsLoading(true);
     console.log(
       username,
@@ -51,11 +58,19 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       ref
     );
 
-    if (username === '' || firstname === '' || lastname === '' || email === '' || password === '' || confirmpassword === '' || walletAddress === '') {
-      setAlert('All fields are required', "danger");
+    if (
+      username === "" ||
+      firstname === "" ||
+      lastname === "" ||
+      email === "" ||
+      password === "" ||
+      confirmpassword === "" ||
+      walletAddress === ""
+    ) {
+      setAlert("All fields are required", "danger");
     } else {
       if (password !== confirmpassword) {
-        setAlert('Passwords do not match', "danger");
+        setAlert("Passwords do not match", "danger");
       } else {
         let res = await getAuthentication({
           username,
@@ -72,14 +87,9 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
           console.log("okay Good Server");
         } else {
           setAlert(res.data.data.errors[0].msg, "danger");
-          
         }
-    
-        
       }
     }
-
-    
   };
 
   const setPasswordVisibilty = () => {
@@ -114,8 +124,12 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                     className="sign_up_img"
                   />
                   <div className="signup_area1_txts">
-                    <h4>Welcome aboard my friend.</h4>
-                    <p>just a couple of clicks and we start</p>
+                    <h4 className="welcome_aboard">
+                      Welcome aboard my friend.
+                    </h4>
+                    <p className="couple_clicks">
+                      just a couple of clicks and we start
+                    </p>
                   </div>
                   <img
                     src="/img/sign_up_half_ball.png"

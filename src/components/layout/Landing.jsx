@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import jwt from "jsonwebtoken";
 
-import { Buttons } from "./buttons/Buttons";
+import { Buttons, Buttons3 } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
 // import { CloseIcon } from "./icons/CloseIcon";
 import "./Forms/forms.css";
@@ -214,7 +214,7 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
                 className={openJoin == "button" ? "button" : "not_button"}
                 onClick={toggleOpenIcon}
               >
-                <Buttons name="Join Now" />
+                <Buttons3 name="Join Now" />
               </div>
             </div>
             <div className="landing_area_img">

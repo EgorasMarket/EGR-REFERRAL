@@ -14,6 +14,7 @@
 }
 .landing_area_txts {
   width: 100%;
+  backdrop-filter: blur(3px);
 }
 .landing_area_img {
   width: 100%;
@@ -214,4 +215,41 @@ img.big_hero_img {
   display: flex;
   font-size: 14px;
   margin-top: 10px;
+}
+/* ============= */
+/* ============= */
+/* ============= */
+/* ============= */
+/* ============= */
+/* ============= */
+
+@media screen and (max-width: 767px) {
+  img.hero_img {
+    width: 100%;
+    margin: auto;
+    margin-left: 20px;
+  }
+
+  .landing_section {
+    padding: 2em 0em;
+    position: relative;
+    padding-top: 8em;
+  }
+  .landing_area_txts {
+    text-align: center;
+  }
+  .landing_area {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .landing_area_txts_heading {
+    font-size: 40px;
+    font-weight: 700;
+  }
 }

@@ -8,5 +8,5 @@ export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOG_OUT = "LOG_OUT";
 
-export const API_URL = "https://ca99d089b4d7ba.localhost.run";
+export const API_URL = "https://e2615ff810e700.localhost.run";
 // export const API_URL = "http://localhost:4000";
