@@ -20,6 +20,7 @@ import { loadUser } from "./actions/Auth";
 // import Alert from "./components/layout/Alert";
 import Alert from "./components/Alert";
 import ChangePassword from "./components/layout/Forms/ChangePassword";
+import Referal from "./components/layout/Forms/Referal";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -42,11 +43,11 @@ function App() {
 
             <Route exact path="/" component={Landing} />
 
-            
             <Dashboard />
 
             <Route exact path="/signup" component={SignUpForm} />
-
+            <Route exact path="/referal/:ref" component={Referal} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />

@@ -3,18 +3,21 @@ import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import jwt from "jsonwebtoken";
 
-import { Buttons, Buttons3 } from "./buttons/Buttons";
+import PropTypes from "prop-types";
+
+import { Buttons, Buttons3  } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
 // import { CloseIcon } from "./icons/CloseIcon";
 import "./Forms/forms.css";
 
 import "../../css/landing.css";
 
+import { getLoginAuthentication } from "../../actions/Auth";
 import { getSocialHandles } from "../../actions/getreferer";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Landing = ({ getSocialHandles, setAlert, auth }) => {
+const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
   const [openModal2, setOpenModal2] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
@@ -26,6 +29,8 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
   const [passImg, setPassImg] = useState("show_pass");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [getUsername, setGetUsername] = useState("");
 
   useEffect(() => {
@@ -37,8 +42,17 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
         complete: true,
       });
       setGetUsername(decoded.payload.user.username);
+      setIsLoggedIn(true)
     }
   }, [auth]);
+
+  const [userAuth, setUserAuth] = useState({
+    email: "",
+    password: "",
+    // applicant_businessAddress: "",
+  });
+
+  const { email, password } = userAuth;
 
   const [userData, setUserData] = useState({
     username: getUsername,
@@ -119,7 +133,11 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
     }
   };
 
-  const first = "Test String";
+  const onChange1 = (e) => {
+    setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
+  }
+
+  // const first = "Test String";
 
   const submitData = async (e) => {
     if (
@@ -169,6 +187,39 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
     }
   };
 
+
+  const submitData1 = async (e) => {
+    // setAlert('Check your internet connection', 'danger');
+    console.log(email, password);
+    console.log("okay Good look at me");
+    setIsLoading2(true);
+
+    let res = await getLoginAuthentication({
+      email,
+      password,
+    });
+    console.log(res);
+    if (res === undefined) {
+      setAlert("Check your internet connection", "danger");
+      setIsLoading2(false);
+    } else {
+      if (res.data.success === true) {
+        setIsLoading2(false);
+        // return <Redirect to="/" />;
+        // return window.location.replace("/");
+        setIsLoggedIn(true)
+        setOpenModal("not_modal_form_section");
+        setOpenModal2("modal_form_section");
+      } else {
+        setAlert(res.data.data.errors[0].msg, "danger");
+        setIsLoading2(false);
+        // console.log('res.data.errorMessage');
+        // setIsLoading(false);
+      }
+    }
+
+  };
+
   const setPasswordVisibilty = () => {
     setVisibility(true);
     setPassImg("hide_pass");
@@ -183,8 +234,14 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
     setOpenModal2("not_modal_form_section");
   };
   const toggleOpenIcon = () => {
-    setOpenModal("modal_form_section");
-    setOpenModal2("not_modal_form_section");
+    // setOpenModal("modal_form_section");
+    // setOpenModal2("not_modal_form_section");
+
+    if (isLoggedIn) {
+      setOpenModal2("modal_form_section");
+    } else {
+      setOpenModal("modal_form_section");
+    }
   };
   // const toggleCloseIcon2 = () => {
   //   setOpenModal("not_modal_form_section");
@@ -760,8 +817,8 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
                   name="email"
                   required
                   className="input_me2"
-                  // value={email}
-                  onChange={onChange}
+                  value={email}
+                  onChange={onChange1}
                 />
 
                 <label for="psw"></label>
@@ -772,8 +829,8 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
                     name="password"
                     required
                     className="input_me2 show"
-                    // value={password}
-                    onChange={onChange}
+                    value={password}
+                    onChange={onChange1}
                     placeholder="***********"
                     minLength="8"
                   />
@@ -812,7 +869,7 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
                 <button
                   type="submit"
                   className="signupbtn"
-                  // onClick={submitData}
+                  onClick={submitData1}
                   // disabled={disable}
                   // disabled={isLoading ? "true" : null}
                   value="Login"
@@ -849,10 +906,16 @@ const Landing = ({ getSocialHandles, setAlert, auth }) => {
   );
 };
 
+Landing.propTypes = {
+  getLoginAuthentication: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  // isAuthenticated: PropTypes.bool,
+};
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getSocialHandles, setAlert })(
+export default connect(mapStateToProps, { getSocialHandles, getLoginAuthentication, setAlert })(
   Landing
 );

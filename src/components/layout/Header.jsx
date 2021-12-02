@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 
 import { Buttons, Buttons2, ButtonsDashboard } from "./buttons/Buttons";
 import "../../css/header.css";
-const Header = ({ auth }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Header = ({auth, isAuthenticated }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const windowsPath = window.location.pathname;
   const myArr = windowsPath.split("/");
+
+  // console.log(isAuthenticated);
 
   useEffect(() => {
     if (windowsPath === "/dashboard") {
@@ -54,14 +56,14 @@ const Header = ({ auth }) => {
             </a>
 
             <div className="buttons-login" id="buttons_login">
-              {!isLoggedIn ? (
+              {!isAuthenticated ? (
                 <a href="/login" className="connect_btn1">
                   {" "}
                   <Buttons name="Login" />
                 </a>
               ) : null}
 
-              {!isLoggedIn ? (
+              {!isAuthenticated ? (
                 <a href="/signup" className="connect_btn1 cnt-bt">
                   {" "}
                   <Buttons2 name="Sign up" />
@@ -94,8 +96,9 @@ const Header = ({ auth }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 // export default Header;

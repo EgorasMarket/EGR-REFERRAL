@@ -13,6 +13,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [visibility2, setVisibility2] = useState(false);
   const [passImg, setPassImg] = useState("show_pass");
   const [passImg2, setPassImg2] = useState("show_pass2");
+  // const [ref, setRef] = useState("");
   const [userAuth, setUserAuth] = useState({
     username: "",
     firstname: "",
@@ -21,20 +22,15 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     password: "",
     confirmpassword: "",
     walletAddress: "",
-    ref: "",
+    // ref: "",
     // applicant_businessAddress: "",
   });
 
-  const {
-    username,
-    firstname,
-    lastname,
-    email,
-    password,
-    confirmpassword,
-    walletAddress,
-    ref,
-  } = userAuth;
+  const { username, firstname, lastname, email, password, confirmpassword, walletAddress } =
+    userAuth;
+
+
+    
 
   const onChange = (e) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
@@ -46,6 +42,8 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     }
   };
 
+  
+
   const submitData = async (e) => {
     setIsLoading(true);
     console.log(
@@ -55,7 +53,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       email,
       password,
       walletAddress,
-      ref
+      // ref
     );
 
     if (
@@ -72,22 +70,48 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       if (password !== confirmpassword) {
         setAlert("Passwords do not match", "danger");
       } else {
-        let res = await getAuthentication({
-          username,
-          firstname,
-          lastname,
-          email,
-          password,
-          walletAddress,
-          ref,
-        });
-        // console.log(res.data);
-        if (res.data.success === true) {
-          setIsSuccessful(true);
-          console.log("okay Good Server");
+
+        if (typeof localStorage.referrer !== 'undefined') {
+          console.log(localStorage.referrer);
+          // setUserAuth()
+          let res = await getAuthentication(
+            username,
+            firstname,
+            lastname,
+            email,
+            password,
+            walletAddress,
+            localStorage.referrer,
+          );
+          // console.log(res.data);
+          if (res.data.success === true) {
+            setIsSuccessful(true);
+            // console.log("okay Good Server");
+          } else {
+            setAlert(res.data.data.errors[0].msg, "danger");
+            
+          }
         } else {
-          setAlert(res.data.data.errors[0].msg, "danger");
+          let res = await getAuthentication(
+            username,
+            firstname,
+            lastname,
+            email,
+            password,
+            walletAddress,
+            '',
+          );
+          // console.log(res.data);
+          if (res.data.success === true) {
+            setIsSuccessful(true);
+            // console.log("okay Good Server");
+          } else {
+            setAlert(res.data.data.errors[0].msg, "danger");
+            
+          }
         }
+        
+        
       }
     }
   };

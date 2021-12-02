@@ -47,7 +47,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Get Social Media Handles
 export const getAuthentication =
-  ({ username, firstname, lastname, password, email, walletAddress, ref }) =>
+  ( username, firstname, lastname, email, password, walletAddress, ref ) =>
   async (dispatch) => {
     const config = {
       headers: {
