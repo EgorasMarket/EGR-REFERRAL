@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { connect } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
 // import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 // import SecurityIcon from "@mui/icons-material/Security";
@@ -25,7 +27,8 @@ import "./DashboardStyles/dashboard_header.css";
 // ==================
 // ==================
 // ==================
-const DashboardSideBar = () => {
+const DashboardSideBar = ({ auth, isAuthenticated }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeBg, setActiveBg] = useState("market");
   const [userName, setUserName] = useState("Samuel");
   const [click, setClick] = useState("drop");
@@ -73,16 +76,39 @@ const DashboardSideBar = () => {
     if (linksActive === "/dashboard/ranking") {
       setActiveBg("governance");
     }
+    if (linksActive === "/dashboard/tasks") {
+      setActiveBg("tasks");
+    }
     if (linksActive === "/dashboard/referrals") {
       setActiveBg("swap");
     }
-    if (linksActive === "/dashboard/vault") {
-      setActiveBg("vault");
+    if (linksActive === "/dashboard/tasks") {
+      setActiveBg("tasks");
     }
     if (linksActive === "/dashboard/whitepaper") {
       setActiveBg("whitepaper");
     }
   }, []);
+
+  useEffect(() => {
+    // fetchDepositLinks();
+    console.log(auth.user);
+    if (auth.user !== null) {
+      // var todecoded = auth.user;
+      // var decoded = jwt.decode(todecoded, {
+      //     complete: true
+      // });
+      // setStaffEmail(decoded.payload.email)
+      setIsLoggedIn(true);
+    }
+  }, [auth]);
+
+  const triggerLogout = (event) => {
+    // setBusinessDuration(event.target.value);
+    // console.log('okkkk');
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
 
   return (
     <div className="side">
@@ -250,6 +276,28 @@ const DashboardSideBar = () => {
               {/* ===================== */}
 
               <Link
+                to="/dashboard/tasks"
+                className="link"
+                id="tasks"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "tasks"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
+                >
+                  <BarChartIcon className="sidebarIcon" />
+                  Tasks
+                </li>
+              </Link>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+
+              <Link
                 to="/dashboard/ranking"
                 className="link"
                 id="governance"
@@ -366,6 +414,45 @@ const DashboardSideBar = () => {
             </ul>
             <hr />
             <ul className="sidebarListb">
+              {!isAuthenticated ? (
+                <a href="/login" className="connect_btn1">
+                  {" "}
+                  {/* <Buttons name="Login" /> */}
+                </a>
+              ) : null}
+
+              {/* ========= */}
+              {/* ========= */}
+              {/* ========= */}
+              {/* {!isAuthenticated ? (
+                <a href="/signup" className="connect_btn1 cnt-bt">
+                  {" "}
+                  <Buttons2 name="Sign up" />
+                </a>
+              ) : (
+                <Fragment>
+                  <a
+                    href="/dashboard"
+                    // onClick={triggerLogout}
+                    className="connect_btn1 "
+                  >
+                    {" "}
+                    <ButtonsDashboard name="Dashboard" />
+                  </a>
+                  <a
+                    href="#"
+                    onClick={triggerLogout}
+                    className="connect_btn1 cnt-bt"
+                  >
+                    {" "}
+                    <Buttons2 onClick={triggerLogout} name="Log Out" />
+                  </a>
+                </Fragment>
+              )} */}
+
+              {/* ========= */}
+              {/* ========= */}
+              {/* ========= */}
               <Link
                 to="/dashboard/whitepaper"
                 className="link"
@@ -390,5 +477,8 @@ const DashboardSideBar = () => {
     </div>
   );
 };
-
-export default DashboardSideBar;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, {})(DashboardSideBar);

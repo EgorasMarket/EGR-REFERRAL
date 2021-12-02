@@ -27,6 +27,9 @@ function Footer1() {
     if (windowsPath === "/dashboard/ranking") {
       document.getElementById("footerId").style.display = "none";
     }
+    if (windowsPath === "/dashboard/tasks") {
+      document.getElementById("footerId").style.display = "none";
+    }
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("footerId").style.display = "none";
     }

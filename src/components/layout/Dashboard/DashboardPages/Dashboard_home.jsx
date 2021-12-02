@@ -218,13 +218,15 @@ const Dashboard_home = () => {
                   )}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
-                <button className="see_more_refers">See more</button>
+                <a href="/dashboard/ranking">
+                  <button className="see_more_refers">See more</button>
+                </a>
               </div>
               <div className="assets_cont1_second">
                 <div className="assets_cont1a">
                   <div className="assets_cont_heading_txt">
                     <GroupIcon className="sidebarIcona" />
-                    Referrals
+                    My Referrals
                   </div>
                   {/* <div className="assets-cont-head-area">
               <div className="search-input">
@@ -324,7 +326,10 @@ const Dashboard_home = () => {
                     )}
                     {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                   </table>
-                  <button className="see_more_refers">See all</button>
+                  <a href="/dashboard/referrals">
+                    {" "}
+                    <button className="see_more_refers">See all</button>
+                  </a>
                 </div>
                 {/* ====================== */}
                 {/* ====================== */}
@@ -348,8 +353,9 @@ const Dashboard_home = () => {
               <p className="invite_refer_area_para">
                 For each registered user you get rewarded in egc 
               </p>
-
-              <button className="see_more_refersa">Go to referrals</button>
+              <a href="/dashboard/referrals">
+                <button className="see_more_refersa">Go to referrals</button>
+              </a>
             </div>
           </div>
         </div>

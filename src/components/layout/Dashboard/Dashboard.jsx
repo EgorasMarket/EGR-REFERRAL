@@ -4,6 +4,7 @@ import "./DashboardStyles/dashboard.css";
 import DashboardSideBar from "./DashboardSideBar.jsx";
 import Dashboard_home from "./DashboardPages/Dashboard_home";
 import Dashboard_ranking from "./DashboardPages/Dashboard_ranking";
+import Dashboard_tasks from "./DashboardPages/Dashboard_tasks";
 import Dashboard_total_rferrals from "./DashboardPages/Dashboard_total_rferrals";
 
 function Dashboard() {
@@ -20,6 +21,7 @@ function Dashboard() {
             path="/dashboard/ranking"
             component={Dashboard_ranking}
           />
+          <Route exact path="/dashboard/tasks" component={Dashboard_tasks} />
           <Route
             exact
             path="/dashboard/referrals"

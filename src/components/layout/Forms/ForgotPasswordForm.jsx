@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { ForgetPassword } from "../../../actions/Auth";
+
+
+
+
+
 const ForgotPasswordForm = ({ ForgetPassword }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);

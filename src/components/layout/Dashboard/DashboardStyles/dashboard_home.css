@@ -161,7 +161,7 @@
 .assets_cont1_second {
   width: 48%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 20px;
 }
 .assets_cont1a {

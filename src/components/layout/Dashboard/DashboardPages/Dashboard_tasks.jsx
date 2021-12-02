@@ -1,0 +1,331 @@
+import React, { useState, useEffect } from "react";
+
+import { connect } from "react-redux";
+import {
+  getMyReferrals,
+  getSocialHandles,
+} from "../../../../actions/getreferer";
+import { CloseIcon } from "../../icons/CloseIcon";
+import { setAlert } from "../../../../actions/alert";
+import jwt from "jsonwebtoken";
+// import BarChartIcon from "@mui/icons-material/BarChart";
+// import GroupIcon from "@mui/icons-material/Group";
+// import axios from "axios";
+import { API_URL as api_url } from "../../../../actions/types";
+
+import { BoxLoading } from "react-loadingg";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../DashboardStyles/dashboard_home.css";
+// ==============================
+// ==============================
+// ==============================
+// ==============================
+// ==============================
+// ==============================
+const Dashboard_tasks = ({ getSocialHandles }) => {
+  const [getUsername, setGetUsername] = useState("");
+  const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading2, setIsLoading2] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("not_error_message_div");
+  const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
+  const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
+
+  const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
+  const [userData, setUserData] = useState({
+    username: getUsername,
+    twitterHandle: "",
+    telegramHandle: "",
+    linkedInHandle: "",
+    facebookHandle: "",
+    walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
+    // applicant_businessAddress: "",
+  });
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const {
+    username,
+    twitterHandle,
+    telegramHandle,
+    linkedInHandle,
+    facebookHandle,
+    walletAddress,
+  } = userData;
+  // ======
+  // ======
+  // ======
+  const onChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+
+    if (e.target.value === "") {
+      console.log("input something here");
+    } else {
+      console.log("something is here");
+    }
+
+    const { name, value, id } = e.target;
+
+    switch (name) {
+      case "twitterHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage("error_message_div");
+        } else {
+          console.log("something is here");
+          setErrorMessage("not_error_message_div");
+        }
+
+        break;
+      case "telegramHandle":
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage1("error_message_div1");
+        } else {
+          console.log("something is here");
+          setErrorMessage1("not_error_message_div1");
+        }
+        // code block
+        break;
+      case "facebookHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage2("error_message_div2");
+        } else {
+          console.log("something is here");
+          setErrorMessage2("not_error_message_div2");
+        }
+
+        break;
+      case "linkedInHandle":
+        // code block
+        if (e.target.value === "") {
+          console.log("input something here");
+          setErrorMessage3("error_message_div3");
+        } else {
+          console.log("something is here");
+          setErrorMessage3("not_error_message_div3");
+        }
+
+        break;
+      default:
+      // code block
+    }
+  };
+  // =========
+  // =========
+
+  const submitData = async (e) => {
+    if (
+      twitterHandle === "" &&
+      telegramHandle === "" &&
+      facebookHandle === "" &&
+      linkedInHandle === ""
+    ) {
+      console.log("please supply");
+      setErrorMessage("error_message_div");
+      setErrorMessage1("error_message_div1");
+      setErrorMessage2("error_message_div2");
+      setErrorMessage3("error_message_div3");
+    } else if (twitterHandle === "") {
+      console.log("please supply");
+      setErrorMessage("error_message_div");
+    } else if (telegramHandle === "") {
+      console.log("please supply");
+      setErrorMessage1("error_message_div1");
+    } else if (facebookHandle === "") {
+      console.log("please supply");
+      setErrorMessage2("error_message_div2");
+    } else if (linkedInHandle === "") {
+      console.log("please supply");
+      setErrorMessage3("error_message_div3");
+    } else {
+      setErrorMessage("not_error_message_div");
+      setErrorMessage1("not_error_message_div1");
+      setErrorMessage2("not_error_message_div2");
+      setErrorMessage3("not_error_message_div3");
+      let res = await getSocialHandles({
+        username,
+        twitterHandle,
+        telegramHandle,
+        linkedInHandle,
+        facebookHandle,
+        walletAddress,
+      });
+
+      console.log(res);
+
+      if (res.success === true) {
+        setIsSuccessful(true);
+      } else {
+        setAlert(res.data[0].msg, "danger");
+      }
+    }
+  };
+
+  return (
+    <div className="other2">
+      {/* get started section start */}
+      {/* ============================================================ */}
+      {/* ============================================================ */}
+      {/* ============================================================ */}
+      {/* ============================================================ */}
+      {/* Tokens Section Start */}
+      <section className=" no-bg">
+        <div className="container">
+          <div className="assets_area">
+            <div className="assets-container">
+              <div className="assets_cont1 large_width">
+                {/*========= modal div start============ */}
+
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Twitter Handle
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="@JohnDoe "
+                    id="twitterHandle"
+                    name="twitterHandle"
+                    value={twitterHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage == "not_error_message_div"
+                        ? "not_error_message_div"
+                        : "error_message_div"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Telegram Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="telegramHandle"
+                    placeholder="@JohnDoe "
+                    name="telegramHandle"
+                    value={telegramHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage1 == "not_error_message_div1"
+                        ? "not_error_message_div1"
+                        : "error_message_div1"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    Facebook Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="facebookHandle"
+                    placeholder="JohnDoe12 "
+                    name="facebookHandle"
+                    value={facebookHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage2 == "not_error_message_div2"
+                        ? "not_error_message_div2"
+                        : "error_message_div2"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <div className="modal_form_area1">
+                  <div className="modal_form_area1_input_heading">
+                    LinkedIn Handle
+                  </div>
+                  <input
+                    type="text"
+                    id="linkedInHandle"
+                    placeholder="@JohnDoe "
+                    name="linkedInHandle"
+                    value={linkedInHandle}
+                    onChange={onChange}
+                    className="modal_form_area1_input1"
+                  />
+                  <div
+                    className={
+                      errorMessage3 == "not_error_message_div3"
+                        ? "not_error_message_div3"
+                        : "error_message_div3"
+                    }
+                  >
+                    Please input at least 1 character.
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  onClick={submitData}
+                  className="generate_ref_link"
+                >
+                  Submit
+                </button>
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                {/* ===== */}
+                <div className="referral_area">
+                  <div className="referral_heading">
+                    Invite People to get 30% EGR on every airdrop.
+                  </div>
+                  <div className="modal_form_area1"></div>
+                  <button className="generate_ref_link">Get Ref Link</button>
+                </div>
+
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default connect(null, { getSocialHandles })(Dashboard_tasks);

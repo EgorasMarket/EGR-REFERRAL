@@ -18,7 +18,7 @@ export function Buttons3(props) {
 export function ButtonsDashboard(props) {
   return (
     <div>
-      <button className="join_now_btn  jb1a">
+      <button className="join_now_btn3  jb1a">
         {props.name} <ArrowForwardIcon className="double_arrow" />
       </button>
     </div>

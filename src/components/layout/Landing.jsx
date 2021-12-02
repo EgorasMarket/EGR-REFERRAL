@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 import PropTypes from "prop-types";
 
-import { Buttons, Buttons3  } from "./buttons/Buttons";
+import { Buttons, Buttons3 } from "./buttons/Buttons";
 import { CloseIcon } from "./icons/CloseIcon";
 // import { CloseIcon } from "./icons/CloseIcon";
 import "./Forms/forms.css";
@@ -17,7 +17,12 @@ import { getSocialHandles } from "../../actions/getreferer";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) => {
+const Landing = ({
+  getSocialHandles,
+  setAlert,
+  auth,
+  getLoginAuthentication,
+}) => {
   const [openModal, setOpenModal] = useState("not_modal_form_section");
   const [openModal2, setOpenModal2] = useState("not_modal_form_section");
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
@@ -42,7 +47,7 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
         complete: true,
       });
       setGetUsername(decoded.payload.user.username);
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
     }
   }, [auth]);
 
@@ -135,7 +140,7 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
 
   const onChange1 = (e) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
-  }
+  };
 
   // const first = "Test String";
 
@@ -187,7 +192,6 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
     }
   };
 
-
   const submitData1 = async (e) => {
     // setAlert('Check your internet connection', 'danger');
     console.log(email, password);
@@ -207,7 +211,7 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
         setIsLoading2(false);
         // return <Redirect to="/" />;
         // return window.location.replace("/");
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
         setOpenModal("not_modal_form_section");
         setOpenModal2("modal_form_section");
       } else {
@@ -217,7 +221,6 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
         // setIsLoading(false);
       }
     }
-
   };
 
   const setPasswordVisibilty = () => {
@@ -267,12 +270,12 @@ const Landing = ({ getSocialHandles, setAlert, auth, getLoginAuthentication }) =
                 porro iusto consequatur sit minima, neque natus impedit amet
                 deleniti aliquam!
               </p>
-              <div
+              {/* <div
                 className={openJoin == "button" ? "button" : "not_button"}
                 onClick={toggleOpenIcon}
               >
                 <Buttons3 name="Join Now" />
-              </div>
+              </div> */}
             </div>
             <div className="landing_area_img">
               <img src="/img/hero_image.svg" alt="" className="hero_img" />
@@ -916,6 +919,8 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getSocialHandles, getLoginAuthentication, setAlert })(
-  Landing
-);
+export default connect(mapStateToProps, {
+  getSocialHandles,
+  getLoginAuthentication,
+  setAlert,
+})(Landing);

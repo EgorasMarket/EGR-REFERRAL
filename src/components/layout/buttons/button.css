@@ -5,25 +5,25 @@
   background: #54bc7e;
   color: #ffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   box-shadow: 0px 20px 50px #86bf9d;
   transition: 0.3s linear;
 }
 .join_now_btn3 {
-  padding: 1em 4em;
+  padding: 1em 2em;
   border-radius: 50px;
   border: none;
   background: #54bc7e;
   color: #ffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   box-shadow: 0px 20px 50px #86bf9d;
   transition: 0.3s linear;
 }
 .join_now_btn2 {
-  padding: 1em 4em;
+  padding: 1em 3em;
   border-radius: 50px;
   border: solid;
   background: #fff;
@@ -31,19 +31,19 @@
   border-color: #54bc7e;
   color: #54bc7e;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   /* box-shadow: 0px 20px 50px #86bf9d; */
   transition: 0.3s linear;
 }
 .join_now_btn2:hover {
-  padding: 1em 4em;
+  padding: 1em 3em;
   border-radius: 20px;
   border-color: #e4a788;
   background: #e4a788;
   color: #ffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   box-shadow: 0px 20px 50px #be9f90;
   transition: 0.3s linear;
@@ -55,19 +55,19 @@
   background: #e4a788;
   color: #ffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   box-shadow: 0px 20px 50px #be9f90;
   transition: 0.3s linear;
 }
 .join_now_btn3:hover {
-  padding: 1em 4em;
+  padding: 1em 2em;
   border-radius: 20px;
   border: none;
   background: #e4a788;
   color: #ffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   box-shadow: 0px 20px 50px #be9f90;
   transition: 0.3s linear;
