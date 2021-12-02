@@ -36,6 +36,7 @@ function App() {
         <div>
           <Header />
           <Alert />
+          {/* <Dashboard /> */}
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignUpForm} />

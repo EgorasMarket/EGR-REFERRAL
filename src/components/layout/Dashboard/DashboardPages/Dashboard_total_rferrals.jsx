@@ -17,7 +17,7 @@ import "../DashboardStyles/dashboard_home.css";
 // ==============================
 // ==============================
 // ==============================
-const Dashboard_ranking = () => {
+const Dashboard_total_rferrals = () => {
   const [topReferral, setTopReferral] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -195,4 +195,4 @@ const Dashboard_ranking = () => {
   );
 };
 
-export default Dashboard_ranking;
+export default Dashboard_total_rferrals;

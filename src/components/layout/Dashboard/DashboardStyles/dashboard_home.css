@@ -367,3 +367,33 @@
   font-weight: 800;
 }
 /* collateral assets section end */
+
+.large_width {
+  width: 100%;
+  height: 100%;
+}
+
+.fetch_referrals {
+  position: relative;
+  /* background: grey; */
+  /* height: 20px; */
+  width: 100%;
+  padding: 2em;
+}
+
+.big_load {
+  font-size: 32px;
+}
+
+.bdsghZ::after {
+  content: "";
+  background: #41ba71 !important;
+}
+
+.bdsghZ {
+  margin: auto;
+  inset: auto !important;
+  right: 0 !important;
+  position: relative !important;
+  z-index: 400;
+}
