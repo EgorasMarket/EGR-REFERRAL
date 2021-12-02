@@ -108,14 +108,6 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
       }
     }
 
-    // if (res.data.success === true) {
-    //   return <Redirect to="/" />;
-    //   // return window.location.replace("/");
-    //   console.log("okay Good look at me");
-    //   // console.log(window.location.replace("/"));
-    // } else {
-    //   console.log("dd hdhdhdhdh ddd");
-    // }
   };
 
   // Redirect if logged in
