@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import GroupIcon from "@mui/icons-material/Group";
-
+import { connect } from "react-redux";
+import { getTopReferrer } from "../../../../actions/getreferer";
+import { getMyReferrals } from "../../../../actions/getreferer";
+import axios from "axios";
+import { API_URL as api_url } from "../../../../actions/types";
+import { BoxLoading } from "react-loadingg";
 import "../DashboardStyles/dashboard_home.css";
 const Dashboard_home = () => {
+  const [myReferral, setMyReferral] = useState([]);
+  const [topReferral, setTopReferral] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const assets = [
     {
       name: "ifea****muel",
@@ -40,6 +48,60 @@ const Dashboard_home = () => {
       refferals: "300",
     },
   ];
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    axios.get(api_url + "/v1/user/my/referers", null, config).then((data) => {
+      // console.log(data.data.user);
+      setMyReferral(data.data.user);
+      if (data.status === 200) {
+        setIsLoading(false);
+      } else {
+        setIsLoading(true);
+      }
+    });
+
+    axios
+      .get(api_url + "/v1/user/all/top/referers", null, config)
+      .then((data) => {
+        // console.log(data.data.user);
+        setTopReferral(data.data.allData);
+        if (data.status === 200) {
+          setIsLoading(false);
+        } else {
+          setIsLoading(true);
+        }
+      });
+
+    // }
+  }, []);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+
+  //   axios.get(api_url + "/v1/user/my/referers", null, config) &&
+  //     axios
+  //       .get(api_url + "/v1/user/all/top/referers", null, config)
+  //       .then((data) => {
+  //         console.log(data.data.user);
+  //         setMyReferral(data.data.user);
+  //         setTopReferral(data.data.allData);
+  //         if (data.status === 200) {
+  //           setIsLoading(false);
+  //         } else {
+  //           setIsLoading(true);
+  //         }
+  //       });
+
+  //   // }
+  // }, []);
 
   return (
     <div className="other2">
@@ -88,36 +150,55 @@ const Dashboard_home = () => {
 // =====================
 // =====================
 // =====================
+
+
 // =====================
 // =====================
 // =====================
 
                 
               </div> */}
-                  <tbody
-                    className="assets-table-body popular-categories"
-                    id="popular-categories"
-                  >
-                    {" "}
-                    {/* =============== */}
-                    {/* =============== */}
-                    {/* =============== */}
-                    {assets.map((asset) => (
-                      <tr className="assets-category-rowa">
-                        <td className="assets-category-data">
-                          <div className="assets-data">
-                            <div className="assets-data-nameLeft">
-                              {asset.name}
+                  {isLoading ? (
+                    <tbody>
+                      <tr>
+                        <td
+                          colSpan="2"
+                          style={{ padding: "2em", paddingBottom: "1em" }}
+                        >
+                          <BoxLoading />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colSpan="2" style={{ textAlign: "center" }}>
+                          <span>Fetching data...</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  ) : (
+                    <tbody
+                      className="assets-table-body popular-categories"
+                      id="popular-categories"
+                    >
+                      {" "}
+                      {/* =============== */}
+                      {/* =============== */}
+                      {/* =============== */}
+                      {topReferral.map((asset) => (
+                        <tr className="assets-category-rowa">
+                          <td className="assets-category-data">
+                            <div className="assets-data">
+                              <div className="assets-data-nameLeft">
+                                {asset.firstname + asset.lastname}
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td className="assets-category-data1">
-                          <div className="assets-data-nameRight">
-                            {asset.refferals}
-                          </div>
-                        </td>
+                          </td>
+                          <td className="assets-category-data1">
+                            <div className="assets-data-nameRight">
+                              {asset.counts}
+                            </div>
+                          </td>
 
-                        {/* <td className="assets-category-data-last">
+                          {/* <td className="assets-category-data-last">
                     <div className="assets-data-name-last">
                       <a
                         href="#"
@@ -128,12 +209,13 @@ const Dashboard_home = () => {
                       </a>
                     </div>
                   </td> */}
-                      </tr>
-                    ))}
-                    {/* =============== */}
-                    {/* =============== */}
-                    {/* =============== */}
-                  </tbody>
+                        </tr>
+                      ))}
+                      {/* =============== */}
+                      {/* =============== */}
+                      {/* =============== */}
+                    </tbody>
+                  )}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
                 <button className="see_more_refers">See more</button>
@@ -163,10 +245,10 @@ const Dashboard_home = () => {
                     <thead className="assets-category-titles">
                       <tr className="assets">
                         <th className="assets-category-titles-heading1a">
-                          Name
+                          User Name
                         </th>
                         <th className="assets-category-titles-heading1Last">
-                          Total Referrals
+                          Email Address
                         </th>
                       </tr>
                     </thead>
@@ -182,30 +264,47 @@ const Dashboard_home = () => {
 
                 
               </div> */}
-                    <tbody
-                      className="assets-table-body popular-categories"
-                      id="popular-categories"
-                    >
-                      {" "}
-                      {/* =============== */}
-                      {/* =============== */}
-                      {/* =============== */}
-                      {assets2.map((asset) => (
-                        <tr className="assets-category-rowa">
-                          <td className="assets-category-data">
-                            <div className="assets-data">
-                              <div className="assets-data-nameLeft">
-                                {asset.name}
+                    {isLoading ? (
+                      <tbody>
+                        <tr>
+                          <td
+                            colSpan="2"
+                            style={{ padding: "2em", paddingBottom: "1em" }}
+                          >
+                            <BoxLoading />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan="2" style={{ textAlign: "center" }}>
+                            <span>Fetching data...</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ) : (
+                      <tbody
+                        className="assets-table-body popular-categories"
+                        id="popular-categories"
+                      >
+                        {" "}
+                        {/* =============== */}
+                        {/* =============== */}
+                        {/* =============== */}
+                        {myReferral.map((asset) => (
+                          <tr className="assets-category-rowa">
+                            <td className="assets-category-data">
+                              <div className="assets-data">
+                                <div className="assets-data-nameLeft">
+                                  {asset.username}
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                          <td className="assets-category-data1">
-                            <div className="assets-data-nameRight">
-                              {asset.refferals}
-                            </div>
-                          </td>
+                            </td>
+                            <td className="assets-category-data1">
+                              <div className="assets-data-nameRight">
+                                {asset.email}
+                              </div>
+                            </td>
 
-                          {/* <td className="assets-category-data-last">
+                            {/* <td className="assets-category-data-last">
                     <div className="assets-data-name-last">
                       <a
                         href="#"
@@ -216,12 +315,13 @@ const Dashboard_home = () => {
                       </a>
                     </div>
                   </td> */}
-                        </tr>
-                      ))}
-                      {/* =============== */}
-                      {/* =============== */}
-                      {/* =============== */}
-                    </tbody>
+                          </tr>
+                        ))}
+                        {/* =============== */}
+                        {/* =============== */}
+                        {/* =============== */}
+                      </tbody>
+                    )}
                     {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                   </table>
                   <button className="see_more_refers">See all</button>
