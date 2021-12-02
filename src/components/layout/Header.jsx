@@ -17,6 +17,9 @@ const Header = ({auth, isAuthenticated }) => {
     if (windowsPath === "/dashboard/ranking") {
       document.getElementById("header").style.display = "none";
     }
+    if (windowsPath === "/dashboard/referrals") {
+      document.getElementById("header").style.display = "none";
+    }
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("buttons_login").style.display = "none";
     }

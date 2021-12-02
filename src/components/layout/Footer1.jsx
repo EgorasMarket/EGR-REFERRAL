@@ -15,6 +15,9 @@ function Footer1() {
     if (windowsPath === "/") {
       document.getElementById("footerId").style.display = "block";
     }
+    if (windowsPath === "/dashboard/referrals") {
+      document.getElementById("footerId").style.display = "none";
+    }
     if (windowsPath === "/forgot-password") {
       document.getElementById("footerId").style.display = "none";
     }

@@ -18,8 +18,34 @@
 .dashboard-area {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
+.user_profile_icon_cont {
+  display: flex;
+  width: 6.5%;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome_user {
+  display: flex;
+  margin: 0;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+.userName_name {
+  color: #41ba71;
+  font-weight: 800;
+  font-size: 18px;
+}
+.user_profile {
+  width: 40px;
+  box-shadow: -1px 0px 10px #85ad95;
+  border-radius: 100%;
+}
 button.logout-btn {
   padding: 0.4em 2em;
   border: none;
@@ -45,6 +71,4 @@ button.logout-btn {
   .DashBoardHeaderSection {
     padding: 1.5em 0em;
   }
-
-  
 }

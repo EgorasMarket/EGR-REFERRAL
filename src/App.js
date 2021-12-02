@@ -11,7 +11,6 @@ import LoginForm from "./components/layout/Forms/LoginForm";
 import ForgotPasswordForm from "./components/layout/Forms/ForgotPasswordForm";
 import SignUpForm from "./components/layout/Forms/SignUpForm";
 import { Provider } from "react-redux";
-import Dashboard from "./components/layout/Dashboard/Dashboard";
 import Activation from "./components/layout/Forms/Activation.jsx";
 import ResetPassword from "./components/layout/Forms/ResetPassword";
 import Admin from "./components/layout/Admin/Admin";
@@ -24,7 +23,7 @@ import Referal from "./components/layout/Forms/Referal";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
-  console.log("setAuthToken");
+  console.log('setAuthToken')
 }
 
 function App() {
@@ -37,12 +36,10 @@ function App() {
         <div>
           <Header />
           <Alert />
-          {/* <Dashboard /> */}
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path='/referal/:ref' component={Referal} />
-            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />

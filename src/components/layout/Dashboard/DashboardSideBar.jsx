@@ -27,6 +27,7 @@ import "./DashboardStyles/dashboard_header.css";
 // ==================
 const DashboardSideBar = () => {
   const [activeBg, setActiveBg] = useState("market");
+  const [userName, setUserName] = useState("Samuel");
   const [click, setClick] = useState("drop");
   const [side, setSide] = useState("sidebar");
   const [sideWrap, setSideWrap] = useState("sidebarWrapper");
@@ -69,10 +70,10 @@ const DashboardSideBar = () => {
     if (linksActive === "/dashboard/transaction") {
       setActiveBg("transaction");
     }
-    if (linksActive === "/dashboard/governance") {
+    if (linksActive === "/dashboard/ranking") {
       setActiveBg("governance");
     }
-    if (linksActive === "/dashboard/swap") {
+    if (linksActive === "/dashboard/referrals") {
       setActiveBg("swap");
     }
     if (linksActive === "/dashboard/vault") {
@@ -89,7 +90,7 @@ const DashboardSideBar = () => {
         <div className="container-fluid">
           <div className="dashboard-area">
             <div className="egrLogo2Cont3">
-              <img
+              {/* <img
                 src="/img/open-drop-icon.svg"
                 alt=""
                 className={
@@ -110,7 +111,7 @@ const DashboardSideBar = () => {
                 }
                 id="close_icon"
                 onClick={closeDropDown}
-              />
+              /> */}
               <a href="/" alt="">
                 <img
                   src="/img/egoras-logo.svg"
@@ -119,7 +120,20 @@ const DashboardSideBar = () => {
                 />
               </a>
             </div>
+
             {/* <Authenticate isHome="false" /> */}
+
+            <div className="user_profile_icon_cont">
+              <img
+                src="/img/profile_icon.svg"
+                alt=""
+                className="user_profile"
+              />
+              <div className="welcome_user">
+                Welcome
+                <span className="userName_name">{userName}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -259,7 +273,7 @@ const DashboardSideBar = () => {
               {/* ===================== */}
 
               <Link
-                to="/dashboard/swap"
+                to="/dashboard/referrals"
                 className="link"
                 id="swap"
                 onClick={changeBg}
