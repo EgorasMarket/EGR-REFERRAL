@@ -1,0 +1,50 @@
+.DashBoardHeaderSection {
+  padding: 1em 1.5em;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0px 0px 15px #efefef;
+  position: fixed;
+  width: 100%;
+}
+
+.DashboardHeaderArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+button.logout-btn {
+  padding: 0.4em 2em;
+  border: none;
+  border-radius: 50px;
+  background: #229e54;
+  color: #ffff;
+  font-weight: 700;
+  box-shadow: 0px 5px 13px #cbcbcb;
+}
+
+@media screen and (max-width: 767px) {
+  .drop-open-icon {
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+  }
+  .drop-close-icon {
+    width: 20px;
+  }
+  .egr-logo3 {
+    width: 100px;
+  }
+  .DashBoardHeaderSection {
+    padding: 1.5em 0em;
+  }
+
+  
+}

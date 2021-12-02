@@ -24,3 +24,36 @@
 .connect_btn1 {
   margin-right: 10px !important;
 }
+
+/* ================= */
+/* ================= */
+/* ================= */
+/* ================= */
+/* ================= */
+
+@media screen and (max-width: 1024px) {
+  .header_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1em;
+    padding-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .header_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0em;
+    padding-bottom: 1em;
+  }
+
+  .header_img {
+    width: 94px;
+  }
+  .cnt-bt {
+    margin-right: 0 !important;
+  }
+}

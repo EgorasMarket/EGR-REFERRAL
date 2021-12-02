@@ -18,6 +18,12 @@ function Footer1() {
     if (windowsPath === "/forgot-password") {
       document.getElementById("footerId").style.display = "none";
     }
+    if (windowsPath === "/dashboard") {
+      document.getElementById("footerId").style.display = "none";
+    }
+    if (windowsPath === "/dashboard/ranking") {
+      document.getElementById("footerId").style.display = "none";
+    }
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("footerId").style.display = "none";
     }

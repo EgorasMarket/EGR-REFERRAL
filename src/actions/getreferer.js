@@ -36,12 +36,10 @@ export const getSocialHandles =
       const res = await axios.post(api_url + "/v1/user/giveaway", body, config);
       // console.log(data);
 
-      
       return {
         success: true,
         data: res.data,
       };
-      
     } catch (err) {
       console.log(err.response);
 
@@ -51,10 +49,10 @@ export const getSocialHandles =
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
 
-        return {
+      return {
         success: false,
-        data: errors
-      }
+        data: errors,
+      };
     }
   };
 
@@ -143,3 +141,66 @@ export const getUsersData =
       // }
     }
   };
+// =============
+// =============
+// =============
+// =============
+
+// Get Social Media Handles
+export const getTopReferrer = (user) => async (dispatch) => {
+  const config = {
+    headers: {
+      Accept: "*",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+
+  const body = JSON.stringify({
+    user,
+  });
+
+  console.log(`${body} working fineoooooooo`);
+
+  try {
+    const res = await axios.get(
+      api_url + "/v1/user/all/top/referers",
+      body,
+      config
+    );
+    console.log(res);
+
+    if (res.data.error === false) {
+      dispatch({
+        //  type: LOAN_AUTH_REQUEST,
+        payload: res.data,
+      });
+      return {
+        success: true,
+        data: res.data,
+      };
+    } else {
+      dispatch({
+        //  type: LOAN_AUTH_REQUEST_FAIL,
+        payload: res.data,
+      });
+      return {
+        success: false,
+        data: res.data,
+      };
+    }
+  } catch (err) {
+    console.log(err.message);
+
+    // const errors = err.response.data.errors;
+    // console.log(errors);
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
+
+    //   return {
+    //   status: false,
+    //   id: null
+    // }
+  }
+};
