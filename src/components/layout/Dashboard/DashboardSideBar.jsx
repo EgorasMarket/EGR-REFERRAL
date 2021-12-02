@@ -69,10 +69,10 @@ const DashboardSideBar = () => {
     if (linksActive === "/dashboard/transaction") {
       setActiveBg("transaction");
     }
-    if (linksActive === "/dashboard/governance") {
+    if (linksActive === "/dashboard/ranking") {
       setActiveBg("governance");
     }
-    if (linksActive === "/dashboard/swap") {
+    if (linksActive === "/dashboard/referrals") {
       setActiveBg("swap");
     }
     if (linksActive === "/dashboard/vault") {
@@ -259,7 +259,7 @@ const DashboardSideBar = () => {
               {/* ===================== */}
 
               <Link
-                to="/dashboard/swap"
+                to="/dashboard/referrals"
                 className="link"
                 id="swap"
                 onClick={changeBg}

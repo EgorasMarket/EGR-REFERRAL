@@ -36,11 +36,17 @@ function App() {
         <div>
           <Header />
           <Alert />
-          {/* <Dashboard /> */}
+
           <Switch>
-            <Route exact path="/login" component={LoginForm} />
+            {/* <Dashboard /> */}
+
+            <Route exact path="/" component={Landing} />
+
+            
+            <Dashboard />
+
             <Route exact path="/signup" component={SignUpForm} />
-            <Route exact path="/dashboard" component={Dashboard} />
+
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />
@@ -50,7 +56,6 @@ function App() {
               path="/forgot-password"
               component={ForgotPasswordForm}
             />
-            <Landing />
           </Switch>
           <Footer1 />
         </div>

@@ -4,6 +4,7 @@ import "./DashboardStyles/dashboard.css";
 import DashboardSideBar from "./DashboardSideBar.jsx";
 import Dashboard_home from "./DashboardPages/Dashboard_home";
 import Dashboard_ranking from "./DashboardPages/Dashboard_ranking";
+import Dashboard_total_rferrals from "./DashboardPages/Dashboard_total_rferrals";
 
 function Dashboard() {
   return (
@@ -14,7 +15,16 @@ function Dashboard() {
         <DashboardSideBar />
         <Switch>
           <Route exact path="/dashboard" component={Dashboard_home} />
-          <Route exact path="/dashboard/ranking" component={Dashboard_ranking} />
+          <Route
+            exact
+            path="/dashboard/ranking"
+            component={Dashboard_ranking}
+          />
+          <Route
+            exact
+            path="/dashboard/referrals"
+            component={Dashboard_total_rferrals}
+          />
           {/* <Route exact path="/dashboard/swap" component={DashBoardSwap} /> */}
           {/* <Route exact path="/vault/:asset/:base" component={OpenVaultPage} /> */}
           {/* <Route
