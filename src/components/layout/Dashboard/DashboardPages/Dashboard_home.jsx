@@ -104,6 +104,7 @@ const Dashboard_home = () => {
   // }, []);
 
   return (
+    // <div>
     <div className="other2">
       {/* get started section start */}
       {/* ============================================================ */}
@@ -121,20 +122,20 @@ const Dashboard_home = () => {
                   Rankings
                 </div>
                 {/* <div className="assets-cont-head-area">
-              <div className="search-input">
-                {" "}
-                <input
-                  type="search"
-                  name="search"
-                  id="searchCollaterals"
-                  className="assets-header3"
-                  placeholder="Search..."
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                ></input>{" "}
-                <SearchIcon className="search-icon" />
-              </div>
-            </div> */}
+                  <div className="search-input">
+                    {" "}
+                    <input
+                      type="search"
+                      name="search"
+                      id="searchCollaterals"
+                      className="assets-header3"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                    ></input>{" "}
+                    <SearchIcon className="search-icon" />
+                  </div>
+                </div> */}
                 <table className="assets-table">
                   <thead className="assets-category-titles">
                     <tr className="assets">
@@ -147,17 +148,17 @@ const Dashboard_home = () => {
 
                   {/* <div className="table-body-content">
 
-// =====================
-// =====================
-// =====================
+    // =====================
+    // =====================
+    // =====================
 
 
-// =====================
-// =====================
-// =====================
+    // =====================
+    // =====================
+    // =====================
 
-                
-              </div> */}
+                    
+                  </div> */}
                   {isLoading ? (
                     <tbody>
                       <tr>
@@ -199,16 +200,16 @@ const Dashboard_home = () => {
                           </td>
 
                           {/* <td className="assets-category-data-last">
-                    <div className="assets-data-name-last">
-                      <a
-                        href="#"
-                        className="assets-collateralize-button"
-                        style={{ border: "none" }}
-                      >
-                        Open Vault
-                      </a>
-                    </div>
-                  </td> */}
+                        <div className="assets-data-name-last">
+                          <a
+                            href="#"
+                            className="assets-collateralize-button"
+                            style={{ border: "none" }}
+                          >
+                            Open Vault
+                          </a>
+                        </div>
+                      </td> */}
                         </tr>
                       ))}
                       {/* =============== */}
@@ -218,31 +219,29 @@ const Dashboard_home = () => {
                   )}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
-                <a href="/dashboard/ranking">
-                  <button className="see_more_refers">See more</button>
-                </a>
+                <button className="see_more_refers">See more</button>
               </div>
               <div className="assets_cont1_second">
                 <div className="assets_cont1a">
                   <div className="assets_cont_heading_txt">
                     <GroupIcon className="sidebarIcona" />
-                    My Referrals
+                    Referrals
                   </div>
                   {/* <div className="assets-cont-head-area">
-              <div className="search-input">
-                {" "}
-                <input
-                  type="search"
-                  name="search"
-                  id="searchCollaterals"
-                  className="assets-header3"
-                  placeholder="Search..."
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                ></input>{" "}
-                <SearchIcon className="search-icon" />
-              </div>
-            </div> */}
+                  <div className="search-input">
+                    {" "}
+                    <input
+                      type="search"
+                      name="search"
+                      id="searchCollaterals"
+                      className="assets-header3"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                    ></input>{" "}
+                    <SearchIcon className="search-icon" />
+                  </div>
+                </div> */}
                   <table className="assets-table">
                     <thead className="assets-category-titles">
                       <tr className="assets">
@@ -257,15 +256,15 @@ const Dashboard_home = () => {
 
                     {/* <div className="table-body-content">
 
-// =====================
-// =====================
-// =====================
-// =====================
-// =====================
-// =====================
+    // =====================
+    // =====================
+    // =====================
+    // =====================
+    // =====================
+    // =====================
 
-                
-              </div> */}
+                    
+                  </div> */}
                     {isLoading ? (
                       <tbody>
                         <tr>
@@ -307,16 +306,16 @@ const Dashboard_home = () => {
                             </td>
 
                             {/* <td className="assets-category-data-last">
-                    <div className="assets-data-name-last">
-                      <a
-                        href="#"
-                        className="assets-collateralize-button"
-                        style={{ border: "none" }}
-                      >
-                        Open Vault
-                      </a>
-                    </div>
-                  </td> */}
+                        <div className="assets-data-name-last">
+                          <a
+                            href="#"
+                            className="assets-collateralize-button"
+                            style={{ border: "none" }}
+                          >
+                            Open Vault
+                          </a>
+                        </div>
+                      </td> */}
                           </tr>
                         ))}
                         {/* =============== */}
@@ -326,10 +325,7 @@ const Dashboard_home = () => {
                     )}
                     {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                   </table>
-                  <a href="/dashboard/referrals">
-                    {" "}
-                    <button className="see_more_refers">See all</button>
-                  </a>
+                  <button className="see_more_refers">See all</button>
                 </div>
                 {/* ====================== */}
                 {/* ====================== */}
@@ -353,14 +349,14 @@ const Dashboard_home = () => {
               <p className="invite_refer_area_para">
                 For each registered user you get rewarded in egc 
               </p>
-              <a href="/dashboard/referrals">
-                <button className="see_more_refersa">Go to referrals</button>
-              </a>
+
+              <button className="see_more_refersa">Go to referrals</button>
             </div>
           </div>
         </div>
       </section>
     </div>
+    // </div>
   );
 };
 

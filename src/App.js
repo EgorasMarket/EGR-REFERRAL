@@ -11,7 +11,6 @@ import LoginForm from "./components/layout/Forms/LoginForm";
 import ForgotPasswordForm from "./components/layout/Forms/ForgotPasswordForm";
 import SignUpForm from "./components/layout/Forms/SignUpForm";
 import { Provider } from "react-redux";
-import Dashboard from "./components/layout/Dashboard/Dashboard";
 import Activation from "./components/layout/Forms/Activation.jsx";
 import ResetPassword from "./components/layout/Forms/ResetPassword";
 import Admin from "./components/layout/Admin/Admin";
@@ -21,6 +20,9 @@ import { loadUser } from "./actions/Auth";
 import Alert from "./components/Alert";
 import ChangePassword from "./components/layout/Forms/ChangePassword";
 import Referal from "./components/layout/Forms/Referal";
+import Dashboard from "./components/layout/Dashboard/Dashboard";
+
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,7 +39,6 @@ function App() {
         <div>
           <Header />
           <Alert />
-
           <Switch>
             {/* <Dashboard /> */}
 
@@ -56,7 +57,9 @@ function App() {
               path="/forgot-password"
               component={ForgotPasswordForm}
             />
-            <Dashboard />
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
           </Switch>
           <Footer1 />
         </div>

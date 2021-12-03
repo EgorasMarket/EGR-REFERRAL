@@ -11,12 +11,14 @@ import jwt from "jsonwebtoken";
 // import BarChartIcon from "@mui/icons-material/BarChart";
 // import GroupIcon from "@mui/icons-material/Group";
 // import axios from "axios";
+import PlaylistAddRoundedIcon from "@mui/icons-material/PlaylistAddRounded";
 import { API_URL as api_url } from "../../../../actions/types";
 
 import { BoxLoading } from "react-loadingg";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../DashboardStyles/dashboard_home.css";
+import "../DashboardStyles/dasboard_tasks.css";
 // ==============================
 // ==============================
 // ==============================
@@ -169,6 +171,21 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
     }
   };
 
+  function myFunction() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copied: " + copyText.value;
+  }
+
+  function outFunc() {
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copy to clipboard";
+  }
+
   return (
     <div className="other2">
       {/* get started section start */}
@@ -181,137 +198,316 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
         <div className="container">
           <div className="assets_area">
             <div className="assets-container">
-              <div className="assets_cont1 large_width">
-                {/*========= modal div start============ */}
+              <div className="assets_cont1 large_width flex_us">
+                <div className="tasks_details">
+                  <div className="assets_cont_heading_txt">
+                    <PlaylistAddRoundedIcon className="sidebarIcona" />
+                    Tasks
+                    <p className="tasks_caption">
+                      In order to participate in this airdrop you need to fulfil
+                      the below requirements:
+                    </p>
+                  </div>
 
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                <div className="modal_form_area1">
-                  <div className="modal_form_area1_input_heading">
-                    Twitter Handle
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Follow Egoras Twitter Account
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="@JohnDoe "
-                    id="twitterHandle"
-                    name="twitterHandle"
-                    value={twitterHandle}
-                    onChange={onChange}
-                    className="modal_form_area1_input1"
-                  />
-                  <div
-                    className={
-                      errorMessage == "not_error_message_div"
-                        ? "not_error_message_div"
-                        : "error_message_div"
-                    }
-                  >
-                    Please input at least 1 character.
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Retweet pinned post
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
                   </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      s
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Follow Egoras/ Facebook Account{" "}
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
+                  </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Subscribe to Egoras youtube account
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
+                  </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Join our network on Linkedin
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
+                  </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      Join Egoras Telegram Channel
+                    </h6>
+
+                    <a href="#" className="link_btn">
+                      Follow @Egoras
+                    </a>
+                  </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
                 </div>
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                <div className="modal_form_area1">
-                  <div className="modal_form_area1_input_heading">
-                    Telegram Handle
+
+                {/*========= modal div start============ */}
+                <div className="tasks_inputs">
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  <div className="modal_form_area1">
+                    <div className="modal_form_area1_input_heading">
+                      Twitter Handle
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="@JohnDoe "
+                      id="twitterHandle"
+                      name="twitterHandle"
+                      value={twitterHandle}
+                      onChange={onChange}
+                      className="modal_form_area1_input1"
+                    />
+                    <div
+                      className={
+                        errorMessage == "not_error_message_div"
+                          ? "not_error_message_div"
+                          : "error_message_div"
+                      }
+                    >
+                      Please input at least 1 character.
+                    </div>
                   </div>
-                  <input
-                    type="text"
-                    id="telegramHandle"
-                    placeholder="@JohnDoe "
-                    name="telegramHandle"
-                    value={telegramHandle}
-                    onChange={onChange}
-                    className="modal_form_area1_input1"
-                  />
-                  <div
-                    className={
-                      errorMessage1 == "not_error_message_div1"
-                        ? "not_error_message_div1"
-                        : "error_message_div1"
-                    }
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  <div className="modal_form_area1">
+                    <div className="modal_form_area1_input_heading">
+                      Telegram Handle
+                    </div>
+                    <input
+                      type="text"
+                      id="telegramHandle"
+                      placeholder="@JohnDoe "
+                      name="telegramHandle"
+                      value={telegramHandle}
+                      onChange={onChange}
+                      className="modal_form_area1_input1"
+                    />
+                    <div
+                      className={
+                        errorMessage1 == "not_error_message_div1"
+                          ? "not_error_message_div1"
+                          : "error_message_div1"
+                      }
+                    >
+                      Please input at least 1 character.
+                    </div>
+                  </div>
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  <div className="modal_form_area1">
+                    <div className="modal_form_area1_input_heading">
+                      Facebook Handle
+                    </div>
+                    <input
+                      type="text"
+                      id="facebookHandle"
+                      placeholder="JohnDoe12 "
+                      name="facebookHandle"
+                      value={facebookHandle}
+                      onChange={onChange}
+                      className="modal_form_area1_input1"
+                    />
+                    <div
+                      className={
+                        errorMessage2 == "not_error_message_div2"
+                          ? "not_error_message_div2"
+                          : "error_message_div2"
+                      }
+                    >
+                      Please input at least 1 character.
+                    </div>
+                  </div>
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  {/* ========= */}
+                  <div className="modal_form_area1">
+                    <div className="modal_form_area1_input_heading">
+                      LinkedIn Handle
+                    </div>
+                    <input
+                      type="text"
+                      id="linkedInHandle"
+                      placeholder="@JohnDoe "
+                      name="linkedInHandle"
+                      value={linkedInHandle}
+                      onChange={onChange}
+                      className="modal_form_area1_input1"
+                    />
+                    <div
+                      className={
+                        errorMessage3 == "not_error_message_div3"
+                          ? "not_error_message_div3"
+                          : "error_message_div3"
+                      }
+                    >
+                      Please input at least 1 character.
+                    </div>
+                  </div>
+
+                  {/* ========== */}
+                  {/* ========== */}
+                  {/* ========== */}
+                  {/* ========== */}
+
+                  <div className="note_area">
+                    I understand and acknowledge that fulfilling the
+                    aforementioned conditions DOES NOT guarantee success as the
+                    winners will be determined solely by the airdrop partner
+                    according to their selection criteria.
+                    <div className="custom_radio_btn">
+                      <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+                  {/* ========== */}
+                  {/* ========== */}
+                  <button
+                    type="submit"
+                    onClick={submitData}
+                    className="generate_ref_link w-100"
                   >
-                    Please input at least 1 character.
-                  </div>
-                </div>
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                <div className="modal_form_area1">
-                  <div className="modal_form_area1_input_heading">
-                    Facebook Handle
-                  </div>
-                  <input
-                    type="text"
-                    id="facebookHandle"
-                    placeholder="JohnDoe12 "
-                    name="facebookHandle"
-                    value={facebookHandle}
-                    onChange={onChange}
-                    className="modal_form_area1_input1"
-                  />
-                  <div
-                    className={
-                      errorMessage2 == "not_error_message_div2"
-                        ? "not_error_message_div2"
-                        : "error_message_div2"
-                    }
-                  >
-                    Please input at least 1 character.
-                  </div>
-                </div>
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                <div className="modal_form_area1">
-                  <div className="modal_form_area1_input_heading">
-                    LinkedIn Handle
-                  </div>
-                  <input
-                    type="text"
-                    id="linkedInHandle"
-                    placeholder="@JohnDoe "
-                    name="linkedInHandle"
-                    value={linkedInHandle}
-                    onChange={onChange}
-                    className="modal_form_area1_input1"
-                  />
-                  <div
-                    className={
-                      errorMessage3 == "not_error_message_div3"
-                        ? "not_error_message_div3"
-                        : "error_message_div3"
-                    }
-                  >
-                    Please input at least 1 character.
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  onClick={submitData}
-                  className="generate_ref_link"
-                >
-                  Submit
-                </button>
-                {/* ===== */}
-                {/* ===== */}
-                {/* ===== */}
-                {/* ===== */}
-                {/* ===== */}
-                {/* ===== */}
-                {/* ===== */}
-                <div className="referral_area">
-                  <div className="referral_heading">
-                    Invite People to get 30% EGR on every airdrop.
-                  </div>
-                  <div className="modal_form_area1"></div>
-                  <button className="generate_ref_link">Get Ref Link</button>
+                    Submit
+                  </button>
+                  {/* ===== */}
+                  {/* ===== */}
+                  {/* ===== */}
+                  {/* ===== */}
+                  {/* ===== */}
+                  {/* ===== */}
+                  {/* ===== */}
+
+                  {/* <div className="copy_referral_link"> */}
+                  {/* <div className="tooltip">
+                    <button onclick={myFunction} onmouseout={outFunc}>
+                      <span className="tooltiptext" id="myTooltip">
+                        Copy to clipboard
+                      </span>
+                      Copy text
+                    </button>
+                  </div> */}
+                  {/* </div> */}
+                  {/* <div className="referral_area">
+                    <div className="referral_heading">
+                      Invite People to get 30% EGR on every airdrop.
+                    </div>
+                    <div className="modal_form_area1"></div>
+                    <button className="generate_ref_link w-100">
+                      Get Ref Link
+                    </button>
+                  </div> */}
                 </div>
 
                 {/* ========================= */}

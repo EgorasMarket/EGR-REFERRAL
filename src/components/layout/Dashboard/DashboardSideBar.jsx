@@ -14,6 +14,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SwapHorizontalCircleIcon from "@mui/icons-material/SwapHorizontalCircle";
+import PlaylistAddRoundedIcon from "@mui/icons-material/PlaylistAddRounded";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import GroupIcon from "@mui/icons-material/Group";
 import { Link } from "react-router-dom";
@@ -288,7 +289,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                       : "sidebarListItem"
                   }
                 >
-                  <BarChartIcon className="sidebarIcon" />
+                  <PlaylistAddRoundedIcon className="sidebarIcon" />
                   Tasks
                 </li>
               </Link>
