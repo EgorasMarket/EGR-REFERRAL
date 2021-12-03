@@ -219,7 +219,10 @@ const Dashboard_home = () => {
                   )}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
-                <button className="see_more_refers">See more</button>
+
+                <a href="/dashboard/ranking">
+                  <button className="see_more_refers">See more</button>
+                </a>
               </div>
               <div className="assets_cont1_second">
                 <div className="assets_cont1a">
@@ -325,7 +328,9 @@ const Dashboard_home = () => {
                     )}
                     {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                   </table>
-                  <button className="see_more_refers">See all</button>
+                  <a href="/dashboard/referrals">
+                    <button className="see_more_refers">See all</button>
+                  </a>
                 </div>
                 {/* ====================== */}
                 {/* ====================== */}
@@ -350,7 +355,9 @@ const Dashboard_home = () => {
                 For each registered user you get rewarded in egc 
               </p>
 
-              <button className="see_more_refersa">Go to referrals</button>
+              <a href="/dashboard/referrals">
+                <button className="see_more_refersa">Go to referrals</button>
+              </a>
             </div>
           </div>
         </div>
