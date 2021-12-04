@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 0px 20px #bddbc9;
   height: 790px;
   /* padding: 4em; */
@@ -96,7 +96,7 @@
 
 .signupbtn {
   width: 100%;
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 1em 0em;
   border: none;
   background: #54bc7e;
@@ -107,7 +107,7 @@
 
 .loginButton {
   width: 100%;
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 1em 0em;
   border: solid;
   border-width: 1px;
@@ -194,7 +194,7 @@
   padding: 8em 4em;
   background: #fff;
   box-shadow: 0px 0px 20px #c8e7d4;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -212,7 +212,7 @@
 }
 .activate_btn {
   width: 40%;
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 1em 0em;
   border: none;
   background-color: #54bc7e;
@@ -270,7 +270,7 @@
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 0px 20px #bddbc9;
     height: 815px;
     /* padding: 4em; */
@@ -384,7 +384,7 @@
   .signupbtn {
     width: 100%;
     font-size: 11px;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 1em 0em;
     border: none;
     background: #54bc7e;
@@ -400,7 +400,7 @@
 
   .loginButton {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 0.5em 0em;
     border: solid;
     border-width: 1px;
@@ -443,7 +443,7 @@
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 0px 20px #bddbc9;
     height: 815px;
     /* padding: 4em; */
@@ -557,7 +557,7 @@
   .signupbtn {
     width: 100%;
     font-size: 11px;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 1em 0em;
     border: none;
     background: #54bc7e;
@@ -573,7 +573,7 @@
 
   .loginButton {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 0.5em 0em;
     border: solid;
     border-width: 1px;

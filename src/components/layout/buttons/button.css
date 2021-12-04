@@ -1,6 +1,6 @@
 .join_now_btn {
   padding: 1em 4em;
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   background: #54bc7e;
   color: #ffff;
@@ -12,7 +12,7 @@
 }
 .join_now_btn3 {
   padding: 1em 2em;
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   background: #54bc7e;
   color: #ffff;
@@ -24,7 +24,7 @@
 }
 .join_now_btn2 {
   padding: 1em 3em;
-  border-radius: 50px;
+  border-radius: 10px;
   border: solid;
   background: #fff;
   border-width: 1px;
@@ -80,7 +80,7 @@
 @media screen and (max-width: 1024px) {
   .join_now_btn {
     padding: 0.5em 3em;
-    border-radius: 50px;
+    border-radius: 10px;
     border: none;
     background: #54bc7e;
     color: #ffff;
@@ -91,7 +91,7 @@
   }
   .join_now_btn3 {
     padding: 0.5em 3em;
-    border-radius: 50px;
+    border-radius: 10px;
     border: none;
     background: #54bc7e;
     color: #ffff;

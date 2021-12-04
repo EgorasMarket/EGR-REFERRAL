@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
 import { getMyReferrals } from "../../../../actions/getreferer";
 import { getMyReferralCount } from "../../../../actions/getreferer";
@@ -7,6 +7,8 @@ import { getMyReferralCount } from "../../../../actions/getreferer";
 import GroupIcon from "@mui/icons-material/Group";
 import axios from "axios";
 import { API_URL as api_url } from "../../../../actions/types";
+
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 
 import { BoxLoading } from "react-loadingg";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -18,9 +20,10 @@ import "../DashboardStyles/dashboard_home.css";
 // ==============================
 // ==============================
 // ==============================
-const Dashboard_total_rferrals = () => {
+const Dashboard_total_rferrals = ({ auth }) => {
   const [myReferral, setMyReferral] = useState([]);
   const [referralCount, setReferralCount] = useState("");
+  const [noData, setNoData] = useState("no_data");
   const [copyValue, setCopyValue] = useState(
     "https://egoras.com/ref234/456763rwtfsdstxaudt5w"
   );
@@ -56,6 +59,12 @@ const Dashboard_total_rferrals = () => {
       } else {
         setIsLoading(true);
       }
+
+      if (data.data.user.length === 0) {
+        setNoData("data");
+      }
+      // else
+      //  ?  : null;
     });
     axios.get(api_url + "/v1/user/referal/count", null, config).then((data) => {
       console.log(data.data.user.count);
@@ -69,6 +78,22 @@ const Dashboard_total_rferrals = () => {
 
     // }
   }, []);
+
+  useEffect(() => {
+    // fetchDepositLinks();
+    console.log(auth);
+    if (auth.user !== null) {
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+        complete: true,
+      });
+      setCopyValue(
+        "https://earn.egoras.com/referral/" + decoded.payload.user.ref_auth
+      );
+      // setIsLoggedIn(true);
+      console.log(decoded.payload.user);
+    }
+  }, [auth]);
 
   const copyText = () => {
     var copyText = document.getElementById("myInput");
@@ -193,6 +218,12 @@ const Dashboard_total_rferrals = () => {
                   {}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
+                <div>
+                  {" "}
+                  <div className={noData == "no_data" ? "no_data" : "data"}>
+                    <img src="/img/no_data.svg" alt="" />
+                  </div>
+                </div>
               </div>
 
               {/* ======== */}
@@ -213,7 +244,16 @@ const Dashboard_total_rferrals = () => {
                     </div>
                   ) : (
                     <div className="refferal_number_count">
-                      <h4 className="refferal_count">{referralCount}</h4>
+                      <div className="ref_num_cont">
+                        <div className="circle">
+                          <img
+                            src="/img/circle.svg"
+                            alt=""
+                            className="circle_img"
+                          />{" "}
+                          <h4 className="refferal_count">{referralCount}</h4>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -245,5 +285,8 @@ const Dashboard_total_rferrals = () => {
     </div>
   );
 };
-
-export default Dashboard_total_rferrals;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  // isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, {})(Dashboard_total_rferrals);

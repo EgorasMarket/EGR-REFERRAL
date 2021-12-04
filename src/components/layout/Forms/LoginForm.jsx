@@ -99,7 +99,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
       if (res.data.success === true) {
         setIsLoading(false);
         // return <Redirect to="/" />;
-        return window.location.replace("/");
+        return window.location.replace("/dashboard");
       } else {
         setAlert(res.data.data.errors[0].msg, "danger");
         setIsLoading(false);
@@ -107,7 +107,6 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
         // setIsLoading(false);
       }
     }
-
   };
 
   // Redirect if logged in

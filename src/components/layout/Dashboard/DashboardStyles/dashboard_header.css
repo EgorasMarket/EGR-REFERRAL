@@ -23,7 +23,7 @@
 
 .user_profile_icon_cont {
   display: flex;
-  width: 6.5%;
+  /* width: 6.5%; */
   /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
@@ -45,6 +45,8 @@
   width: 40px;
   box-shadow: -1px 0px 10px #85ad95;
   border-radius: 100%;
+  margin-right: 20px;
+  cursor: pointer;
 }
 button.logout-btn {
   padding: 0.4em 2em;
@@ -57,13 +59,34 @@ button.logout-btn {
 }
 
 @media screen and (max-width: 767px) {
-  .drop-open-icon {
+  /* .drop-open-icon {
     display: inline-block;
     width: 20px;
     margin-right: 10px;
-  }
-  .drop-close-icon {
+  } */
+  /* .drop-close-icon {
     width: 20px;
+  } */
+
+  .user_profile {
+    width: 30px;
+    box-shadow: -1px 0px 10px #85ad95;
+    border-radius: 100%;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .welcome_user {
+    display: flex;
+    margin: 0;
+    font-size: 12px;
+    flex-direction: column;
+  }
+
+  .userName_name {
+    color: #41ba71;
+    font-weight: 800;
+    font-size: 14px;
   }
   .egr-logo3 {
     width: 100px;

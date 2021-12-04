@@ -1,6 +1,7 @@
 .flex_us {
   display: flex;
   justify-content: center;
+  flex-direction: row;
 }
 .tasks_inputs {
   width: 100%;
@@ -100,6 +101,17 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.no_data {
+  display: none;
+}
+
+.data {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 4em;
+  /* background: grey; */
+}
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;

@@ -1,14 +1,6 @@
-
-
-
-
-
-
-
-
 .sidebar {
   /* flex: 1; */
-  height: 100vh;
+  height: 100%;
   background-color: rgb(255, 255, 255);
   position: fixed;
   top: 0;
@@ -37,6 +29,13 @@
   position: relative;
 }
 
+.side_out {
+  display: none;
+}
+
+.egr-logo3a {
+  display: none;
+}
 .sidebarMenu {
   width: 100%;
   height: 100%;
@@ -169,26 +168,26 @@ a.link:hover {
   font-size: 27px !important;
   margin-right: 15px;
 }
-.drop-open-icon {
-  margin-right: 20px;
-  width: 25px;
-  display: none;
-}
+/* .drop-open-icon {
+  margin-right: 20px !important;
+  width: 25px !important;
+  display: none !important;
+} */
 .not-drop-close-icon {
-  margin-right: 20px;
-  width: 25px;
-  display: none;
+  margin-right: 20px !important;
+  width: 25px !important;
+  display: none !important;
 }
 .not-drop-open-icon {
-  margin-right: 20px;
-  width: 25px;
-  display: none;
+  margin-right: 20px !important;
+  width: 25px !important;
+  display: none !important;
 }
-.drop-close-icon {
-  margin-right: 20px;
-  width: 25px;
-  display: none;
-}
+/* .drop-close-icon {
+  margin-right: 20px !important;
+  width: 25px !important;
+  display: none !important;
+} */
 /* .list-item-active::after {
   content: "";
   width: 106px;
@@ -268,7 +267,7 @@ a.link:hover {
     width: 20%;
   }
   .not-sidebar {
-    width: 3.5%;
+    width: 5%;
   }
   .not-sidebar:hover {
     width: 20%;
@@ -276,19 +275,15 @@ a.link:hover {
 }
 
 @media screen and (max-width: 1080px) {
-  .sidebar {
-    width: 20%;
+  .egr-logo3a {
+    margin-bottom: 6em;
+    padding-left: 2em;
+    display: block;
+    /* width: 85%; */
   }
-
-  .not-sidebar {
-    width: 0%;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 0;
-    overflow-x: hidden;
-    transition: 0.5s linear;
-    z-index: 10;
+  .egr-logo3 {
+    display: none;
+    /* width: 85%; */
   }
 
   .sidebarWrapper {
@@ -296,9 +291,18 @@ a.link:hover {
     width: 100%;
     transition: 0.5s linear;
     /* padding: 1em; */
-    padding-top: 8em;
-    height: 100%;
-    position: relative;
+    padding-top: 1em;
+  }
+
+  .sidebar {
+    width: 30%;
+    z-index: 20000;
+  }
+  .not-sidebar {
+    width: 0%;
+  }
+  .sidebar:hover {
+    width: 30%;
   }
   .not-sidebarWrapper {
     display: none;
@@ -310,32 +314,37 @@ a.link:hover {
     height: 100%;
     position: relative;
   }
-
+  /* 
   .drop-open-icon {
-    display: inline-block;
-    width: 20px;
-    margin-right: 10px;
-  }
+    display: inline-block !important;
+    width: 20px !important;
+    margin-right: 10px !important;
+  } */
   .not-drop-open-icon {
-    margin-right: 20px;
-    width: 25px;
-    display: none;
+    margin-right: 20px !important;
+    width: 25px !important;
+    display: none !important;
   }
-  .drop-close-icon {
-    margin-right: 20px;
-    width: 25px;
-    display: inline-block;
-  }
+
   .not-drop-close-icon {
-    margin-right: 20px;
-    width: 25px;
-    display: none;
+    margin-right: 20px !important;
+    width: 25px !important;
+    display: none !important;
   }
 }
 @media screen and (max-width: 767px) {
-  .drop-close-icon {
+  /* .drop-close-icon {
     width: 20px;
+  } */
+
+  .side_out {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    background: #00000066;
   }
+
   .egr-logo3 {
     width: 100px;
   }
@@ -350,10 +359,10 @@ a.link:hover {
   }
 
   .sidebar {
-    width: 30%;
+    width: 50%;
   }
   .sidebar:hover {
-    width: 30%;
+    width: 50%;
   }
   /* .not-sidebar:hover {
     width: 20%;
@@ -376,11 +385,11 @@ a.link:hover {
   }
 
   .sidebar {
-    width: 55%;
+    width: 60%;
   }
 
   .sidebar:hover {
-    width: 55%;
+    width: 60%;
   }
   ¸ .not-sidebar {
     width: 0%;

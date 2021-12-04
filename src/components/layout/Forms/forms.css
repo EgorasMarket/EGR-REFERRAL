@@ -16,7 +16,7 @@
 .form_area {
   padding: 2em;
   background: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 60%;
   height: 50em;
   display: flex;
@@ -61,7 +61,7 @@
 }
 .generate_ref_link {
   padding: 1em 0em;
-  border-radius: 50px;
+  border-radius: 10px;
   width: 60%;
   margin: auto;
   border: none;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
 // import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -14,6 +15,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SwapHorizontalCircleIcon from "@mui/icons-material/SwapHorizontalCircle";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import MenuOpenRoundedIcon from "@mui/icons-material/MenuOpenRounded";
 import PlaylistAddRoundedIcon from "@mui/icons-material/PlaylistAddRounded";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import GroupIcon from "@mui/icons-material/Group";
@@ -31,7 +34,7 @@ import "./DashboardStyles/dashboard_header.css";
 const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeBg, setActiveBg] = useState("market");
-  const [userName, setUserName] = useState("Samuel");
+  const [userName, setUserName] = useState("");
   const [click, setClick] = useState("drop");
   const [side, setSide] = useState("sidebar");
   const [sideWrap, setSideWrap] = useState("sidebarWrapper");
@@ -95,12 +98,13 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
     // fetchDepositLinks();
     console.log(auth.user);
     if (auth.user !== null) {
-      // var todecoded = auth.user;
-      // var decoded = jwt.decode(todecoded, {
-      //     complete: true
-      // });
-      // setStaffEmail(decoded.payload.email)
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+        complete: true,
+      });
+      setUserName(decoded.payload.user.username);
       setIsLoggedIn(true);
+      console.log(decoded.payload.user);
     }
   }, [auth]);
 
@@ -146,6 +150,23 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                   className="egr-logo3"
                 />
               </a>
+
+              <MenuOpenRoundedIcon
+                onClick={openDropDown}
+                className={
+                  openDrop == "drop-open-icon"
+                    ? "drop-open-icon"
+                    : "not-drop-open-icon"
+                }
+              />
+              <CloseRoundedIcon
+                onClick={closeDropDown}
+                className={
+                  closeDrop == "not-drop-close-icon"
+                    ? " not-drop-close-icon"
+                    : "drop-close-icon"
+                }
+              />
             </div>
 
             {/* <Authenticate isHome="false" /> */}
@@ -168,44 +189,52 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
         className={side == "sidebar" ? "not-sidebar" : "sidebar"}
         id="side_bar"
       >
-        <div
-          className={
-            sideWrap == "sidebarWrapper"
-              ? "not-sidebarWrapper"
-              : "sidebarWrapper"
-          }
-          id="side_bar_wrapper"
-        >
-          <div className="sidebarMenu">
-            {/* <h3 className="sidebarTitle">Dashboard</h3> */}
-            <ul className="sidebarList">
-              {/* =================== */}
-              {/* =================== */}
-              {/* =================== */}
-              {/* =================== */}
-              <Link
-                to="/dashboard"
-                id="market"
-                className="link"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "market"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
+        <div className="side_out"> </div>
+          <div
+            className={
+              sideWrap == "sidebarWrapper"
+                ? "not-sidebarWrapper"
+                : "sidebarWrapper"
+            }
+            id="side_bar_wrapper"
+          >
+            <a href="/" alt="">
+              <img
+                src="/img/egoras-logo.svg"
+                alt="..."
+                className="egr-logo3a"
+              />
+            </a>
+            <div className="sidebarMenu">
+              {/* <h3 className="sidebarTitle">Dashboard</h3> */}
+              <ul className="sidebarList">
+                {/* =================== */}
+                {/* =================== */}
+                {/* =================== */}
+                {/* =================== */}
+                <Link
+                  to="/dashboard"
+                  id="market"
+                  className="link"
+                  onClick={changeBg}
                 >
-                  <HomeIcon className="sidebarIcon" />
-                  Dashboard
-                </li>
-              </Link>
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* <Link
+                  <li
+                    className={
+                      activeBg == "market"
+                        ? "sidebarListItem list-item-active"
+                        : "sidebarListItem"
+                    }
+                  >
+                    <HomeIcon className="sidebarIcon" />
+                    Dashboard
+                  </li>
+                </Link>
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* <Link
                 to="/dashboard/lending"
                 id="home"
                 className="link"
@@ -224,14 +253,14 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                   Lending
                 </li>
               </Link> */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
 
-              {/* <Link
+                {/* <Link
                 to="/dashboard/transaction"
                 className="link"
                 id="transaction"
@@ -249,12 +278,12 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 </li>
               </Link> */}
 
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
 
-              {/* <Link
+                {/* <Link
                 to="/dashboard/vault"
                 className="link"
                 id="vault"
@@ -271,80 +300,80 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                   Vault
                 </li>
               </Link> */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
 
-              <Link
-                to="/dashboard/tasks"
-                className="link"
-                id="tasks"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "tasks"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
+                <Link
+                  to="/dashboard/tasks"
+                  className="link"
+                  id="tasks"
+                  onClick={changeBg}
                 >
-                  <PlaylistAddRoundedIcon className="sidebarIcon" />
-                  Tasks
-                </li>
-              </Link>
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
+                  <li
+                    className={
+                      activeBg == "tasks"
+                        ? "sidebarListItem list-item-active"
+                        : "sidebarListItem"
+                    }
+                  >
+                    <PlaylistAddRoundedIcon className="sidebarIcon" />
+                    Tasks
+                  </li>
+                </Link>
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
 
-              <Link
-                to="/dashboard/ranking"
-                className="link"
-                id="governance"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "governance"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
+                <Link
+                  to="/dashboard/ranking"
+                  className="link"
+                  id="governance"
+                  onClick={changeBg}
                 >
-                  <BarChartIcon className="sidebarIcon" />
-                  Rankings
-                </li>
-              </Link>
+                  <li
+                    className={
+                      activeBg == "governance"
+                        ? "sidebarListItem list-item-active"
+                        : "sidebarListItem"
+                    }
+                  >
+                    <BarChartIcon className="sidebarIcon" />
+                    Rankings
+                  </li>
+                </Link>
 
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
 
-              <Link
-                to="/dashboard/referrals"
-                className="link"
-                id="swap"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "swap"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
+                <Link
+                  to="/dashboard/referrals"
+                  className="link"
+                  id="swap"
+                  onClick={changeBg}
                 >
-                  <GroupIcon className="sidebarIcon" />
-                  Referrals
-                </li>
-              </Link>
+                  <li
+                    className={
+                      activeBg == "swap"
+                        ? "sidebarListItem list-item-active"
+                        : "sidebarListItem"
+                    }
+                  >
+                    <GroupIcon className="sidebarIcon" />
+                    Referrals
+                  </li>
+                </Link>
 
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* <Link
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* <Link
                 to="/dashboard/whitepaper"
                 className="link"
                 id="whitepaper"
@@ -362,12 +391,12 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 </li>
               </Link> */}
 
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* <Link to="#" className="link" id="security" onClick={changeBg}>
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* ===================== */}
+                {/* <Link to="#" className="link" id="security" onClick={changeBg}>
               <li
                 className={
                   activeBg == "security"
@@ -379,7 +408,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 Security
               </li>
             </Link> */}
-              {/* <a className="nav-item_link__yU0Vp" href="/staking">
+                {/* <a className="nav-item_link__yU0Vp" href="/staking">
               <span
                 className="nav-item_linkWrapper__1IVev"
                 role="button"
@@ -412,20 +441,20 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 </div>
               </span>
             </a> */}
-            </ul>
-            <hr />
-            <ul className="sidebarListb">
-              {!isAuthenticated ? (
-                <a href="/login" className="connect_btn1">
-                  {" "}
-                  {/* <Buttons name="Login" /> */}
-                </a>
-              ) : null}
+              </ul>
+              <hr />
+              <ul className="sidebarListb">
+                {!isAuthenticated ? (
+                  <a href="/login" className="connect_btn1">
+                    {" "}
+                    {/* <Buttons name="Login" /> */}
+                  </a>
+                ) : null}
 
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              {/* {!isAuthenticated ? (
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                {/* {!isAuthenticated ? (
                 <a href="/signup" className="connect_btn1 cnt-bt">
                   {" "}
                   <Buttons2 name="Sign up" />
@@ -451,29 +480,30 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 </Fragment>
               )} */}
 
-              {/* ========= */}
-              {/* ========= */}
-              {/* ========= */}
-              <Link
-                to="/dashboard/whitepaper"
-                className="link"
-                id="whitepaper"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "whitepaper"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
+                {/* ========= */}
+                {/* ========= */}
+                {/* ========= */}
+                <Link
+                  to="/dashboard/whitepaper"
+                  className="link"
+                  id="whitepaper"
+                  onClick={changeBg}
                 >
-                  <PowerSettingsNewIcon className="sidebarIcon" />
-                  Logout
-                </li>
-              </Link>
-            </ul>
+                  <li
+                    className={
+                      activeBg == "whitepaper"
+                        ? "sidebarListItem list-item-active"
+                        : "sidebarListItem"
+                    }
+                  >
+                    <PowerSettingsNewIcon className="sidebarIcon" />
+                    Logout
+                  </li>
+                </Link>
+              </ul>
+            </div>
           </div>
-        </div>
+      
       </div>
     </div>
   );

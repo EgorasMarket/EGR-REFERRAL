@@ -20,43 +20,44 @@ import "../DashboardStyles/dashboard_home.css";
 const Dashboard_ranking = () => {
   const [topReferral, setTopReferral] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [noData, setNoData] = useState("no_data");
 
-  const assets = [
-    {
-      name: "ifea****muel",
-      refferals: "500",
-    },
-    {
-      name: "Dod****nce",
-      refferals: "400",
-    },
-    {
-      name: "Dov****nce",
-      refferals: "300",
-    },
-    {
-      name: "Ded****nce",
-      refferals: "200",
-    },
-    {
-      name: "hod****nce",
-      refferals: "100",
-    },
-  ];
-  const assets2 = [
-    {
-      name: "ifea****muel",
-      refferals: "500",
-    },
-    {
-      name: "Dod****nce",
-      refferals: "400",
-    },
-    {
-      name: "Dov****nce",
-      refferals: "300",
-    },
-  ];
+  //   const assets = [
+  //     {
+  //       name: "ifea****muel",
+  //       refferals: "500",
+  //     },
+  //     {
+  //       name: "Dod****nce",
+  //       refferals: "400",
+  //     },
+  //     {
+  //       name: "Dov****nce",
+  //       refferals: "300",
+  //     },
+  //     {
+  //       name: "Ded****nce",
+  //       refferals: "200",
+  //     },
+  //     {
+  //       name: "hod****nce",
+  //       refferals: "100",
+  //     },
+  //   ];
+  //   const assets2 = [
+  //     {
+  //       name: "ifea****muel",
+  //       refferals: "500",
+  //     },
+  //     {
+  //       name: "Dod****nce",
+  //       refferals: "400",
+  //     },
+  //     {
+  //       name: "Dov****nce",
+  //       refferals: "300",
+  //     },
+  //   ];
 
   const config = {
     headers: {
@@ -76,6 +77,10 @@ const Dashboard_ranking = () => {
           setIsLoading(false);
         } else {
           setIsLoading(true);
+        }
+
+        if (data.data.allData.length === 0) {
+          setNoData("data");
         }
       });
 
@@ -186,6 +191,12 @@ const Dashboard_ranking = () => {
                   {}
                   {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
                 </table>
+                <div>
+                  {" "}
+                  <div className={noData == "no_data" ? "no_data" : "data"}>
+                    <img src="/img/no_data.svg" alt="" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
