@@ -34,6 +34,7 @@ import "./DashboardStyles/dashboard_header.css";
 const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeBg, setActiveBg] = useState("market");
+  const [sideOut, setsideOut] = useState("not_side_out");
   const [userName, setUserName] = useState("");
   const [click, setClick] = useState("drop");
   const [side, setSide] = useState("sidebar");
@@ -54,7 +55,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const openDropDown = () => {
     setOpenDrop("not-drop-open-icon");
     setCloseDrop("drop-close-icon");
-
+setsideOut("side_out")
     setSide("not-sidebar");
 
     setSideWrap("not-sidebarWrapper");
@@ -63,6 +64,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
     setOpenDrop("drop-open-icon");
     setCloseDrop("not-drop-close-icon");
     setSide("sidebar");
+    setsideOut("not_side_out")
     setSideWrap("sidebarWrapper");
   };
   const linksActive = window.location.pathname;
@@ -185,11 +187,15 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
           </div>
         </div>
       </section>
+      
+      
+        <div className={sideOut=="not_side_out" ? "not_side_out" : "side_out"} onClick={closeDropDown} > </div>
+      
       <div
         className={side == "sidebar" ? "not-sidebar" : "sidebar"}
         id="side_bar"
       >
-        <div className="side_out"> </div>
+      
           <div
             className={
               sideWrap == "sidebarWrapper"
