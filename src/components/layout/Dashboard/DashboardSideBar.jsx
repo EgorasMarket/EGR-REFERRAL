@@ -96,6 +96,10 @@ setsideOut("side_out")
     }
   }, []);
 
+
+  const currentTimestamp = new Date().getTime();
+  console.log(new Date().toLocaleTimeString());
+
   useEffect(() => {
     // fetchDepositLinks();
     console.log(auth.user);
@@ -106,7 +110,15 @@ setsideOut("side_out")
       });
       setUserName(decoded.payload.user.username);
       setIsLoggedIn(true);
-      console.log(decoded.payload.user);
+      
+      var eee = decoded.payload.exp * 1000;
+      var exp = new Date(eee).getTime();
+
+      if (currentTimestamp >= exp) {
+        // console.log('ex');
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }
     }
   }, [auth]);
 
