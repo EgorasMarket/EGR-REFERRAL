@@ -33,6 +33,7 @@ import "./DashboardStyles/dashboard_header.css";
 // ==================
 const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [logoutDiv, setLogoutDiv] = useState("not_logout_div");
   const [activeBg, setActiveBg] = useState("market");
   const [sideOut, setsideOut] = useState("not_side_out");
   const [userName, setUserName] = useState("");
@@ -52,10 +53,16 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
     setActiveBg(currentId);
   };
 
+  const openLogoutDiv = () => {
+    setLogoutDiv("logout_div");
+  };
+  const closeLogoutDiv = () => {
+    setLogoutDiv("not_logout_div");
+  };
   const openDropDown = () => {
     setOpenDrop("not-drop-open-icon");
     setCloseDrop("drop-close-icon");
-setsideOut("side_out")
+    setsideOut("side_out");
     setSide("not-sidebar");
 
     setSideWrap("not-sidebarWrapper");
@@ -64,7 +71,7 @@ setsideOut("side_out")
     setOpenDrop("drop-open-icon");
     setCloseDrop("not-drop-close-icon");
     setSide("sidebar");
-    setsideOut("not_side_out")
+    setsideOut("not_side_out");
     setSideWrap("sidebarWrapper");
   };
   const linksActive = window.location.pathname;
@@ -96,7 +103,6 @@ setsideOut("side_out")
     }
   }, []);
 
-
   const currentTimestamp = new Date().getTime();
   console.log(new Date().toLocaleTimeString());
 
@@ -110,7 +116,7 @@ setsideOut("side_out")
       });
       setUserName(decoded.payload.user.username);
       setIsLoggedIn(true);
-      
+
       var eee = decoded.payload.exp * 1000;
       var exp = new Date(eee).getTime();
 
@@ -185,7 +191,22 @@ setsideOut("side_out")
 
             {/* <Authenticate isHome="false" /> */}
 
-            <div className="user_profile_icon_cont">
+            <div
+              className="user_profile_icon_cont"
+              onMouseOver={openLogoutDiv}
+              onMouseOut={closeLogoutDiv}
+            >
+              <div
+                className={
+                  logoutDiv == "not_logout_div"
+                    ? "not_logout_div"
+                    : "logout_div"
+                }
+              >
+                <button className="logout_sec_btn" onClick={triggerLogout}>
+                  Logout
+                </button>
+              </div>
               <img
                 src="/img/profile_icon.svg"
                 alt=""
@@ -199,60 +220,59 @@ setsideOut("side_out")
           </div>
         </div>
       </section>
-      
-      
-        <div className={sideOut=="not_side_out" ? "not_side_out" : "side_out"} onClick={closeDropDown} > </div>
-      
+
+      <div
+        className={sideOut == "not_side_out" ? "not_side_out" : "side_out"}
+        onClick={closeDropDown}
+      >
+        {" "}
+      </div>
+
       <div
         className={side == "sidebar" ? "not-sidebar" : "sidebar"}
         id="side_bar"
       >
-      
-          <div
-            className={
-              sideWrap == "sidebarWrapper"
-                ? "not-sidebarWrapper"
-                : "sidebarWrapper"
-            }
-            id="side_bar_wrapper"
-          >
-            <a href="/" alt="">
-              <img
-                src="/img/egoras-logo.svg"
-                alt="..."
-                className="egr-logo3a"
-              />
-            </a>
-            <div className="sidebarMenu">
-              {/* <h3 className="sidebarTitle">Dashboard</h3> */}
-              <ul className="sidebarList">
-                {/* =================== */}
-                {/* =================== */}
-                {/* =================== */}
-                {/* =================== */}
-                <Link
-                  to="/dashboard"
-                  id="market"
-                  className="link"
-                  onClick={changeBg}
+        <div
+          className={
+            sideWrap == "sidebarWrapper"
+              ? "not-sidebarWrapper"
+              : "sidebarWrapper"
+          }
+          id="side_bar_wrapper"
+        >
+          <a href="/" alt="">
+            <img src="/img/egoras-logo.svg" alt="..." className="egr-logo3a" />
+          </a>
+          <div className="sidebarMenu">
+            {/* <h3 className="sidebarTitle">Dashboard</h3> */}
+            <ul className="sidebarList">
+              {/* =================== */}
+              {/* =================== */}
+              {/* =================== */}
+              {/* =================== */}
+              <Link
+                to="/dashboard"
+                id="market"
+                className="link"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "market"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
                 >
-                  <li
-                    className={
-                      activeBg == "market"
-                        ? "sidebarListItem list-item-active"
-                        : "sidebarListItem"
-                    }
-                  >
-                    <HomeIcon className="sidebarIcon" />
-                    Dashboard
-                  </li>
-                </Link>
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* <Link
+                  <HomeIcon className="sidebarIcon" />
+                  Dashboard
+                </li>
+              </Link>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* <Link
                 to="/dashboard/lending"
                 id="home"
                 className="link"
@@ -271,14 +291,14 @@ setsideOut("side_out")
                   Lending
                 </li>
               </Link> */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
 
-                {/* <Link
+              {/* <Link
                 to="/dashboard/transaction"
                 className="link"
                 id="transaction"
@@ -296,12 +316,12 @@ setsideOut("side_out")
                 </li>
               </Link> */}
 
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
 
-                {/* <Link
+              {/* <Link
                 to="/dashboard/vault"
                 className="link"
                 id="vault"
@@ -318,80 +338,80 @@ setsideOut("side_out")
                   Vault
                 </li>
               </Link> */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
 
-                <Link
-                  to="/dashboard/tasks"
-                  className="link"
-                  id="tasks"
-                  onClick={changeBg}
+              <Link
+                to="/dashboard/tasks"
+                className="link"
+                id="tasks"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "tasks"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
                 >
-                  <li
-                    className={
-                      activeBg == "tasks"
-                        ? "sidebarListItem list-item-active"
-                        : "sidebarListItem"
-                    }
-                  >
-                    <PlaylistAddRoundedIcon className="sidebarIcon" />
-                    Tasks
-                  </li>
-                </Link>
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
+                  <PlaylistAddRoundedIcon className="sidebarIcon" />
+                  Tasks
+                </li>
+              </Link>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
 
-                <Link
-                  to="/dashboard/ranking"
-                  className="link"
-                  id="governance"
-                  onClick={changeBg}
+              <Link
+                to="/dashboard/ranking"
+                className="link"
+                id="governance"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "governance"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
                 >
-                  <li
-                    className={
-                      activeBg == "governance"
-                        ? "sidebarListItem list-item-active"
-                        : "sidebarListItem"
-                    }
-                  >
-                    <BarChartIcon className="sidebarIcon" />
-                    Rankings
-                  </li>
-                </Link>
+                  <BarChartIcon className="sidebarIcon" />
+                  Rankings
+                </li>
+              </Link>
 
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
 
-                <Link
-                  to="/dashboard/referrals"
-                  className="link"
-                  id="swap"
-                  onClick={changeBg}
+              <Link
+                to="/dashboard/referrals"
+                className="link"
+                id="swap"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "swap"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
                 >
-                  <li
-                    className={
-                      activeBg == "swap"
-                        ? "sidebarListItem list-item-active"
-                        : "sidebarListItem"
-                    }
-                  >
-                    <GroupIcon className="sidebarIcon" />
-                    Referrals
-                  </li>
-                </Link>
+                  <GroupIcon className="sidebarIcon" />
+                  Referrals
+                </li>
+              </Link>
 
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* <Link
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* <Link
                 to="/dashboard/whitepaper"
                 className="link"
                 id="whitepaper"
@@ -409,12 +429,12 @@ setsideOut("side_out")
                 </li>
               </Link> */}
 
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* ===================== */}
-                {/* <Link to="#" className="link" id="security" onClick={changeBg}>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* <Link to="#" className="link" id="security" onClick={changeBg}>
               <li
                 className={
                   activeBg == "security"
@@ -426,7 +446,7 @@ setsideOut("side_out")
                 Security
               </li>
             </Link> */}
-                {/* <a className="nav-item_link__yU0Vp" href="/staking">
+              {/* <a className="nav-item_link__yU0Vp" href="/staking">
               <span
                 className="nav-item_linkWrapper__1IVev"
                 role="button"
@@ -459,69 +479,61 @@ setsideOut("side_out")
                 </div>
               </span>
             </a> */}
-              </ul>
-              <hr />
-              <ul className="sidebarListb">
-                {!isAuthenticated ? (
-                  <a href="/login" className="connect_btn1">
-                    {" "}
-                    {/* <Buttons name="Login" /> */}
-                  </a>
-                ) : null}
-
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                {/* {!isAuthenticated ? (
-                <a href="/signup" className="connect_btn1 cnt-bt">
-                  {" "}
-                  <Buttons2 name="Sign up" />
-                </a>
-              ) : (
-                <Fragment>
-                  <a
-                    href="/dashboard"
-                    // onClick={triggerLogout}
-                    className="connect_btn1 "
-                  >
-                    {" "}
-                    <ButtonsDashboard name="Dashboard" />
-                  </a>
-                  <a
-                    href="#"
-                    onClick={triggerLogout}
-                    className="connect_btn1 cnt-bt"
-                  >
-                    {" "}
-                    <Buttons2 onClick={triggerLogout} name="Log Out" />
-                  </a>
-                </Fragment>
-              )} */}
-
-                {/* ========= */}
-                {/* ========= */}
-                {/* ========= */}
-                <Link
-                  to="/dashboard/whitepaper"
-                  className="link"
-                  id="whitepaper"
-                  onClick={changeBg}
+            </ul>
+            <hr />
+            <ul className="social_icons">
+              <li className="icons_layer_1">
+                <a
+                  href="https://twitter.com/egorasmarket"
+                  className="twitter_icon"
                 >
-                  <li
-                    className={
-                      activeBg == "whitepaper"
-                        ? "sidebarListItem list-item-active"
-                        : "sidebarListItem"
-                    }
-                  >
-                    <PowerSettingsNewIcon className="sidebarIcon" />
-                    Logout
-                  </li>
-                </Link>
-              </ul>
-            </div>
+                  <TwitterIcon className="social_icon" />
+                </a>
+                <a
+                  href="https://web.facebook.com/egorasmarket/"
+                  className="twitter_icon"
+                >
+                  <FacebookOutlinedIcon className="social_icon" />
+                </a>
+                <a
+                  href="https://github.com/EgorasMarket"
+                  className="twitter_icon"
+                >
+                  <GitHubIcon className="social_icon" />
+                </a>
+                <a
+                  href="https://www.instagram.com/egorasofficial/?hl=en"
+                  className="twitter_icon"
+                >
+                  <InstagramIcon className="social_icon" />
+                </a>
+              </li>
+              <li className="icons_layer_1">
+                <a
+                  href="https://www.youtube.com/user/Egoras"
+                  className="twitter_icon"
+                >
+                  <YouTubeIcon className="social_icon" />
+                </a>
+                <a href="https://t.me/egorasmarket" className="twitter_icon">
+                  <TelegramIcon className="social_icon" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/egorasmarket/"
+                  className="twitter_icon ma"
+                >
+                  <img src="/img/linked_in_icon.svg" alt="" className=" am" />
+                </a>
+                <a
+                  href="https://egoras.medium.com/"
+                  className="twitter_icon ma"
+                >
+                  <img src="/img/medium_icon.svg" alt="" className=" am" />
+                </a>
+              </li>
+            </ul>
           </div>
-      
+        </div>
       </div>
     </div>
   );

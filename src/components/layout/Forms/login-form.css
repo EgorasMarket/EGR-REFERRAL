@@ -53,13 +53,13 @@
 }
 
 .main_style {
-  width: 50%;
+  width: 29%;
   position: absolute;
   z-index: 1000;
   display: flex;
-  bottom: 0%;
+  bottom: 10%;
   padding-bottom: 1em;
-  left: 50%;
+  left: 39%;
   opacity: 1;
   transform: none;
   transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -77,4 +77,21 @@
   transform: none;
   transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+@media screen and (max-width: 768px) {
+  .main_style {
+    width: 220px;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    bottom: 70px;
+    padding-bottom: 1em;
+    left: 20%;
+    opacity: 1;
+    transform: none;
+    font-size: 12px;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
 }

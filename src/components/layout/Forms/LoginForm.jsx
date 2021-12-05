@@ -99,9 +99,9 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
       if (res.data.success === true) {
         setIsLoading(false);
         // return <Redirect to="/" />;
-        return window.location.replace("/dashboard");
+        // return window.location.replace("/dashboard");
       } else {
-        setAlert(res.data.data.errors[0].msg, "danger");
+        setAlert(res.data, "danger");
         setIsLoading(false);
         // console.log('res.data.errorMessage');
         // setIsLoading(false);
@@ -111,8 +111,8 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 
   // Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/" />;
-    // return window.location.replace("/dashboard");
+    // return <Redirect to="/dashboard" />;
+    return window.location.replace("/dashboard");
   }
 
   const setPasswordVisibilty = () => {

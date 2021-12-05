@@ -489,8 +489,8 @@
   align-items: center;
   font-weight: 700;
   position: absolute;
-  left: 49%;
-  top: 42%;
+  left: 48%;
+  top: 50%;
 }
 
 .circle_img {
@@ -595,7 +595,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .rankings_home_cont {
     width: 100%;
     display: flex;
@@ -650,6 +650,7 @@
   .other2 {
     padding-left: 0em;
     padding-right: 0em;
+    padding-top: 7em;
   }
 
   .no-bg {
