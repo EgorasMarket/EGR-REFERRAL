@@ -21,16 +21,20 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     email: "",
     password: "",
     confirmpassword: "",
-    walletAddress: "",
+    // walletAddress: "",
     // ref: "",
     // applicant_businessAddress: "",
   });
 
-  const { username, firstname, lastname, email, password, confirmpassword, walletAddress } =
-    userAuth;
-
-
-    
+  const {
+    username,
+    firstname,
+    lastname,
+    email,
+    password,
+    confirmpassword,
+    // walletAddress,
+  } = userAuth;
 
   const onChange = (e) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
@@ -42,8 +46,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     }
   };
 
-  
-
   const submitData = async (e) => {
     setIsLoading(true);
     console.log(
@@ -51,8 +53,8 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       firstname,
       lastname,
       email,
-      password,
-      walletAddress,
+      password
+      // walletAddress
       // ref
     );
 
@@ -62,16 +64,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       lastname === "" ||
       email === "" ||
       password === "" ||
-      confirmpassword === "" ||
-      walletAddress === ""
+      confirmpassword === ""
     ) {
       setAlert("All fields are required", "danger");
     } else {
       if (password !== confirmpassword) {
         setAlert("Passwords do not match", "danger");
       } else {
-
-        if (typeof localStorage.referrer !== 'undefined') {
+        if (typeof localStorage.referrer !== "undefined") {
           console.log(localStorage.referrer);
           // setUserAuth()
           let res = await getAuthentication(
@@ -80,8 +80,8 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             lastname,
             email,
             password,
-            walletAddress,
-            localStorage.referrer,
+            // walletAddress,
+            localStorage.referrer
           );
           // console.log(res.data);
           if (res.data.success === true) {
@@ -89,7 +89,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
-            
           }
         } else {
           let res = await getAuthentication(
@@ -98,8 +97,8 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             lastname,
             email,
             password,
-            walletAddress,
-            '',
+            // walletAddress,
+            ""
           );
           // console.log(res.data);
           if (res.data.success === true) {
@@ -107,11 +106,8 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
-            
           }
         }
-        
-        
       }
     }
   };
@@ -276,6 +272,9 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                           }
                         />
                       </div>
+                    </div>
+                    <div className="password_does_not_match">
+                      Password does 
                     </div>
                     {/* <label for="walletAddress"></label>
                     <input

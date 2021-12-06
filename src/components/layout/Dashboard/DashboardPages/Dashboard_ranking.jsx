@@ -72,6 +72,8 @@ const Dashboard_ranking = () => {
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
         console.log(data.data.allData);
+        // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
+        // console.log(initial);
         setTopReferral(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
