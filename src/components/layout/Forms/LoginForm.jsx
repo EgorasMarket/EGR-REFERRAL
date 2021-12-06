@@ -111,13 +111,8 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 
   // Redirect if logged in
   if (isAuthenticated) {
-<<<<<<< HEAD
-    return <Redirect to="/dashboard" />;
-    // return window.location.replace("/dashboard");
-=======
     // return <Redirect to="/dashboard" />;
     return window.location.replace("/dashboard");
->>>>>>> cb0691cb122ae6a182c2382e04c4e791aed0d7fa
   }
 
   const setPasswordVisibilty = () => {
