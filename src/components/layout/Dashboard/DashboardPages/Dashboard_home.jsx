@@ -212,7 +212,11 @@ const Dashboard_home = () => {
                             <td className="assets-category-data">
                               <div className="assets-data">
                                 <div className="assets-data-nameLeft">
-                                  {asset.firstname + asset.lastname}
+                                  {asset.firstname.substring(0, 3) +
+                                    "****" +
+                                    asset.lastname.substr(
+                                      asset.lastname.length - 3
+                                    )}
                                 </div>
                               </div>
                             </td>
