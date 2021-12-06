@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
+import Aos from "aos";
+import "aos/dist/aos.css";
+import axios from "axios";
+
 // import { loadUser } from "./actions/auth";
 import store from "./store";
 import Landing from "./components/layout/Landing";
@@ -32,6 +36,26 @@ if (localStorage.token) {
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("xrate", 410);
+    Aos.init({});
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      axios
+        .get("https://geolocation-db.com/json/", null, config)
+        .then((data) => {
+          console.log(data, "The Country");
+          localStorage.setItem("origin", data.data.country_name);
+        });
+    } catch (err) {
+      console.log(err, "Call from exchange rate");
+    }
   }, []);
   return (
     <Provider store={store}>
