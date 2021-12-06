@@ -277,7 +277,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         />
                       </div>
                     </div>
-                    <label for="walletAddress"></label>
+                    {/* <label for="walletAddress"></label>
                     <input
                       type="text"
                       placeholder="Bep20 Wallet Address"
@@ -286,7 +286,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       className="input_me"
                       value={walletAddress}
                       onChange={onChange}
-                    />
+                    /> */}
 
                     {/* <div className="forgot_link">
                     <a href="#" className="forgot_password">
