@@ -297,8 +297,10 @@ export const getLoginAuthentication =
     } catch (err) {
       // console.log(err.response);
 
+
+      
       const errors = err.response.data.errors;
-      console.log(errors);
+      console.log(errors.response);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }

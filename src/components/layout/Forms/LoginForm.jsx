@@ -111,7 +111,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 
   // Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
     // return window.location.replace("/dashboard");
   }
 
