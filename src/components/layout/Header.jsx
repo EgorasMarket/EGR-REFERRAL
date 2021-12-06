@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import jwt from "jsonwebtoken";
 
 import { Buttons, Buttons2, ButtonsDashboard } from "./buttons/Buttons";
 import "../../css/header.css";
@@ -26,16 +27,22 @@ const Header = ({auth, isAuthenticated }) => {
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("buttons_login").style.display = "none";
     }
+
+
+    if (windowsPath === "/super-admin/all/particpants") {
+      console.log('/super-admin/all/particpants');
+    }
   });
 
   useEffect(() => {
     // fetchDepositLinks();
     console.log(auth.user);
     if (auth.user !== null) {
-      // var todecoded = auth.user;
-      // var decoded = jwt.decode(todecoded, {
-      //     complete: true
-      // });
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+          complete: true
+      });
+      console.log(decoded.payload);
       // setStaffEmail(decoded.payload.email)
       setIsLoggedIn(true);
     }
