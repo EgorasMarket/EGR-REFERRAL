@@ -136,7 +136,7 @@ input:checked + .slider:before {
   flex-direction: row;
   /* gap: 30px; */
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .flex_us {
     display: flex;
     justify-content: center;

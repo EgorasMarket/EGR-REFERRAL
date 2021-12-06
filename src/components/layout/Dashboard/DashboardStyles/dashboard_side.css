@@ -261,7 +261,7 @@ a.link:hover {
 
 @media screen and (max-width: 1220px) {
   .sidebar {
-    width: 3.5%;
+    width: 5%;
   }
   .sidebar:hover {
     width: 20%;
@@ -275,10 +275,29 @@ a.link:hover {
 }
 
 /*  */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   /* .drop-close-icon {
     width: 20px;
   } */
+  .sidebar {
+    /* flex: 1; */
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 0;
+    overflow-x: hidden;
+    width: 15%;
+    transition: 0.5s linear;
+    width: 100%;
+    z-index: 2000000;
+    height: 80px;
+    top: auto;
+    box-shadow: 0px 0px 15px #7aae8f;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  .sidebar:hover {
+    width: 100%;
+  }
 
   .side_out {
     display: block;
@@ -322,17 +341,17 @@ a.link:hover {
     height: 100%;
     position: relative;
   }
-  .sidebar {
+  /* .sidebar {
     width: 65%;
     z-index: 2000000;
   }
   .sidebar:hover {
     width: 65%;
-  }
+  } */
   /* .not-sidebar:hover {
     width: 20%;
   } */
-  .not-sidebar {
+  /* .not-sidebar {
     width: 0%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -341,6 +360,62 @@ a.link:hover {
     overflow-x: hidden;
     transition: 0.5s linear;
     z-index: 10;
+  } */
+
+  .social_icons {
+    display: none;
+  }
+  .sidebarList {
+    width: 100%;
+    padding: 0%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    grid-row-gap: 10px;
+    align-items: center;
+    position: relative;
+    margin-bottom: 89%;
+  }
+
+  .list-item-active {
+    position: relative;
+    color: #54bc7e;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sidebarListItem {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 1em;
+    flex-direction: column;
+  }
+  .hrr {
+    height: 0px !important;
+  }
+  .sidebarListItem {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 0em;
+    flex-direction: column;
+  }
+
+  .sidebarIcon {
+    font-size: 27px !important;
+    margin-right: 0px;
+  }
+  .list-item-active::before {
+    display: none;
   }
 }
 @media screen and (max-width: 400px) {
@@ -349,22 +424,8 @@ a.link:hover {
     padding-top: 1em;
   }
 
-  .sidebar {
-    width: 70%;
-  }
-
   .sidebar:hover {
-    width: 70%;
-  }
-  ¸ .not-sidebar {
-    width: 0%;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 0;
-    overflow-x: hidden;
-    transition: 0.5s linear;
-    z-index: 10;
+    width: 100%;
   }
 
   .dashboard-area1-heading-supply-withdraw-input {

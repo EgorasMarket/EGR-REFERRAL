@@ -248,8 +248,11 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Follow Egoras Twitter Account
                     </h6>
 
-                    <a href="#" className="link_btn">
-                      Follow @Egoras
+                    <a
+                      href="https://twitter.com/egorasmarket?t=9Gj3dQJUiPLzpq7bfoOGBg&s=09"
+                      className="link_btn"
+                    >
+                      Follow @egorasmarket
                     </a>
                   </div>
                   {/* ======================= */}
@@ -512,7 +515,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     <button
                       type="submit"
                       onClick={submitData}
-                      className="generate_ref_link w-100"
+                      className="generate_ref_link linear-color w-100"
                     >
                       Submit
                     </button>

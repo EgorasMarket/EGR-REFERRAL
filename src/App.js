@@ -51,7 +51,7 @@ function App() {
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/reset/password/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />
-            <Route exact path="/all-registered/users" component={Admin} />
+            <Route exact path="/all-registered/users/34242/all/users/44452/egr/participants/all/particpants" component={Admin} />
             <Route
               exact
               path="/forgot-password"
