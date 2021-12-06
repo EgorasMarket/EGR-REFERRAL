@@ -96,7 +96,7 @@ button.logout-btn {
     width: 20px;
   } */
   .DashBoardHeaderSection {
-    padding: 0.5em 0.5em;
+    padding: 0.5em 0em;
     background-image: linear-gradient(45deg, #2a7c4b, #41ba71);
     position: sticky;
     top: 0;
@@ -161,12 +161,12 @@ button.logout-btn {
     flex-direction: column;
     color: #0d381f;
     font-weight: 800;
-    align-items: flex-end;
+    align-items: flex-start;
   }
   .userName_name {
     color: #ffffff;
     font-weight: 800;
     font-size: 17px;
-    margin-left: 7px;
+    margin-right: 7px;
   }
 }
