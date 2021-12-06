@@ -117,6 +117,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
       setUserName(decoded.payload.user.username);
       setIsLoggedIn(true);
 
+      console.log(decoded.payload);
       var eee = decoded.payload.exp * 1000;
       var exp = new Date(eee).getTime();
 

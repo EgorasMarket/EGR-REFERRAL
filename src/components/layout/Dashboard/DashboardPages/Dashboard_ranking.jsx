@@ -71,7 +71,7 @@ const Dashboard_ranking = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        console.log(data.data.allData);
+        // console.log(data.data.allData[0].firstname);
         // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
         // console.log(initial);
         setTopReferral(data.data.allData);
@@ -162,7 +162,11 @@ const Dashboard_ranking = () => {
                           <td className="assets-category-data">
                             <div className="assets-data">
                               <div className="assets-data-nameLeft">
-                                {asset.firstname + asset.lastname}
+                                {asset.firstname.substring(0, 3) +
+                                  "****" +
+                                  asset.lastname.substr(
+                                    asset.lastname.length - 3
+                                  )}
                               </div>
                             </div>
                           </td>
