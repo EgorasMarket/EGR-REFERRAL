@@ -36,7 +36,7 @@ const Header = ({auth, isAuthenticated }) => {
 
   useEffect(() => {
     // fetchDepositLinks();
-    console.log(auth.user);
+    // console.log(auth.user);
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {

@@ -198,11 +198,12 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
             >
               <div className="together">
                 <div
-                  className={
-                    logoutDiv == "not_logout_div"
-                      ? "not_logout_div"
-                      : "logout_div"
-                  }
+                  className="logout_div"
+                  // className={
+                  //   logoutDiv == "not_logout_div"
+                  //     ? "not_logout_div"
+                  //     : "logout_div"
+                  // }
                 >
                   <button className="logout_sec_btn" onClick={triggerLogout}>
                     Logout

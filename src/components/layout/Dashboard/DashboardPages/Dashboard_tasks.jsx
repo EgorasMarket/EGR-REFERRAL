@@ -231,8 +231,8 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     <PlaylistAddRoundedIcon className="sidebarIcona" />
                     Tasks
                     <p className="tasks_caption">
-                      In order to participate in this airdrop you need to fulfil
-                      the below requirements:
+                      In order to participate in this referral contest you need
+                      to fulfil the below requirements:
                     </p>
                   </div>
 
