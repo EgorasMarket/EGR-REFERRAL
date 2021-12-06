@@ -129,3 +129,35 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: space-between;
 }
+
+.flex_us {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /* gap: 30px; */
+}
+@media screen and (max-width: 991px) {
+  .flex_us {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    grid-gap: 30px;
+    gap: 30px;
+  }
+
+  .link_btn {
+    padding: 0.5em 1em;
+    background: #54bc7e;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px #9cd6b3;
+  }
+  .flex_us {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

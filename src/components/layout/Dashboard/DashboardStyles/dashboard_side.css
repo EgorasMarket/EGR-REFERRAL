@@ -261,7 +261,7 @@ a.link:hover {
 
 @media screen and (max-width: 1220px) {
   .sidebar {
-    width: 3.5%;
+    width: 5%;
   }
   .sidebar:hover {
     width: 20%;
@@ -274,41 +274,30 @@ a.link:hover {
   }
 }
 
-@media screen and (max-width: 1080px) {
-  .egr-logo3a {
-    margin-bottom: 6em;
-    padding-left: 2em;
-    display: block;
-    /* width: 85%; */
-  }
-  .egr-logo3 {
-    display: none;
-    /* width: 85%; */
-  }
-
-  .sidebarWrapper {
-    color: #555;
-    width: 100%;
-    transition: 0.5s linear;
-    /* padding: 1em; */
-    padding-top: 1em;
-  }
-  .not-drop-open-icon {
-    margin-right: 20px !important;
-    width: 25px !important;
-    display: none !important;
-  }
-
-  .not-drop-close-icon {
-    margin-right: 20px !important;
-    width: 25px !important;
-    display: none !important;
-  }
-}
-@media screen and (max-width: 768px) {
+/*  */
+@media screen and (max-width: 991px) {
   /* .drop-close-icon {
     width: 20px;
   } */
+  .sidebar {
+    /* flex: 1; */
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 0;
+    overflow-x: hidden;
+    width: 15%;
+    transition: 0.5s linear;
+    width: 100%;
+    z-index: 2000000;
+    height: 80px;
+    top: auto;
+    box-shadow: 0px 0px 15px #7aae8f;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  .sidebar:hover {
+    width: 100%;
+  }
 
   .side_out {
     display: block;
@@ -316,15 +305,22 @@ a.link:hover {
     height: 100%;
     position: absolute;
     background: #00000066;
-        z-index: 30000;
+    z-index: 30000;
   }
 
-  .not_side_out{
-      display:none;
+  .not_side_out {
+    display: none;
   }
 
   .egr-logo3 {
     width: 100px;
+    display: none;
+  }
+  .egr-logo3a {
+    width: 200px;
+    display: inline-block;
+    padding-left: 30px;
+    padding-bottom: 3em;
   }
   .DashBoardHeaderSection {
     padding: 1em 0em;
@@ -336,17 +332,26 @@ a.link:hover {
     display: none;
   }
 
-  .sidebar {
-    width: 50%;
-        z-index: 2000000;
+  .sidebarWrapper {
+    color: #555;
+    width: 100%;
+    transition: 0.5s linear;
+    /* padding: 1em; */
+    padding-top: 1em;
+    height: 100%;
+    position: relative;
+  }
+  /* .sidebar {
+    width: 65%;
+    z-index: 2000000;
   }
   .sidebar:hover {
-    width: 50%;
-  }
+    width: 65%;
+  } */
   /* .not-sidebar:hover {
     width: 20%;
   } */
-  .not-sidebar {
+  /* .not-sidebar {
     width: 0%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -355,6 +360,62 @@ a.link:hover {
     overflow-x: hidden;
     transition: 0.5s linear;
     z-index: 10;
+  } */
+
+  .social_icons {
+    display: none;
+  }
+  .sidebarList {
+    width: 100%;
+    padding: 0%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    grid-row-gap: 10px;
+    align-items: center;
+    position: relative;
+    margin-bottom: 89%;
+  }
+
+  .list-item-active {
+    position: relative;
+    color: #54bc7e;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sidebarListItem {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 1em;
+    flex-direction: column;
+  }
+  .hrr {
+    height: 0px !important;
+  }
+  .sidebarListItem {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 0em;
+    flex-direction: column;
+  }
+
+  .sidebarIcon {
+    font-size: 27px !important;
+    margin-right: 0px;
+  }
+  .list-item-active::before {
+    display: none;
   }
 }
 @media screen and (max-width: 400px) {
@@ -363,22 +424,8 @@ a.link:hover {
     padding-top: 1em;
   }
 
-  .sidebar {
-    width: 60%;
-  }
-
   .sidebar:hover {
-    width: 60%;
-  }
-  ¸ .not-sidebar {
-    width: 0%;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 0;
-    overflow-x: hidden;
-    transition: 0.5s linear;
-    z-index: 10;
+    width: 100%;
   }
 
   .dashboard-area1-heading-supply-withdraw-input {

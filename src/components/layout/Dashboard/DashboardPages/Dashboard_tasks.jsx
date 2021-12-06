@@ -25,8 +25,8 @@ import "../DashboardStyles/dasboard_tasks.css";
 // ==============================
 // ==============================
 // ==============================
-const Dashboard_tasks = ({ getSocialHandles }) => {
-  const [getUsername, setGetUsername] = useState("");
+const Dashboard_tasks = ({ getSocialHandles, auth }) => {
+  const [username, setGetUsername] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoading2, setIsLoading2] = useState(false);
@@ -36,7 +36,7 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
 
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [userData, setUserData] = useState({
-    username: getUsername,
+    // username: getUsername,
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
@@ -51,7 +51,7 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
   };
 
   const {
-    username,
+    // username,
     twitterHandle,
     telegramHandle,
     linkedInHandle,
@@ -120,10 +120,31 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
       // code block
     }
   };
+
+  useEffect(() => {
+    // fetchDepositLinks();
+    console.log(auth.user);
+    if (auth.user !== null) {
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+        complete: true,
+      });
+
+      console.log("====================================");
+      console.log(decoded.payload.user.username);
+      console.log("====================================");
+      setGetUsername(decoded.payload.user.username);
+      // setIsLoggedIn(true);
+    }
+  }, [auth]);
+
   // =========
   // =========
 
   const submitData = async (e) => {
+    console.log("====================================");
+    console.log(username);
+    console.log("====================================");
     if (
       twitterHandle === "" &&
       telegramHandle === "" &&
@@ -165,6 +186,12 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
 
       if (res.success === true) {
         setIsSuccessful(true);
+        setUserData({
+          twitterHandle: "",
+          telegramHandle: "",
+          linkedInHandle: "",
+          facebookHandle: "",
+        });
       } else {
         setAlert(res.data[0].msg, "danger");
       }
@@ -221,8 +248,11 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
                       Follow Egoras Twitter Account
                     </h6>
 
-                    <a href="#" className="link_btn">
-                      Follow @Egoras
+                    <a
+                      href="https://twitter.com/egorasmarket?t=9Gj3dQJUiPLzpq7bfoOGBg&s=09"
+                      className="link_btn"
+                    >
+                      Follow @egorasmarket
                     </a>
                   </div>
                   {/* ======================= */}
@@ -343,154 +373,162 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
                   {/* ======================= */}
                   {/* ======================= */}
                 </div>
-
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
+                {/* ========================= */}
                 {/*========= modal div start============ */}
-                <div className="tasks_inputs">
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  <div className="modal_form_area1">
-                    <div className="modal_form_area1_input_heading">
-                      Twitter Handle
+                {!isSuccessful ? (
+                  <div className="tasks_inputs">
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Twitter Handle
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="@JohnDoe "
+                        id="twitterHandle"
+                        name="twitterHandle"
+                        value={twitterHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage == "not_error_message_div"
+                            ? "not_error_message_div"
+                            : "error_message_div"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
                     </div>
-                    <input
-                      type="text"
-                      placeholder="@JohnDoe "
-                      id="twitterHandle"
-                      name="twitterHandle"
-                      value={twitterHandle}
-                      onChange={onChange}
-                      className="modal_form_area1_input1"
-                    />
-                    <div
-                      className={
-                        errorMessage == "not_error_message_div"
-                          ? "not_error_message_div"
-                          : "error_message_div"
-                      }
-                    >
-                      Please input at least 1 character.
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Telegram Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="telegramHandle"
+                        placeholder="@JohnDoe "
+                        name="telegramHandle"
+                        value={telegramHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage1 == "not_error_message_div1"
+                            ? "not_error_message_div1"
+                            : "error_message_div1"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
                     </div>
-                  </div>
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  <div className="modal_form_area1">
-                    <div className="modal_form_area1_input_heading">
-                      Telegram Handle
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Facebook Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="facebookHandle"
+                        placeholder="JohnDoe12 "
+                        name="facebookHandle"
+                        value={facebookHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage2 == "not_error_message_div2"
+                            ? "not_error_message_div2"
+                            : "error_message_div2"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
                     </div>
-                    <input
-                      type="text"
-                      id="telegramHandle"
-                      placeholder="@JohnDoe "
-                      name="telegramHandle"
-                      value={telegramHandle}
-                      onChange={onChange}
-                      className="modal_form_area1_input1"
-                    />
-                    <div
-                      className={
-                        errorMessage1 == "not_error_message_div1"
-                          ? "not_error_message_div1"
-                          : "error_message_div1"
-                      }
-                    >
-                      Please input at least 1 character.
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        LinkedIn Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="linkedInHandle"
+                        placeholder="@JohnDoe "
+                        name="linkedInHandle"
+                        value={linkedInHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage3 == "not_error_message_div3"
+                            ? "not_error_message_div3"
+                            : "error_message_div3"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
                     </div>
-                  </div>
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  <div className="modal_form_area1">
-                    <div className="modal_form_area1_input_heading">
-                      Facebook Handle
-                    </div>
-                    <input
-                      type="text"
-                      id="facebookHandle"
-                      placeholder="JohnDoe12 "
-                      name="facebookHandle"
-                      value={facebookHandle}
-                      onChange={onChange}
-                      className="modal_form_area1_input1"
-                    />
-                    <div
-                      className={
-                        errorMessage2 == "not_error_message_div2"
-                          ? "not_error_message_div2"
-                          : "error_message_div2"
-                      }
-                    >
-                      Please input at least 1 character.
-                    </div>
-                  </div>
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  {/* ========= */}
-                  <div className="modal_form_area1">
-                    <div className="modal_form_area1_input_heading">
-                      LinkedIn Handle
-                    </div>
-                    <input
-                      type="text"
-                      id="linkedInHandle"
-                      placeholder="@JohnDoe "
-                      name="linkedInHandle"
-                      value={linkedInHandle}
-                      onChange={onChange}
-                      className="modal_form_area1_input1"
-                    />
-                    <div
-                      className={
-                        errorMessage3 == "not_error_message_div3"
-                          ? "not_error_message_div3"
-                          : "error_message_div3"
-                      }
-                    >
-                      Please input at least 1 character.
-                    </div>
-                  </div>
 
-                  {/* ========== */}
-                  {/* ========== */}
-                  {/* ========== */}
-                  {/* ========== */}
+                    {/* ========== */}
+                    {/* ========== */}
+                    {/* ========== */}
+                    {/* ========== */}
 
-                  <div className="note_area">
-                    I understand and acknowledge that fulfilling the
-                    aforementioned conditions DOES NOT guarantee success as the
-                    winners will be determined solely by the airdrop partner
-                    according to their selection criteria.
-                    <div className="custom_radio_btn">
-                      <label class="switch">
-                        <input type="checkbox" />
-                        <span class="slider round"></span>
-                      </label>
+                    <div className="note_area">
+                      I understand and acknowledge that fulfilling the
+                      aforementioned conditions DOES NOT guarantee success as
+                      the winners will be determined solely by the contest
+                      committee according to their selection criteria.
+                      <div className="custom_radio_btn">
+                        <label class="switch">
+                          <input type="checkbox" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
                     </div>
-                  </div>
-                  {/* ========== */}
-                  {/* ========== */}
-                  <button
-                    type="submit"
-                    onClick={submitData}
-                    className="generate_ref_link w-100"
-                  >
-                    Submit
-                  </button>
-                  {/* ===== */}
-                  {/* ===== */}
-                  {/* ===== */}
-                  {/* ===== */}
-                  {/* ===== */}
-                  {/* ===== */}
-                  {/* ===== */}
+                    {/* ========== */}
+                    {/* ========== */}
+                    <button
+                      type="submit"
+                      onClick={submitData}
+                      className="generate_ref_link linear-color w-100"
+                    >
+                      Submit
+                    </button>
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
 
-                  {/* <div className="copy_referral_link"> */}
-                  {/* <div className="tooltip">
+                    {/* <div className="copy_referral_link"> */}
+                    {/* <div className="tooltip">
                     <button onclick={myFunction} onmouseout={outFunc}>
                       <span className="tooltiptext" id="myTooltip">
                         Copy to clipboard
@@ -498,8 +536,8 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
                       Copy text
                     </button>
                   </div> */}
-                  {/* </div> */}
-                  {/* <div className="referral_area">
+                    {/* </div> */}
+                    {/* <div className="referral_area">
                     <div className="referral_heading">
                       Invite People to get 30% EGR on every airdrop.
                     </div>
@@ -508,7 +546,164 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
                       Get Ref Link
                     </button>
                   </div> */}
-                </div>
+                  </div>
+                ) : (
+                  <div className="tasks_inputs">
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Twitter Handle
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="@JohnDoe "
+                        id="twitterHandle"
+                        name="twitterHandle"
+                        value={twitterHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage == "not_error_message_div"
+                            ? "not_error_message_div"
+                            : "error_message_div"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
+                    </div>
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Telegram Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="telegramHandle"
+                        placeholder="@JohnDoe "
+                        name="telegramHandle"
+                        value={telegramHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage1 == "not_error_message_div1"
+                            ? "not_error_message_div1"
+                            : "error_message_div1"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
+                    </div>
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Facebook Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="facebookHandle"
+                        placeholder="JohnDoe12 "
+                        name="facebookHandle"
+                        value={facebookHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage2 == "not_error_message_div2"
+                            ? "not_error_message_div2"
+                            : "error_message_div2"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
+                    </div>
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        LinkedIn Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="linkedInHandle"
+                        placeholder="@JohnDoe "
+                        name="linkedInHandle"
+                        value={linkedInHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage3 == "not_error_message_div3"
+                            ? "not_error_message_div3"
+                            : "error_message_div3"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
+                    </div>
+
+                    {/* ========== */}
+                    {/* ========== */}
+                    {/* ========== */}
+                    {/* ========== */}
+
+                    <div className="activation_div no_bg">
+                      <img
+                        src="/img/activate.svg"
+                        alt=""
+                        className="activate_img"
+                      />
+                      <h1>Success</h1>
+                      <div className="">
+                        Your entry have been successfully recorded.
+                      </div>
+                    </div>
+
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+                    {/* ===== */}
+
+                    {/* <div className="copy_referral_link"> */}
+                    {/* <div className="tooltip">
+                    <button onclick={myFunction} onmouseout={outFunc}>
+                      <span className="tooltiptext" id="myTooltip">
+                        Copy to clipboard
+                      </span>
+                      Copy text
+                    </button>
+                  </div> */}
+                    {/* </div> */}
+                    {/* <div className="referral_area">
+                    <div className="referral_heading">
+                      Invite People to get 30% EGR on every airdrop.
+                    </div>
+                    <div className="modal_form_area1"></div>
+                    <button className="generate_ref_link w-100">
+                      Get Ref Link
+                    </button>
+                  </div> */}
+                  </div>
+                )}
 
                 {/* ========================= */}
                 {/* ========================= */}
@@ -524,4 +719,9 @@ const Dashboard_tasks = ({ getSocialHandles }) => {
   );
 };
 
-export default connect(null, { getSocialHandles })(Dashboard_tasks);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { getSocialHandles })(Dashboard_tasks);

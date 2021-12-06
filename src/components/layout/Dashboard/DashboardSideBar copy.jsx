@@ -35,13 +35,13 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [logoutDiv, setLogoutDiv] = useState("not_logout_div");
   const [activeBg, setActiveBg] = useState("market");
-  // const [sideOut, setsideOut] = useState("not_side_out");
+  const [sideOut, setsideOut] = useState("not_side_out");
   const [userName, setUserName] = useState("");
   const [click, setClick] = useState("drop");
-  // const [side, setSide] = useState("sidebar");
-  // const [sideWrap, setSideWrap] = useState("sidebarWrapper");
-  // const [openDrop, setOpenDrop] = useState("drop-open-icon");
-  // const [closeDrop, setCloseDrop] = useState("not-drop-close-icon");
+  const [side, setSide] = useState("sidebar");
+  const [sideWrap, setSideWrap] = useState("sidebarWrapper");
+  const [openDrop, setOpenDrop] = useState("drop-open-icon");
+  const [closeDrop, setCloseDrop] = useState("not-drop-close-icon");
 
   const changeOnclick = () => {
     if (click === "drop") {
@@ -59,21 +59,21 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
   const closeLogoutDiv = () => {
     setLogoutDiv("not_logout_div");
   };
-  // const openDropDown = () => {
-  //   setOpenDrop("not-drop-open-icon");
-  //   setCloseDrop("drop-close-icon");
-  //   setsideOut("side_out");
-  //   setSide("not-sidebar");
+  const openDropDown = () => {
+    setOpenDrop("not-drop-open-icon");
+    setCloseDrop("drop-close-icon");
+    setsideOut("side_out");
+    setSide("not-sidebar");
 
-  //   setSideWrap("not-sidebarWrapper");
-  // };
-  // const closeDropDown = () => {
-  //   setOpenDrop("drop-open-icon");
-  //   setCloseDrop("not-drop-close-icon");
-  //   setSide("sidebar");
-  //   setsideOut("not_side_out");
-  //   setSideWrap("sidebarWrapper");
-  // };
+    setSideWrap("not-sidebarWrapper");
+  };
+  const closeDropDown = () => {
+    setOpenDrop("drop-open-icon");
+    setCloseDrop("not-drop-close-icon");
+    setSide("sidebar");
+    setsideOut("not_side_out");
+    setSideWrap("sidebarWrapper");
+  };
   const linksActive = window.location.pathname;
 
   useEffect(() => {
@@ -171,22 +171,22 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 />
               </a>
 
-              {/* <MenuOpenRoundedIcon
+              <MenuOpenRoundedIcon
                 onClick={openDropDown}
                 className={
                   openDrop == "drop-open-icon"
                     ? "drop-open-icon"
                     : "not-drop-open-icon"
                 }
-              /> */}
-              {/* <CloseRoundedIcon
+              />
+              <CloseRoundedIcon
                 onClick={closeDropDown}
                 className={
                   closeDrop == "not-drop-close-icon"
                     ? " not-drop-close-icon"
                     : "drop-close-icon"
                 }
-              /> */}
+              />
             </div>
 
             {/* <Authenticate isHome="false" /> */}
@@ -196,27 +196,22 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
               onMouseOver={openLogoutDiv}
               onMouseOut={closeLogoutDiv}
             >
-              <div className="together">
-                <div
-                  className={
-                    logoutDiv == "not_logout_div"
-                      ? "not_logout_div"
-                      : "logout_div"
-                  }
-                >
-                  <button className="logout_sec_btn" onClick={triggerLogout}>
-                    Logout
-                  </button>
-                </div>
-                <div className="immmgg">
-                  <img
-                    src="/img/profile_icon.svg"
-                    alt=""
-                    className="user_profile"
-                  />
-                </div>
+              <div
+                className={
+                  logoutDiv == "not_logout_div"
+                    ? "not_logout_div"
+                    : "logout_div"
+                }
+              >
+                <button className="logout_sec_btn" onClick={triggerLogout}>
+                  Logout
+                </button>
               </div>
-
+              <img
+                src="/img/profile_icon.svg"
+                alt=""
+                className="user_profile"
+              />
               <div className="welcome_user">
                 Welcome
                 <span className="userName_name">{userName}</span>
@@ -226,30 +221,28 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
         </div>
       </section>
 
-      {/* <div
+      <div
         className={sideOut == "not_side_out" ? "not_side_out" : "side_out"}
         onClick={closeDropDown}
       >
         {" "}
-      </div> */}
+      </div>
 
       <div
-        className="sidebar"
-        // className={side == "sidebar" ? "not-sidebar" : "sidebar"}
+        className={side == "sidebar" ? "not-sidebar" : "sidebar"}
         id="side_bar"
       >
         <div
-          className="sidebarWrapper"
-          // className={
-          //   sideWrap == "sidebarWrapper"
-          //     ? "not-sidebarWrapper"
-          //     : "sidebarWrapper"
-          // }
+          className={
+            sideWrap == "sidebarWrapper"
+              ? "not-sidebarWrapper"
+              : "sidebarWrapper"
+          }
           id="side_bar_wrapper"
         >
-          {/* <a href="/" alt="">
+          <a href="/" alt="">
             <img src="/img/egoras-logo.svg" alt="..." className="egr-logo3a" />
-          </a> */}
+          </a>
           <div className="sidebarMenu">
             {/* <h3 className="sidebarTitle">Dashboard</h3> */}
             <ul className="sidebarList">
@@ -487,7 +480,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
               </span>
             </a> */}
             </ul>
-            <hr className="hrr" />
+            <hr />
             <ul className="social_icons">
               <li className="icons_layer_1">
                 <a

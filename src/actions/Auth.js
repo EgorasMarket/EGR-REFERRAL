@@ -47,7 +47,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Get Social Media Handles
 export const getAuthentication =
-  ( username, firstname, lastname, email, password, walletAddress, ref ) =>
+  (username, firstname, lastname, email, password, walletAddress, ref) =>
   async (dispatch) => {
     const config = {
       headers: {
@@ -158,7 +158,7 @@ export const reset =
     try {
       const res = await axios.post(api_url + "/v1/user/reset", body, config);
       console.log(res);
-      
+
       return {
         status: true,
         data: res.data,
@@ -174,14 +174,14 @@ export const reset =
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
 
-        return {
+      return {
         status: false,
-        data: errors
-      }
+        data: errors,
+      };
     }
   };
 
-  export const changePassword =
+export const changePassword =
   ({ oldpassword, newpassword }) =>
   async (dispatch) => {
     const config = {
@@ -193,13 +193,18 @@ export const reset =
     };
 
     const body = JSON.stringify({
-      oldpassword, newpassword
+      oldpassword,
+      newpassword,
     });
 
     console.log(body);
 
     try {
-      const res = await axios.post(api_url + "/v1/user/change/password", body, config);
+      const res = await axios.post(
+        api_url + "/v1/user/change/password",
+        body,
+        config
+      );
       console.log(res);
       // console.log("yyyyy");
 
@@ -221,7 +226,6 @@ export const reset =
       // }
     }
   };
-
 
 export const ForgetPassword = (email) => async (dispatch) => {
   const config = {
@@ -283,35 +287,52 @@ export const getLoginAuthentication =
 
     try {
       const res = await axios.post(api_url + "/v1/user/login", body, config);
-      console.log(res);
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
-      });
+      // console.log(res.data.success);
 
-      return {
-        status: true,
-        data: res.data,
-      };
+      if (res.data.success === false) {
+        console.log(res.data);
+        const errors = res.data.errors;
+        console.log(errors);
+        // if (errors) {
+        //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+        // }
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: errors[0].msg,
+        });
+
+        return {
+          status: false,
+          data: errors[0].msg,
+        };
+      } else {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data,
+        });
+        return {
+          status: true,
+          data: res.data,
+        };
+      }
+
       // return res;
     } catch (err) {
-      // console.log(err.response);
+      console.log(err.response);
 
-
-      
-      const errors = err.response.data.errors;
-      console.log(errors.response);
+      // const errors = err.response.data.errors;
+      // console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
-      dispatch({
-        type: LOGIN_FAIL,
-        payload: errors[0].msg,
-      });
+      // dispatch({
+      //   type: LOGIN_FAIL,
+      //   // payload: errors[0].msg,
+      // });
 
-      return {
-        status: false,
-        data: err.response,
-      };
+      // return {
+      //   status: false,
+      //   data: err.response,
+      // };
     }
   };
