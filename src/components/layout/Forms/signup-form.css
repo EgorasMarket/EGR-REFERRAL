@@ -588,3 +588,12 @@
     font-size: 12px;
   }
 }
+
+.not_password_match {
+  display: none;
+}
+.password_match {
+  display: block;
+  width: 90%;
+  text-align: left;
+}

@@ -12,6 +12,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [visibility, setVisibility] = useState(false);
   const [visibility2, setVisibility2] = useState(false);
   const [passImg, setPassImg] = useState("show_pass");
+  const [doesNotMatch, setDoesNotMatch] = useState("not_password_match");
   const [passImg2, setPassImg2] = useState("show_pass2");
   // const [ref, setRef] = useState("");
   const [userAuth, setUserAuth] = useState({
@@ -110,6 +111,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
         }
       }
     }
+
+    // if (password === confirmpassword) {
+    //   setDoesNotMatch("password_match");
+    //   setIsSuccessful(false);
+    // } else {
+    //   setDoesNotMatch("not_password_match");
+    //   setIsSuccessful(true);
+    // }
   };
 
   const setPasswordVisibilty = () => {
@@ -273,8 +282,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         />
                       </div>
                     </div>
-                    <div className="password_does_not_match">
-                      Password does 
+                    <div
+                      className={
+                        doesNotMatch == "not_password_match"
+                          ? "not_password_match"
+                          : "password_match"
+                      }
+                    >
+                      Password does not match
                     </div>
                     {/* <label for="walletAddress"></label>
                     <input
