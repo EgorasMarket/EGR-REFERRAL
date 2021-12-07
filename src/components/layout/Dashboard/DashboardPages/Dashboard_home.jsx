@@ -444,7 +444,7 @@ const Dashboard_home = () => {
             <div className="Invite_refer_area">
               <h4 className="invite_refer_area_heading">Invite and Earn </h4>
               <p className="invite_refer_area_para">
-                For each registered user you get rewarded in egc 
+                For each registered user, you get rewarded.
               </p>
 
               <a href="/dashboard/referrals">

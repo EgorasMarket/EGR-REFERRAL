@@ -109,7 +109,7 @@ button.logout-btn {
     width: 30px;
     box-shadow: -1px 0px 10px #1d5031;
     border-radius: 100%;
-    margin-right: 12px;
+    margin-right: 0px;
     cursor: pointer;
   }
   .welcome_user {
@@ -157,7 +157,7 @@ button.logout-btn {
   .welcome_user {
     display: flex;
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     flex-direction: column;
     color: #0d381f;
     font-weight: 800;

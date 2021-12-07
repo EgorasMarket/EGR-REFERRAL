@@ -17,8 +17,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
   // const [ref, setRef] = useState("");
   const [userAuth, setUserAuth] = useState({
     username: "",
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
     confirmpassword: "",
@@ -29,8 +27,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
   const {
     username,
-    firstname,
-    lastname,
     email,
     password,
     confirmpassword,
@@ -51,8 +47,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     setIsLoading(true);
     console.log(
       username,
-      firstname,
-      lastname,
       email,
       password
       // walletAddress
@@ -61,8 +55,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
     if (
       username === "" ||
-      firstname === "" ||
-      lastname === "" ||
       email === "" ||
       password === "" ||
       confirmpassword === ""
@@ -77,8 +69,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
           // setUserAuth()
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
             // walletAddress,
@@ -94,8 +84,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
         } else {
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
             // walletAddress,
@@ -168,7 +156,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                 </div>
                 <div className="sign_up_area2">
                   <div className="sign_up_area1_cont1">
-                    <h4>Welcome</h4>
+                    <h4 className="h444k">Welcome</h4>
                   </div>
                   <form class="sign_up_form" action="/action_page.php">
                     <label for="name"></label>
@@ -179,26 +167,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       required
                       className="input_me"
                       value={username}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      name="firstname"
-                      required
-                      className="input_me"
-                      value={firstname}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      name="lastname"
-                      required
-                      className="input_me"
-                      value={lastname}
                       onChange={onChange}
                     />
                     <label for="email"></label>
