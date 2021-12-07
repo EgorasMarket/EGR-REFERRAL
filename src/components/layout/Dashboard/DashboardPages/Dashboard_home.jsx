@@ -78,7 +78,7 @@ const Dashboard_home = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        // console.log(data.data.user);
+        console.log(data.data.allData);
         setTopReferral(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
@@ -161,7 +161,7 @@ const Dashboard_home = () => {
                     <thead className="assets-category-titles">
                       <tr className="assets">
                         <th className="assets-category-titles-heading1a">
-                          Name
+                          Username
                         </th>
                         <th className="assets-category-titles-heading1Last">
                           Total Referrals
@@ -212,10 +212,10 @@ const Dashboard_home = () => {
                             <td className="assets-category-data">
                               <div className="assets-data">
                                 <div className="assets-data-nameLeft">
-                                  {asset.firstname.substring(0, 3) +
+                                  {asset.username.substring(0, 1) +
                                     "****" +
-                                    asset.lastname.substr(
-                                      asset.lastname.length - 3
+                                    asset.username.substr(
+                                      asset.username.length - 2
                                     )}
                                 </div>
                               </div>

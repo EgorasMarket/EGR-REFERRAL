@@ -162,10 +162,10 @@ const Dashboard_ranking = () => {
                           <td className="assets-category-data">
                             <div className="assets-data">
                               <div className="assets-data-nameLeft">
-                                {asset.firstname.substring(0, 3) +
+                                {asset.username.substring(0, 1) +
                                   "****" +
-                                  asset.lastname.substr(
-                                    asset.lastname.length - 3
+                                  asset.username.substr(
+                                    asset.username.length - 2
                                   )}
                               </div>
                             </div>

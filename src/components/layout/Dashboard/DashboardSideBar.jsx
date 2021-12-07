@@ -369,28 +369,6 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                   Tasks
                 </li>
               </Link>
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-
-              <Link
-                to="/dashboard/ranking"
-                className="link"
-                id="governance"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "governance"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
-                >
-                  <BarChartIcon className="sidebarIcon" />
-                  Rankings
-                </li>
-              </Link>
 
               {/* ===================== */}
               {/* ===================== */}
@@ -412,6 +390,28 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 >
                   <GroupIcon className="sidebarIcon" />
                   Referrals
+                </li>
+              </Link>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+
+              <Link
+                to="/dashboard/ranking"
+                className="link"
+                id="governance"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "governance"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
+                >
+                  <BarChartIcon className="sidebarIcon" />
+                  Rankings
                 </li>
               </Link>
 
