@@ -127,7 +127,9 @@ const Dashboard_ranking = () => {
                 <table className="assets-table">
                   <thead className="assets-category-titles">
                     <tr className="assets">
-                      <th className="assets-category-titles-heading1a">Name</th>
+                      <th className="assets-category-titles-heading1a">
+                        Username
+                      </th>
                       <th className="assets-category-titles-heading1Last">
                         Total Referrals
                       </th>

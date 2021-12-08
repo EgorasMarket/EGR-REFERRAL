@@ -216,6 +216,11 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                     alt=""
                     className="user_profile"
                   />
+                  <img
+                    src="/img/profile_icon2.svg"
+                    alt=""
+                    className="user_profile2"
+                  />
                 </div>
               </div>
 
