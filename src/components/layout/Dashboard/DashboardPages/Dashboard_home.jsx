@@ -79,7 +79,7 @@ const Dashboard_home = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        // console.log(data.data.user);
+        console.log(data.data.allData);
         setTopReferral(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
@@ -162,7 +162,7 @@ const Dashboard_home = () => {
                     <thead className="assets-category-titles">
                       <tr className="assets">
                         <th className="assets-category-titles-heading1a">
-                          Name
+                          Username
                         </th>
                         <th className="assets-category-titles-heading1Last">
                           Total Referrals
@@ -213,7 +213,11 @@ const Dashboard_home = () => {
                             <td className="assets-category-data">
                               <div className="assets-data">
                                 <div className="assets-data-nameLeft">
-                                  {asset.firstname + asset.lastname}
+                                  {asset.username.substring(0, 1) +
+                                    "****" +
+                                    asset.username.substr(
+                                      asset.username.length - 2
+                                    )}
                                 </div>
                               </div>
                             </td>
@@ -441,7 +445,7 @@ const Dashboard_home = () => {
             <div className="Invite_refer_area">
               <h4 className="invite_refer_area_heading">Invite and Earn </h4>
               <p className="invite_refer_area_para">
-                For each registered user you get rewarded in egc 
+                For each registered user, you get rewarded.
               </p>
 
               <a href="/dashboard/referrals">

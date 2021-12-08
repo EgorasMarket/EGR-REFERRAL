@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { ForgetPassword } from "../../../actions/Auth";
-
-
-
-
-
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const ForgotPasswordForm = ({ ForgetPassword }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [disable, setDisable] = React.useState(false);
   const [userAuth, setUserAuth] = useState({
     email: "",
     // applicant_businessAddress: "",
@@ -23,6 +21,11 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
       console.log("input something here");
     } else {
       console.log("something is here");
+    }
+    if (email === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
     }
   };
 
@@ -39,6 +42,14 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
       console.log("Nooo Bad Server");
     }
   };
+
+  useEffect(() => {
+    if (email === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  });
 
   return (
     <div>
@@ -96,13 +107,25 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
                   </form>
                   <div className="sign_up_btns">
                     <button
-                      // type="submit"
+                      type="submit"
                       className="signupbtn"
                       onClick={submitData}
+                      disabled={disable}
+                      // disabled={isLoading ? "true" : null}
+                      value="Login"
                     >
-                      {!isLoading
-                        ? "Send Instructions"
-                        : "Sending Instructions"}
+                      {isLoading ? (
+                        <span>
+                          Sending instructions{" "}
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faSpinner}
+                            spin
+                          />
+                        </span>
+                      ) : (
+                        <span>Send instructions</span>
+                      )}{" "}
                     </button>
                   </div>
                 </div>

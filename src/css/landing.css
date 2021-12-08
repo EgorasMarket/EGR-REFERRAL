@@ -14,7 +14,7 @@
 }
 .landing_area_txts {
   width: 100%;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
 }
 .landing_area_img {
   width: 100%;
@@ -236,7 +236,7 @@ img.big_hero_img {
     padding-top: 8em;
   }
   .landing_area_txts {
-    text-align: center;
+    text-align: left;
   }
   .landing_area {
     display: flex;
@@ -245,6 +245,19 @@ img.big_hero_img {
     align-items: center;
     flex-direction: column;
     gap: 20px;
+  }
+  .gtpartnerLogos {
+    text-align: center;
+    width: 100px;
+    filter: grayscale();
+  }
+  .gtpatLogo {
+    text-align: center;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    position: relative;
+    width: 250px;
+    margin: auto;
   }
 }
 @media screen and (max-width: 500px) {

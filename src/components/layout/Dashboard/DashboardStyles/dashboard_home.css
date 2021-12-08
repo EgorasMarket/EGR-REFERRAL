@@ -485,12 +485,12 @@
 .refferal_count {
   margin: 0;
   font-size: 30px;
-  text-align: center;
+  text-align: revert;
   align-items: center;
   font-weight: 700;
-  position: absolute;
-  left: 48%;
-  top: 50%;
+  position: relative;
+  left: 0%;
+  bottom: 69%;
 }
 
 .circle_img {
@@ -659,6 +659,7 @@
   }
 
   .other2 {
+    padding: 6em;
     padding-left: 0em;
     padding-right: 0em;
     padding-top: 5em;

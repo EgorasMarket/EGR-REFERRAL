@@ -59,6 +59,14 @@
   margin-right: 20px;
   cursor: pointer;
 }
+.user_profile2 {
+  width: 40px;
+  box-shadow: -1px 0px 10px #85ad95;
+  border-radius: 100%;
+  margin-right: 20px;
+  cursor: pointer;
+  display: none;
+}
 button.logout-btn {
   padding: 0.4em 2em;
   border: none;
@@ -96,21 +104,34 @@ button.logout-btn {
     width: 20px;
   } */
   .DashBoardHeaderSection {
-    padding: 0.5em 0.5em;
+    padding: 0.5em 0em;
     background-image: linear-gradient(45deg, #2a7c4b, #41ba71);
     position: sticky;
-    top: 0;
+    top: 7px;
     z-index: 10000;
     box-shadow: 0px 0px 15px #3b925e;
     position: fixed;
-    width: 100%;
+    width: 95%;
+    margin: auto;
+    left: 2.5%;
+    right: 2.5%;
+    border-radius: 10px;
   }
   .user_profile {
     width: 30px;
     box-shadow: -1px 0px 10px #1d5031;
     border-radius: 100%;
-    margin-right: 12px;
+    margin-right: 0px;
     cursor: pointer;
+    display: none;
+  }
+  .user_profile2 {
+    width: 30px;
+    box-shadow: -1px 0px 10px #1d5031;
+    border-radius: 100%;
+    margin-right: 0px;
+    cursor: pointer;
+    display: block;
   }
   .welcome_user {
     display: flex;
@@ -151,22 +172,23 @@ button.logout-btn {
     padding: 0.3em 1em;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px #195531;
+    box-shadow: 0px 4px 7px #195531;
+    font-size: 14px;
   }
 
   .welcome_user {
     display: flex;
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     flex-direction: column;
-    color: #0d381f;
+    color: #a4ffca;
     font-weight: 800;
-    align-items: flex-end;
+    align-items: flex-start;
   }
   .userName_name {
     color: #ffffff;
     font-weight: 800;
     font-size: 17px;
-    margin-left: 7px;
+    margin-right: 7px;
   }
 }

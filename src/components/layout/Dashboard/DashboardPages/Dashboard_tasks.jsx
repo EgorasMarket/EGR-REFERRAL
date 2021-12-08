@@ -29,7 +29,9 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
   const [username, setGetUsername] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading3, setIsLoading3] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
+  const [disable, setDisable] = React.useState(false);
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
   const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
@@ -41,7 +43,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     telegramHandle: "",
     linkedInHandle: "",
     facebookHandle: "",
-    walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
+    // walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
     // applicant_businessAddress: "",
   });
   const config = {
@@ -56,7 +58,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     telegramHandle,
     linkedInHandle,
     facebookHandle,
-    walletAddress,
+    // walletAddress,
   } = userData;
   // ======
   // ======
@@ -119,6 +121,18 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       default:
       // code block
     }
+
+    if (twitterHandle === "") {
+      setDisable(true);
+    } else if (telegramHandle === "") {
+      setDisable(true);
+    } else if (linkedInHandle === "") {
+      setDisable(true);
+    } else if (facebookHandle === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
   };
 
   useEffect(() => {
@@ -138,6 +152,20 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     }
   }, [auth]);
 
+  useEffect(() => {
+    if (twitterHandle === "") {
+      setDisable(true);
+    } else if (telegramHandle === "") {
+      setDisable(true);
+    } else if (linkedInHandle === "") {
+      setDisable(true);
+    } else if (facebookHandle === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  });
+
   // =========
   // =========
 
@@ -145,6 +173,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     console.log("====================================");
     console.log(username);
     console.log("====================================");
+    setIsLoading3(true);
     if (
       twitterHandle === "" &&
       telegramHandle === "" &&
@@ -174,12 +203,12 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       setErrorMessage2("not_error_message_div2");
       setErrorMessage3("not_error_message_div3");
       let res = await getSocialHandles({
-        username,
+        // username,
         twitterHandle,
         telegramHandle,
         linkedInHandle,
         facebookHandle,
-        walletAddress,
+        // walletAddress,
       });
 
       console.log(res);
@@ -291,10 +320,13 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       }}
                     >
                       {" "}
-                      Follow Egoras/ Facebook Account{" "}
+                      Follow Egoras/ Facebook Page{" "}
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.facebook.com/egorasmarket/"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -315,7 +347,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Subscribe to Egoras youtube account
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.youtube.com/channel/UCHfi5EwXig46xp5Dx8hVBHQ"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -336,7 +371,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Join our network on Linkedin
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.linkedin.com/company/egorasmarket/mycompany/"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -357,7 +395,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Join Egoras Telegram Channel
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a href="https://t.me/egorasmarket" className="link_btn">
                       Follow @Egoras
                     </a>
                   </div>
@@ -512,16 +550,38 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     </div>
                     {/* ========== */}
                     {/* ========== */}
-                    <button
+                    {/* <button
                       type="submit"
                       onClick={submitData}
                       className="generate_ref_link linear-color w-100"
                     >
                       Submit
+                    </button> */}
+                    <button
+                      type="submit"
+                      className="generate_ref_link linear-color w-100"
+                      onClick={submitData}
+                      disabled={disable}
+                      // disabled={isLoading ? "true" : null}
+                      // value="Login"
+                    >
+                      {isLoading3 ? (
+                        <span>
+                          Submitting{" "}
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faSpinner}
+                            spin
+                          />
+                        </span>
+                      ) : (
+                        <span> Submit</span>
+                      )}{" "}
                     </button>
                     {/* ===== */}
                     {/* ===== */}
                     {/* ===== */}
+
                     {/* ===== */}
                     {/* ===== */}
                     {/* ===== */}

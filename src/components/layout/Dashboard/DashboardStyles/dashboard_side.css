@@ -289,11 +289,11 @@ a.link:hover {
     transition: 0.5s linear;
     width: 100%;
     z-index: 2000000;
-    height: 80px;
+    height: 60px;
     top: auto;
     box-shadow: 0px 0px 15px #7aae8f;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
   }
   .sidebar:hover {
     width: 100%;
@@ -337,7 +337,7 @@ a.link:hover {
     width: 100%;
     transition: 0.5s linear;
     /* padding: 1em; */
-    padding-top: 1em;
+    padding-top: 0em;
     height: 100%;
     position: relative;
   }
@@ -375,9 +375,23 @@ a.link:hover {
     grid-row-gap: 10px;
     align-items: center;
     position: relative;
-    margin-bottom: 89%;
+    margin-bottom: 0%;
   }
 
+  .sidebarListItem {
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 1em;
+    flex-direction: column;
+    color: #000;
+  }
+  .hrr {
+    height: 0px !important;
+  }
   .list-item-active {
     position: relative;
     color: #54bc7e;
@@ -385,23 +399,16 @@ a.link:hover {
     border-radius: 0;
     box-shadow: none;
   }
-
-  .sidebarListItem {
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
+  .sidebarMenu {
     width: 100%;
+    height: 100%;
     position: relative;
-    padding: 1em;
-    flex-direction: column;
-  }
-  .hrr {
-    height: 0px !important;
+    display: flex;
+    flex-direction: row;
   }
   .sidebarListItem {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -411,7 +418,7 @@ a.link:hover {
   }
 
   .sidebarIcon {
-    font-size: 27px !important;
+    font-size: 20px !important;
     margin-right: 0px;
   }
   .list-item-active::before {

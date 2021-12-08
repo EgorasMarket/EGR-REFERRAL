@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import "./signup-form.css";
 
 import { setAlert } from "../../../actions/alert";
 
 import { getAuthentication } from "../../../actions/Auth";
-
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [visibility2, setVisibility2] = useState(false);
+  const [disable, setDisable] = React.useState(false);
   const [passImg, setPassImg] = useState("show_pass");
+  const [doesNotMatch, setDoesNotMatch] = useState("not_password_match");
   const [passImg2, setPassImg2] = useState("show_pass2");
   // const [ref, setRef] = useState("");
   const [userAuth, setUserAuth] = useState({
     username: "",
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
     confirmpassword: "",
@@ -28,8 +29,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
   const {
     username,
-    firstname,
-    lastname,
     email,
     password,
     confirmpassword,
@@ -50,8 +49,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     setIsLoading(true);
     console.log(
       username,
-      firstname,
-      lastname,
       email,
       password
       // walletAddress
@@ -60,8 +57,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
     if (
       username === "" ||
-      firstname === "" ||
-      lastname === "" ||
       email === "" ||
       password === "" ||
       confirmpassword === ""
@@ -76,8 +71,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
           // setUserAuth()
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
             // walletAddress,
@@ -93,8 +86,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
         } else {
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
             // walletAddress,
@@ -110,7 +101,37 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
         }
       }
     }
+
+    if (email === "") {
+      setDisable(true);
+    } else if (username === "") {
+      setDisable(true);
+    } else if (password === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+
+    // if (password === confirmpassword) {
+    //   setDoesNotMatch("password_match");
+    //   setIsSuccessful(false);
+    // } else {
+    //   setDoesNotMatch("not_password_match");
+    //   setIsSuccessful(true);
+    // }
   };
+
+  useEffect(() => {
+    if (email === "") {
+      setDisable(true);
+    } else if (username === "") {
+      setDisable(true);
+    } else if (password === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  });
 
   const setPasswordVisibilty = () => {
     setVisibility(true);
@@ -159,7 +180,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                 </div>
                 <div className="sign_up_area2">
                   <div className="sign_up_area1_cont1">
-                    <h4>Welcome</h4>
+                    <h4 className="h444k">Welcome</h4>
                   </div>
                   <form class="sign_up_form" action="/action_page.php">
                     <label for="name"></label>
@@ -170,26 +191,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       required
                       className="input_me"
                       value={username}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      name="firstname"
-                      required
-                      className="input_me"
-                      value={firstname}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      name="lastname"
-                      required
-                      className="input_me"
-                      value={lastname}
                       onChange={onChange}
                     />
                     <label for="email"></label>
@@ -273,8 +274,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         />
                       </div>
                     </div>
-                    <div className="password_does_not_match">
-                      Password does 
+                    <div
+                      className={
+                        doesNotMatch == "not_password_match"
+                          ? "not_password_match"
+                          : "password_match"
+                      }
+                    >
+                      Password does not match
                     </div>
                     {/* <label for="walletAddress"></label>
                     <input
@@ -296,13 +303,25 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
                   <div className="sign_up_btns">
                     <button
-                      // type="submit"
+                      type="submit"
                       className="signupbtn"
                       onClick={submitData}
+                      disabled={disable}
+                      // disabled={isLoading ? "true" : null}
+                      value="Login"
                     >
-                      {!isLoading
-                        ? "   Create an account"
-                        : "   Creating an account"}
+                      {isLoading ? (
+                        <span>
+                          Creating account{" "}
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faSpinner}
+                            spin
+                          />
+                        </span>
+                      ) : (
+                        <span>Create account</span>
+                      )}{" "}
                     </button>
                     <div className="login_btn">
                       <div className="or">Have an account?</div>

@@ -103,6 +103,15 @@
   .join_now_btn2 {
     padding: 0.5em 3em;
   }
+  .join_now_btn:hover {
+    padding: 0.5em 3em;
+  }
+  .join_now_btn3:hover {
+    padding: 0.5em 3em;
+  }
+  .join_now_btn2:hover {
+    padding: 0.5em 3em;
+  }
 }
 
 @media screen and (max-width: 665px) {
@@ -119,6 +128,22 @@
   }
 
   .jb2 {
+    padding: 0.3em 1.5em;
+    font-size: 12px;
+  }
+  .jb1:hover {
+    padding: 0.5em 2em;
+    font-size: 12px;
+  }
+  .jb1a :hover {
+    padding: 0.5em 1em;
+    font-size: 12px;
+  }
+  .double_arrow {
+    font-size: 14px !important;
+  }
+
+  .jb2:hover {
     padding: 0.3em 1.5em;
     font-size: 12px;
   }

@@ -216,6 +216,11 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                     alt=""
                     className="user_profile"
                   />
+                  <img
+                    src="/img/profile_icon2.svg"
+                    alt=""
+                    className="user_profile2"
+                  />
                 </div>
               </div>
 
@@ -369,28 +374,6 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                   Tasks
                 </li>
               </Link>
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-              {/* ===================== */}
-
-              <Link
-                to="/dashboard/ranking"
-                className="link"
-                id="governance"
-                onClick={changeBg}
-              >
-                <li
-                  className={
-                    activeBg == "governance"
-                      ? "sidebarListItem list-item-active"
-                      : "sidebarListItem"
-                  }
-                >
-                  <BarChartIcon className="sidebarIcon" />
-                  Rankings
-                </li>
-              </Link>
 
               {/* ===================== */}
               {/* ===================== */}
@@ -412,6 +395,28 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
                 >
                   <GroupIcon className="sidebarIcon" />
                   Referrals
+                </li>
+              </Link>
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+              {/* ===================== */}
+
+              <Link
+                to="/dashboard/ranking"
+                className="link"
+                id="governance"
+                onClick={changeBg}
+              >
+                <li
+                  className={
+                    activeBg == "governance"
+                      ? "sidebarListItem list-item-active"
+                      : "sidebarListItem"
+                  }
+                >
+                  <BarChartIcon className="sidebarIcon" />
+                  Rankings
                 </li>
               </Link>
 

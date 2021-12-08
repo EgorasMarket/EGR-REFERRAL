@@ -47,8 +47,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Get Social Media Handles
 export const getAuthentication =
-  (username, firstname, lastname, email, password, ref) =>
-  async (dispatch) => {
+  (username, email, password, ref) => async (dispatch) => {
     const config = {
       headers: {
         Accept: "*",
@@ -59,8 +58,6 @@ export const getAuthentication =
 
     const body = JSON.stringify({
       username,
-      firstname,
-      lastname,
       email,
       password,
       // walletAddress,
