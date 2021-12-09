@@ -7,6 +7,6 @@ useEffect(() => {
       complete: true,
     });
     setStaffEmail(decoded.payload.email);
-    console.log(decoded.payload.email);
+    // console.log(decoded.payload.email);
   }
 }, [auth]);
