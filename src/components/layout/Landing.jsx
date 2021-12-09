@@ -263,12 +263,11 @@ const Landing = ({
                 REFERRAL CONTEST WITH EGORAS.
               </h1>
               <p className="landing_area_txts_sub_heading">
-                EARN MASSIVELY WITH EGR TOKEN.....
+                REFERRAL COMPETITION <span className="milli">10MILLION </span>{" "}
+                NAIRA TO BE WON.
               </p>
               <p className="landing_area_txts_para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                porro iusto consequatur sit minima, neque natus impedit amet
-                deleniti aliquam!
+                Competition period: 2021-12-13 to 2022-01-20
               </p>
               {/* <div
                 className={openJoin == "button" ? "button" : "not_button"}
@@ -286,6 +285,101 @@ const Landing = ({
         <img src="/img/spiky-circle.png" alt="" className="big_hero_img2" />
         <img src="/img/bg-hero-dots.svg" alt="" className="big_hero_img3" />
       </section>
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* Partners Section start  */}
+
+      <section className="how_it_works_section">
+        <div className="container">
+          <div className="how_it_works_area">
+            <div className="how_it_works_heading">How it works</div>
+            <div className="how_it_works_conts">
+              <div className="works_cont1">
+                <div className="works_icon">
+                  <img
+                    src="/img/signup.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Create an account.
+                  <p className="works_cont_para">
+                    To get started you have to simply signup on the site to get
+                    started.
+                  </p>
+                </div>
+              </div>
+              <div className="works_cont1">
+                <div className="works_icon">
+                  {" "}
+                  <img
+                    src="/img/follow_social.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Follow Egoras on our social handles.
+                  <p className="works_cont_para">
+                    Complete tasks by simply following our social media handles.
+                  </p>
+                </div>
+              </div>
+              <div className="works_cont1 last">
+                <div className="works_icon">
+                  <img
+                    src="/img/ref_img.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Create a referral link.
+                  <p className="works_cont_para">
+                    Every user has a unique referral link refer as many users as
+                    possible to stand a chance of winning the grand prize.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+
+      <section className="how_earn_section">
+        <div className="container">
+          <div className="how_it_works_heading">
+            How to earn on the platform.
+          </div>
+          <div className="how_earn_area">
+            <div className="how_earn_cont1">
+              <div className="how_earn_cont_head">Promotion A</div>
+              <div className="how_earn_cont_para">
+                All users that follow our social media handles with two verified
+                referrals or more that will also follow all our social media
+                handles will equally split exclusive prize of 13million naira.
+              </div>
+            </div>
+            <div className="how_earn_cont1">
+              <div className="how_earn_cont_head">Promotion B</div>
+              <div className="how_earn_cont_para">
+                The top 20 users ranked by verified referrals that follow all
+                Egoras social media accounts will equally split an exclusive
+                prize of 7million naira.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============== */}
       {/* ============== */}
       {/* ============== */}

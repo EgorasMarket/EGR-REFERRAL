@@ -34,16 +34,25 @@ img.hero_img {
 }
 
 .landing_area_txts_heading {
-  font-size: 54px;
-  font-weight: 700;
+  font-size: 58px;
+  font-weight: 900;
 }
-
-.landing_area_txts_sub_heading {
-  margin-top: 30px;
+.milli {
+  font-weight: 900;
+  font-size: 26px;
+  color: #212529;
+}
+.landing_area_txts_para {
+  color: grey;
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 10px;
-  color: #e4a788;
+}
+.landing_area_txts_sub_heading {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 0px;
+  color: #e1a688;
 }
 
 img.big_hero_img {
@@ -74,6 +83,106 @@ img.big_hero_img {
   top: 110px;
   z-index: -1;
 }
+
+/* ================ */
+/* ================ */
+/* ================ */
+
+.how_it_works_section {
+  padding: 4em 0em;
+  position: relative;
+}
+
+.how_it_works_heading {
+  font-size: 32px;
+  font-weight: 800;
+  color: #212529;
+  text-align: center;
+}
+
+.how_it_works_conts {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin-top: 40px;
+  /* width: 80%; */
+}
+
+.works_cont1 {
+  background: #fff;
+  box-shadow: 0px 1px 5px #c1ddcc;
+  padding: 1.5em 1em;
+  border-radius: 20px;
+  width: 50%;
+  height: 160px;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.works_cont1.last {
+  margin: 0;
+}
+.create_acct_icon {
+  width: 80px;
+  margin-right: 20px;
+}
+
+.works_block {
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.works_cont_para {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9d9d9d;
+  margin: 0;
+}
+
+/* ================ */
+/* ================ */
+/* ================ */
+/* ================ */
+.how_earn_section {
+  padding: 4em 0em;
+  position: relative;
+  background: #f7f7f7;
+}
+.how_earn_area {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 30px;
+  padding: 4em;
+}
+
+.how_earn_cont_head {
+  text-align: center;
+  font-size: 25px;
+  color: #54bc7e;
+  font-weight: 600;
+}
+
+.how_earn_cont1 {
+  padding: 4em;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px #e9e9e9;
+}
+.how_earn_cont_para {
+  font-size: 20px;
+  color: grey;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ================ */
+/* ================ */
+/* ================ */
+/* ================ */
 
 .gtpartnersSection {
   /* position: relative; */
