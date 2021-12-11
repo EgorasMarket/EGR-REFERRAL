@@ -131,8 +131,8 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
   // }
 
   return (
-    <div>
-      <section className="sign_up_section">
+    <div style={{height:"100vh"}}>
+      <section className="sign_up_section" style={{height:"100%"}}>
         <div className="container">
           <div className="sign_up_area">
             <div className="sign_up_cont">
@@ -143,8 +143,10 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
                   className="sign_up_img"
                 />
                 <div className="signup_area1_txts">
-                  <h4>Welcome aboard my friend.</h4>
-                  <p>just a couple of clicks and we start</p>
+                  <h4 className="welcome_aboard">Welcome aboard my friend.</h4>
+                  <p className="couple_clicks">
+                    just a couple of clicks and we start
+                  </p>
                 </div>
                 <img
                   src="/img/sign_up_half_ball.png"
@@ -154,9 +156,9 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
               </div>
               <div className="sign_up_area2">
                 <div className="sign_up_area1_cont1">
-                  <h4>Welcome Back</h4>
+                  <h4 className="h444k">Welcome Back</h4>
                 </div>
-                <form class="sign_up_form" action="/action_page.php">
+                <form class="sign_up_form baba" action="/action_page.php">
                   <label for="email"></label>
                   <input
                     type="text"

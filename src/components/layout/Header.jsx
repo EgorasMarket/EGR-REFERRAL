@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import jwt from "jsonwebtoken";
 
 import { Buttons, Buttons2, ButtonsDashboard } from "./buttons/Buttons";
 import "../../css/header.css";
 const Header = ({auth, isAuthenticated }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const [isAdmin, setIsAdmin] = useState(null)
   const windowsPath = window.location.pathname;
   const myArr = windowsPath.split("/");
 
@@ -26,20 +28,40 @@ const Header = ({auth, isAuthenticated }) => {
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("buttons_login").style.display = "none";
     }
+
+
+    
   });
 
   useEffect(() => {
     // fetchDepositLinks();
-    console.log(auth.user);
+    // console.log(auth.user);
+    var isAdmin;
     if (auth.user !== null) {
-      // var todecoded = auth.user;
-      // var decoded = jwt.decode(todecoded, {
-      //     complete: true
-      // });
+      var todecoded = auth.user;
+      var decoded = jwt.decode(todecoded, {
+          complete: true
+      });
+      // console.log(decoded.payload.user.isAdmin);
       // setStaffEmail(decoded.payload.email)
       setIsLoggedIn(true);
+      // setIsAdmin(decoded.payload.user.isAdmin)
+      isAdmin = decoded.payload.user.isAdmin;
+
+    }
+
+    if (windowsPath === "/super-admin/all/particpants" && isAdmin === true) {
+      
+        console.log('falseeeeeee');
+        
+      } else if (windowsPath === "/super-admin/all/particpants" && isAdmin === false) {
+      return window.location.replace("/dashboard");
+      // console.log('trueeeeee');
+
     }
   }, [auth]);
+
+  // console.log(isAdmin);
 
   const triggerLogout = (event) => {
     // setBusinessDuration(event.target.value);

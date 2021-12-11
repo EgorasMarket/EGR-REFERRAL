@@ -231,8 +231,8 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     <PlaylistAddRoundedIcon className="sidebarIcona" />
                     Tasks
                     <p className="tasks_caption">
-                      In order to participate in this airdrop you need to fulfil
-                      the below requirements:
+                      In order to participate in this referral contest you need
+                      to fulfil the below requirements:
                     </p>
                   </div>
 
@@ -248,8 +248,11 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Follow Egoras Twitter Account
                     </h6>
 
-                    <a href="#" className="link_btn">
-                      Follow @Egoras
+                    <a
+                      href="https://twitter.com/egorasmarket?t=9Gj3dQJUiPLzpq7bfoOGBg&s=09"
+                      className="link_btn"
+                    >
+                      Follow @egorasmarket
                     </a>
                   </div>
                   {/* ======================= */}
@@ -288,10 +291,13 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       }}
                     >
                       {" "}
-                      Follow Egoras/ Facebook Account{" "}
+                      Follow Egoras/ Facebook Page{" "}
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.facebook.com/egorasmarket/"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -312,7 +318,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Subscribe to Egoras youtube account
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.youtube.com/channel/UCHfi5EwXig46xp5Dx8hVBHQ"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -333,7 +342,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Join our network on Linkedin
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a
+                      href="https://www.linkedin.com/company/egorasmarket/mycompany/"
+                      className="link_btn"
+                    >
                       Follow @Egoras
                     </a>
                   </div>
@@ -354,7 +366,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       Join Egoras Telegram Channel
                     </h6>
 
-                    <a href="#" className="link_btn">
+                    <a href="https://t.me/egorasmarket" className="link_btn">
                       Follow @Egoras
                     </a>
                   </div>
@@ -512,7 +524,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     <button
                       type="submit"
                       onClick={submitData}
-                      className="generate_ref_link w-100"
+                      className="generate_ref_link linear-color w-100"
                     >
                       Submit
                     </button>

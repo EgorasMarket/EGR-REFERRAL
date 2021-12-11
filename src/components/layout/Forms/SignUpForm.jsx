@@ -12,25 +12,26 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [visibility, setVisibility] = useState(false);
   const [visibility2, setVisibility2] = useState(false);
   const [passImg, setPassImg] = useState("show_pass");
+  const [doesNotMatch, setDoesNotMatch] = useState("not_password_match");
   const [passImg2, setPassImg2] = useState("show_pass2");
   // const [ref, setRef] = useState("");
   const [userAuth, setUserAuth] = useState({
     username: "",
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
     confirmpassword: "",
-    walletAddress: "",
+    // walletAddress: "",
     // ref: "",
     // applicant_businessAddress: "",
   });
 
-  const { username, firstname, lastname, email, password, confirmpassword, walletAddress } =
-    userAuth;
-
-
-    
+  const {
+    username,
+    email,
+    password,
+    confirmpassword,
+    // walletAddress,
+  } = userAuth;
 
   const onChange = (e) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
@@ -42,46 +43,36 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     }
   };
 
-  
-
   const submitData = async (e) => {
     setIsLoading(true);
     console.log(
       username,
-      firstname,
-      lastname,
       email,
-      password,
-      walletAddress,
+      password
+      // walletAddress
       // ref
     );
 
     if (
       username === "" ||
-      firstname === "" ||
-      lastname === "" ||
       email === "" ||
       password === "" ||
-      confirmpassword === "" ||
-      walletAddress === ""
+      confirmpassword === ""
     ) {
       setAlert("All fields are required", "danger");
     } else {
       if (password !== confirmpassword) {
         setAlert("Passwords do not match", "danger");
       } else {
-
-        if (typeof localStorage.referrer !== 'undefined') {
+        if (typeof localStorage.referrer !== "undefined") {
           console.log(localStorage.referrer);
           // setUserAuth()
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
-            walletAddress,
-            localStorage.referrer,
+            // walletAddress,
+            localStorage.referrer
           );
           // console.log(res.data);
           if (res.data.success === true) {
@@ -89,17 +80,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
-            
           }
         } else {
           let res = await getAuthentication(
             username,
-            firstname,
-            lastname,
             email,
             password,
-            walletAddress,
-            '',
+            // walletAddress,
+            ""
           );
           // console.log(res.data);
           if (res.data.success === true) {
@@ -107,13 +95,18 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
-            
           }
         }
-        
-        
       }
     }
+
+    // if (password === confirmpassword) {
+    //   setDoesNotMatch("password_match");
+    //   setIsSuccessful(false);
+    // } else {
+    //   setDoesNotMatch("not_password_match");
+    //   setIsSuccessful(true);
+    // }
   };
 
   const setPasswordVisibilty = () => {
@@ -163,7 +156,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                 </div>
                 <div className="sign_up_area2">
                   <div className="sign_up_area1_cont1">
-                    <h4>Welcome</h4>
+                    <h4 className="h444k">Welcome</h4>
                   </div>
                   <form class="sign_up_form" action="/action_page.php">
                     <label for="name"></label>
@@ -174,26 +167,6 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       required
                       className="input_me"
                       value={username}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      name="firstname"
-                      required
-                      className="input_me"
-                      value={firstname}
-                      onChange={onChange}
-                    />
-                    <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      name="lastname"
-                      required
-                      className="input_me"
-                      value={lastname}
                       onChange={onChange}
                     />
                     <label for="email"></label>
@@ -277,7 +250,16 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         />
                       </div>
                     </div>
-                    <label for="walletAddress"></label>
+                    <div
+                      className={
+                        doesNotMatch == "not_password_match"
+                          ? "not_password_match"
+                          : "password_match"
+                      }
+                    >
+                      Password does not match
+                    </div>
+                    {/* <label for="walletAddress"></label>
                     <input
                       type="text"
                       placeholder="Bep20 Wallet Address"
@@ -286,7 +268,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       className="input_me"
                       value={walletAddress}
                       onChange={onChange}
-                    />
+                    /> */}
 
                     {/* <div className="forgot_link">
                     <a href="#" className="forgot_password">

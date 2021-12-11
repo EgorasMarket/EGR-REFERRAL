@@ -254,7 +254,7 @@ const Landing = ({
   // };
 
   return (
-    <div>
+    <div id="landing_div">
       <section className="landing_section">
         <div className="container">
           <div className="landing_area">
