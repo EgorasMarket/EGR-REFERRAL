@@ -1,5 +1,3 @@
-
-
 .footer_blur {
   position: absolute;
   bottom: 0;
@@ -17,4 +15,15 @@
 
 section.footer_section {
   padding: 1em 0em;
+}
+
+@media screen and (max-width: 767px) {
+  .footer_txts {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
 }

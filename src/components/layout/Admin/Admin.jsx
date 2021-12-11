@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { connect } from "react-redux";
 import { getUsersData } from "../../../actions/getreferer";
@@ -12,6 +12,8 @@ import "../../../css/admin.css";
 const Admin = () => {
   // const [searchTerm, setSearchTerm] = useState("");
   const [staffData, setstaffData] = useState([]);
+  // const [copySuccess, setCopySuccess] = useState("");
+  // const textAreaRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   // const [searchResults, setSearchResults] = useState([]);
   const config = {
@@ -37,6 +39,43 @@ const Admin = () => {
 
     // }
   }, []);
+
+  // function copyToClipboard(e) {
+  //   textAreaRef.current.select();
+  //   document.execCommand("copy");
+  //   // This is just personal preference.
+  //   // I prefer to not show the whole text area selected.
+  //   e.target.focus();
+  //   setCopySuccess("Copied!");
+  // }
+
+  // const copyText = () => {
+  //   axios
+  //     .get(api_url + "/v1/user/all/participant/response", null, config)
+  //     .then((data) => {
+  //       console.log(data);
+  //       setstaffData(data.data.allData);
+  //       if (data.status === 200) {
+  //         setIsLoading(false);
+  //       } else {
+  //         setIsLoading(true);
+  //       }
+  //       data.data.allData.select();
+  //       data.data.allData.setSelectionRange(0, 99999);
+  //       navigator.clipboard.writeText(data.data.allData);
+  //     });
+  // var copyText = document.getElementById("copy_usernames");
+
+  // var tooltip = document.getElementById("myTooltip");
+  // tooltip.innerHTML = "Copied Link ";
+  // tooltip.style.display = "block";
+  // };
+
+  // function outFunc() {
+  //   var tooltip = document.getElementById("myTooltip");
+  //   tooltip.innerHTML = "Copy to clipboard";
+  //   tooltip.style.display = "none";
+  // }
 
   // /========
   // /========
@@ -142,34 +181,105 @@ const Admin = () => {
                         </div>
                       </td>
                       <td className="assets-category-data1">
-                        <div className="assets-data-name">
+                        <button
+                          className="assets-data-name"
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          id="copy_usernames"
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.twitterHandle)
+                          }
+                        >
                           {asset.twitterHandle}
-                        </div>
+                        </button>
                       </td>
                       <td className="assets-category-data1b">
-                        <div className="assets-data-name ">
+                        <button
+                          className="assets-data-name "
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.telegramHandle)
+                          }
+                        >
                           {asset.telegramHandle}
-                        </div>
+                        </button>
                       </td>
                       <td className="assets-category-data1b stable-content">
-                        <div className="assets-data-name ">
+                        <button
+                          className="assets-data-name "
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.linkedInHandle)
+                          }
+                        >
                           {asset.linkedInHandle}
-                        </div>
+                        </button>
                       </td>
                       <td className="assets-category-data1b ratio-content">
-                        <div className="assets-data-name ">
+                        <button
+                          className="assets-data-name "
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.facebookHandle)
+                          }
+                        >
                           {asset.facebookHandle}
-                        </div>
+                        </button>
                       </td>
                       <td className="assets-category-data1b ratio-content">
-                        <div className="assets-data-name ">
+                        <div
+                          className="assets-data-name "
+                          // onClick={() =>
+                          //   navigator.clipboard.writeText(asset.walletAddress)
+                          // }
+                        >
                           {asset.walletAddress}
                         </div>
                       </td>
                       <td className="assets-category-data1b ratio-content">
-                        <div className="assets-data-name ">
+                        <button
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          className="assets-data-name "
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.referal_hash)
+                          }
+                        >
                           {asset.referal_hash}
-                        </div>
+                        </button>
                       </td>
                       <td className="assets-category-data1b ratio-content">
                         <div className="assets-data-name ">
@@ -208,13 +318,3 @@ const Admin = () => {
   );
 };
 export default Admin;
-
-
-
-
-
-
-
-
-
-

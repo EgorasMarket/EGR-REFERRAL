@@ -78,7 +78,7 @@ const Dashboard_home = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        console.log(data.data.allData);
+        // console.log(data.data.allData);
         setTopReferral(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
@@ -92,7 +92,7 @@ const Dashboard_home = () => {
       });
 
     axios.get(api_url + "/v1/user/referal/count", null, config).then((data) => {
-      console.log(data.data.user.count);
+      // console.log(data.data.user.count);
       setReferralCount(data.data.user.count);
       if (data.status === 200) {
         setIsLoading(false);
@@ -212,11 +212,12 @@ const Dashboard_home = () => {
                             <td className="assets-category-data">
                               <div className="assets-data">
                                 <div className="assets-data-nameLeft">
-                                  {asset.username.substring(0, 1) +
+                                  {asset.username}
+                                  {/* {asset.username.substring(0, 1) +
                                     "****" +
                                     asset.username.substr(
                                       asset.username.length - 2
-                                    )}
+                                    )} */}
                                 </div>
                               </div>
                             </td>

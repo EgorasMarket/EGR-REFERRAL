@@ -263,12 +263,15 @@ const Landing = ({
                 REFERRAL CONTEST WITH EGORAS.
               </h1>
               <p className="landing_area_txts_sub_heading">
-                EARN MASSIVELY WITH EGR TOKEN.....
+                REFERRAL COMPETITION <span className="milli">10MILLION </span>{" "}
+                NAIRA TO BE WON.
               </p>
               <p className="landing_area_txts_para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                porro iusto consequatur sit minima, neque natus impedit amet
-                deleniti aliquam!
+                Competition period:{" "}
+                <span style={{ color: "#000" }}>
+                  {" "}
+                  DEC-13-2021 to JAN-20-2022
+                </span>
               </p>
               {/* <div
                 className={openJoin == "button" ? "button" : "not_button"}
@@ -286,6 +289,124 @@ const Landing = ({
         <img src="/img/spiky-circle.png" alt="" className="big_hero_img2" />
         <img src="/img/bg-hero-dots.svg" alt="" className="big_hero_img3" />
       </section>
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* Partners Section start  */}
+
+      <section className="how_it_works_section">
+        <div className="container">
+          <div className="how_it_works_area">
+            <div className="how_it_works_heading">How it works</div>
+            <div className="how_it_works_conts">
+              <div className="works_cont1">
+                <div className="works_icon">
+                  <img
+                    src="/img/signup.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Create an account.
+                  <p className="works_cont_para">
+                    To get started you have to simply signup on the site to get
+                    started.
+                  </p>
+                </div>
+              </div>
+              <div className="works_cont1">
+                <div className="works_icon">
+                  {" "}
+                  <img
+                    src="/img/follow_social.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Follow Egoras social media handles.
+                  <p className="works_cont_para">
+                    Complete tasks by simply following our social media handles.
+                  </p>
+                </div>
+              </div>
+              <div className="works_cont1 last">
+                <div className="works_icon">
+                  <img
+                    src="/img/ref_img.svg"
+                    alt=""
+                    className="create_acct_icon"
+                  />
+                </div>
+                <div className="works_block">
+                  Create a referral link.
+                  <p className="works_cont_para">
+                    Every user has a unique referral link refer as many users as
+                    possible to stand a chance of winning the grand prize.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+      {/* ============== */}
+
+      <section className="how_earn_section">
+        <div className="container">
+          <div className="how_it_works_heading">
+            How to earn on the platform.
+          </div>
+          <div className="how_earn_area">
+            <div className="how_earn_conts">
+              <div className="how_earn_cont1">
+                <div className="how_earn_cont_img">
+                  <img
+                    src="/img/earn_vector.svg"
+                    alt=""
+                    className="how_earn_img1"
+                  />
+                </div>
+                <div className="how_earn_txts">
+                  <div className="how_earn_cont_head">Promotion A</div>
+                  <div className="how_earn_cont_para">
+                    All users that follow our social media handles with two
+                    verified referrals or more that will also follow all our
+                    social media handles will equally split an exclusive prize
+                    of 3million naira.
+                  </div>
+                </div>
+              </div>
+
+              <div className="how_earn_cont1 rever">
+                <div className="how_earn_txts">
+                  <div className="how_earn_cont_head">Promotion B</div>
+                  <div className="how_earn_cont_para">
+                    The top 20 users ranked by verified referrals that follow
+                    all Egoras social media accounts will equally split an
+                    exclusive prize of 7million naira.
+                  </div>
+                </div>
+
+                <div className="how_earn_cont_img">
+                  <img
+                    src="/img/earn_img_2.svg"
+                    alt=""
+                    className="how_earn_img2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============== */}
       {/* ============== */}
       {/* ============== */}
@@ -787,6 +908,36 @@ const Landing = ({
             )}
           </div>
         </section>{" "}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        {/* ========================= */}
+        <section className="last_bg_section">
+          <div className="container">
+            <div className="last_bg_area">
+              <div className="last_bg_cont">
+                <div className="last_bg_cont_text">Sounds Interesting?</div>
+                <a href="/signup">
+                  <button className="get_start">Get started</button>
+                </a>
+
+                <img
+                  src="/img/explore-dots.svg"
+                  alt=""
+                  className="last_bg_img1 explore_dots"
+                />
+                <img
+                  src="/img/explore-shape.svg"
+                  alt=""
+                  className="last_bg_img2"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
         {/* ========================= */}
         {/* ========================= */}
         {/* ========================= */}

@@ -29,7 +29,9 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
   const [username, setGetUsername] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading3, setIsLoading3] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
+  const [disable, setDisable] = React.useState(false);
   const [errorMessage, setErrorMessage] = useState("not_error_message_div");
   const [errorMessage1, setErrorMessage1] = useState("not_error_message_div1");
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
@@ -41,7 +43,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     telegramHandle: "",
     linkedInHandle: "",
     facebookHandle: "",
-    walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
+    // walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
     // applicant_businessAddress: "",
   });
   const config = {
@@ -56,7 +58,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     telegramHandle,
     linkedInHandle,
     facebookHandle,
-    walletAddress,
+    // walletAddress,
   } = userData;
   // ======
   // ======
@@ -65,9 +67,9 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      // console.log("input something here");
     } else {
-      console.log("something is here");
+      // console.log("something is here");
     }
 
     const { name, value, id } = e.target;
@@ -76,20 +78,20 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "twitterHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          // console.log("input something here");
           setErrorMessage("error_message_div");
         } else {
-          console.log("something is here");
+          // console.log("something is here");
           setErrorMessage("not_error_message_div");
         }
 
         break;
       case "telegramHandle":
         if (e.target.value === "") {
-          console.log("input something here");
+          // console.log("input something here");
           setErrorMessage1("error_message_div1");
         } else {
-          console.log("something is here");
+          // console.log("something is here");
           setErrorMessage1("not_error_message_div1");
         }
         // code block
@@ -97,10 +99,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "facebookHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          // console.log("input something here");
           setErrorMessage2("error_message_div2");
         } else {
-          console.log("something is here");
+          // console.log("something is here");
           setErrorMessage2("not_error_message_div2");
         }
 
@@ -108,10 +110,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "linkedInHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          // console.log("input something here");
           setErrorMessage3("error_message_div3");
         } else {
-          console.log("something is here");
+          // console.log("something is here");
           setErrorMessage3("not_error_message_div3");
         }
 
@@ -119,54 +121,81 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       default:
       // code block
     }
+
+    if (twitterHandle === "") {
+      setDisable(true);
+    } else if (telegramHandle === "") {
+      setDisable(true);
+    } else if (linkedInHandle === "") {
+      setDisable(true);
+    } else if (facebookHandle === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
   };
 
   useEffect(() => {
     // fetchDepositLinks();
-    console.log(auth.user);
+    // console.log(auth.user);
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {
         complete: true,
       });
 
-      console.log("====================================");
-      console.log(decoded.payload.user.username);
-      console.log("====================================");
+      // console.log("====================================");
+      // console.log(decoded.payload.user.username);
+      // console.log("====================================");
       setGetUsername(decoded.payload.user.username);
       // setIsLoggedIn(true);
     }
   }, [auth]);
 
+  useEffect(() => {
+    if (twitterHandle === "") {
+      setDisable(true);
+    } else if (telegramHandle === "") {
+      setDisable(true);
+    } else if (linkedInHandle === "") {
+      setDisable(true);
+    } else if (facebookHandle === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  });
+
   // =========
   // =========
 
   const submitData = async (e) => {
-    console.log("====================================");
-    console.log(username);
-    console.log("====================================");
+    // console.log("====================================");
+    // console.log(username);
+    // console.log("====================================");
+    setIsLoading3(true);
     if (
       twitterHandle === "" &&
       telegramHandle === "" &&
       facebookHandle === "" &&
       linkedInHandle === ""
     ) {
-      console.log("please supply");
+      // console.log("please supply");
       setErrorMessage("error_message_div");
       setErrorMessage1("error_message_div1");
       setErrorMessage2("error_message_div2");
       setErrorMessage3("error_message_div3");
     } else if (twitterHandle === "") {
-      console.log("please supply");
+      // console.log("please supply");
       setErrorMessage("error_message_div");
     } else if (telegramHandle === "") {
-      console.log("please supply");
+      // console.log("please supply");
       setErrorMessage1("error_message_div1");
     } else if (facebookHandle === "") {
-      console.log("please supply");
+      // console.log("please supply");
       setErrorMessage2("error_message_div2");
     } else if (linkedInHandle === "") {
-      console.log("please supply");
+      // console.log("please supply");
       setErrorMessage3("error_message_div3");
     } else {
       setErrorMessage("not_error_message_div");
@@ -174,15 +203,15 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       setErrorMessage2("not_error_message_div2");
       setErrorMessage3("not_error_message_div3");
       let res = await getSocialHandles({
-        username,
+        // username,
         twitterHandle,
         telegramHandle,
         linkedInHandle,
         facebookHandle,
-        walletAddress,
+        // walletAddress,
       });
 
-      console.log(res);
+      // console.log(res);
 
       if (res.success === true) {
         setIsSuccessful(true);
@@ -521,16 +550,38 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                     </div>
                     {/* ========== */}
                     {/* ========== */}
-                    <button
+                    {/* <button
                       type="submit"
                       onClick={submitData}
                       className="generate_ref_link linear-color w-100"
                     >
                       Submit
+                    </button> */}
+                    <button
+                      type="submit"
+                      className="generate_ref_link linear-color w-100"
+                      onClick={submitData}
+                      disabled={disable}
+                      // disabled={isLoading ? "true" : null}
+                      // value="Login"
+                    >
+                      {isLoading3 ? (
+                        <span>
+                          Submitting{" "}
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faSpinner}
+                            spin
+                          />
+                        </span>
+                      ) : (
+                        <span> Submit</span>
+                      )}{" "}
                     </button>
                     {/* ===== */}
                     {/* ===== */}
                     {/* ===== */}
+
                     {/* ===== */}
                     {/* ===== */}
                     {/* ===== */}

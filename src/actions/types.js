@@ -8,5 +8,9 @@ export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOG_OUT = "LOG_OUT";
 
+<<<<<<< HEAD
 export const API_URL = "https://earner.egoras.com";
+=======
+export const API_URL = "https://d5195865b60437.localhost.run";
+>>>>>>> 9d1e11a84ef4a1712fb65342e895b98d45fd8df1
 // export const API_URL = "http://localhost:4000";

@@ -118,7 +118,7 @@
   background: white;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out 0s, box-shadow 0.2s ease-in-out 0s;
-  cursor: pointer;
+  /* cursor: pointer; */
   height: 100px;
 }
 .assets-category-row:hover {

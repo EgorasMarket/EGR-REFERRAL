@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import "./signup-form.css";
 
 import { setAlert } from "../../../actions/alert";
 
 import { getAuthentication } from "../../../actions/Auth";
-
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const SignUpForm = ({ getAuthentication, setAlert }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [visibility2, setVisibility2] = useState(false);
+  const [disable, setDisable] = React.useState(false);
   const [passImg, setPassImg] = useState("show_pass");
   const [doesNotMatch, setDoesNotMatch] = useState("not_password_match");
   const [passImg2, setPassImg2] = useState("show_pass2");
@@ -100,6 +102,16 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       }
     }
 
+    if (email === "") {
+      setDisable(true);
+    } else if (username === "") {
+      setDisable(true);
+    } else if (password === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+
     // if (password === confirmpassword) {
     //   setDoesNotMatch("password_match");
     //   setIsSuccessful(false);
@@ -108,6 +120,18 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     //   setIsSuccessful(true);
     // }
   };
+
+  useEffect(() => {
+    if (email === "") {
+      setDisable(true);
+    } else if (username === "") {
+      setDisable(true);
+    } else if (password === "") {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  });
 
   const setPasswordVisibilty = () => {
     setVisibility(true);
@@ -279,13 +303,25 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
 
                   <div className="sign_up_btns">
                     <button
-                      // type="submit"
+                      type="submit"
                       className="signupbtn"
                       onClick={submitData}
+                      disabled={disable}
+                      // disabled={isLoading ? "true" : null}
+                      value="Login"
                     >
-                      {!isLoading
-                        ? "   Create an account"
-                        : "   Creating an account"}
+                      {isLoading ? (
+                        <span>
+                          Creating account{" "}
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faSpinner}
+                            spin
+                          />
+                        </span>
+                      ) : (
+                        <span>Create account</span>
+                      )}{" "}
                     </button>
                     <div className="login_btn">
                       <div className="or">Have an account?</div>
