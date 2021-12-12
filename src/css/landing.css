@@ -340,7 +340,8 @@ img.big_hero_img {
 .error_message_div,
 .error_message_div1,
 .error_message_div2,
-.error_message_div3 {
+.error_message_div3,
+.error_message_div4 {
   color: red;
   background: #fff;
   padding: 0.8em;
@@ -352,7 +353,8 @@ img.big_hero_img {
 .not_error_message_div,
 .not_error_message_div1,
 .not_error_message_div2,
-.not_error_message_div3 {
+.not_error_message_div3,
+.not_error_message_div4 {
   display: none;
 }
 

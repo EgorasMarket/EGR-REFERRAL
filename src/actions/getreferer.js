@@ -5,11 +5,12 @@ import { API_URL as api_url } from "./types";
 // Get Social Media Handles
 export const getSocialHandles =
   ({
-    // username,
+    username,
     twitterHandle,
     telegramHandle,
     linkedInHandle,
     facebookHandle,
+    mediumHandle,
     // walletAddress,
   }) =>
   async (dispatch) => {
@@ -22,11 +23,12 @@ export const getSocialHandles =
     };
 
     const body = JSON.stringify({
-      // username,
+      username,
       twitterHandle,
       telegramHandle,
       linkedInHandle,
       facebookHandle,
+      mediumHandle,
       // walletAddress,
     });
 

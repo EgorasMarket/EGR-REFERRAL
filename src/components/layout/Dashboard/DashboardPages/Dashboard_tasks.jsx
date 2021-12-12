@@ -37,12 +37,15 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
 
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
+  const [errorMessage4, setErrorMessage4] = useState("not_error_message_div4");
+  // let username = "";
   const [userData, setUserData] = useState({
     // username: getUsername,
     twitterHandle: "",
     telegramHandle: "",
     linkedInHandle: "",
     facebookHandle: "",
+    mediumHandle: "",
     // walletAddress: "0xd68edd5c52f7563486cc1a15d00efa12c8644a907e",
     // applicant_businessAddress: "",
   });
@@ -58,6 +61,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     telegramHandle,
     linkedInHandle,
     facebookHandle,
+    mediumHandle,
     // walletAddress,
   } = userData;
   // ======
@@ -118,6 +122,17 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
         }
 
         break;
+      case "mediumHandle":
+        // code block
+        if (e.target.value === "") {
+          // console.log("input something here");
+          setErrorMessage4("error_message_div4");
+        } else {
+          // console.log("something is here");
+          setErrorMessage4("not_error_message_div4");
+        }
+
+        break;
       default:
       // code block
     }
@@ -129,6 +144,8 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     } else if (linkedInHandle === "") {
       setDisable(true);
     } else if (facebookHandle === "") {
+      setDisable(true);
+    } else if (mediumHandle === "") {
       setDisable(true);
     } else {
       setDisable(false);
@@ -149,6 +166,8 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       // console.log("====================================");
       setGetUsername(decoded.payload.user.username);
       // setIsLoggedIn(true);
+      console.log(decoded.payload.user.username);
+      // username = decoded.payload.user.username;
     }
   }, [auth]);
 
@@ -160,6 +179,8 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     } else if (linkedInHandle === "") {
       setDisable(true);
     } else if (facebookHandle === "") {
+      setDisable(true);
+    } else if (mediumHandle === "") {
       setDisable(true);
     } else {
       setDisable(false);
@@ -178,6 +199,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       twitterHandle === "" &&
       telegramHandle === "" &&
       facebookHandle === "" &&
+      mediumHandle === "" &&
       linkedInHandle === ""
     ) {
       // console.log("please supply");
@@ -185,6 +207,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       setErrorMessage1("error_message_div1");
       setErrorMessage2("error_message_div2");
       setErrorMessage3("error_message_div3");
+      setErrorMessage4("error_message_div4");
     } else if (twitterHandle === "") {
       // console.log("please supply");
       setErrorMessage("error_message_div");
@@ -197,17 +220,22 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     } else if (linkedInHandle === "") {
       // console.log("please supply");
       setErrorMessage3("error_message_div3");
+    } else if (mediumHandle === "") {
+      // console.log("please supply");
+      setErrorMessage4("error_message_div4");
     } else {
       setErrorMessage("not_error_message_div");
       setErrorMessage1("not_error_message_div1");
       setErrorMessage2("not_error_message_div2");
       setErrorMessage3("not_error_message_div3");
+      setErrorMessage4("not_error_message_div4");
       let res = await getSocialHandles({
-        // username,
+        username,
         twitterHandle,
         telegramHandle,
         linkedInHandle,
         facebookHandle,
+        mediumHandle,
         // walletAddress,
       });
 
@@ -215,15 +243,19 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
 
       if (res.success === true) {
         setIsSuccessful(true);
-        setUserData({
-          twitterHandle: "",
-          telegramHandle: "",
-          linkedInHandle: "",
-          facebookHandle: "",
-        });
+        // setUserData({
+        //   // username: getUsername,
+        //   twitterHandle: "",
+        //   telegramHandle: "",
+        //   linkedInHandle: "",
+        //   facebookHandle: "",
+        //   mediumHandle: "",
+        // });
       } else {
         setAlert(res.data[0].msg, "danger");
       }
+
+      console.log(username);
     }
   };
 
@@ -392,6 +424,27 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                       }}
                     >
                       {" "}
+                      Follow Egoras on Medium
+                    </h6>
+
+                    <a href="https://egoras.medium.com/" className="link_btn">
+                      Follow @Egoras
+                    </a>
+                  </div>
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  {/* ======================= */}
+                  <div className="tasks_write_up">
+                    <h6
+                      style={{
+                        margin: "0",
+                        fontSize: "14px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
                       Join Egoras Telegram Channel
                     </h6>
 
@@ -498,6 +551,33 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
                           errorMessage2 == "not_error_message_div2"
                             ? "not_error_message_div2"
                             : "error_message_div2"
+                        }
+                      >
+                        Please input at least 1 character.
+                      </div>
+                    </div>
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    {/* ========= */}
+                    <div className="modal_form_area1">
+                      <div className="modal_form_area1_input_heading">
+                        Medium Handle
+                      </div>
+                      <input
+                        type="text"
+                        id="mediumHandle"
+                        placeholder="@JohnDoe "
+                        name="mediumHandle"
+                        value={mediumHandle}
+                        onChange={onChange}
+                        className="modal_form_area1_input1"
+                      />
+                      <div
+                        className={
+                          errorMessage4 == "not_error_message_div4"
+                            ? "not_error_message_div4"
+                            : "error_message_div4"
                         }
                       >
                         Please input at least 1 character.

@@ -131,8 +131,8 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
   // }
 
   return (
-    <div style={{height:"100vh"}}>
-      <section className="sign_up_section" style={{height:"100%"}}>
+    <div style={{ height: "100vh" }}>
+      <section className="sign_up_section" style={{ height: "100%" }}>
         <div className="container">
           <div className="sign_up_area">
             <div className="sign_up_cont">
@@ -235,14 +235,16 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
                   </button>
                   <div className="login_btn">
                     <div className="or">Don't have an account?</div>
-                    <button
-                      // type="submit"
-                      className="loginButton"
-                    >
-                      <a href="/signup" className="login">
-                        Signup
-                      </a>
-                    </button>
+                    <a href="/signup" className="login2">
+                      {" "}
+                      <button
+                        className="signupbtn sm_width"
+                        // type="submit"
+                      >
+                        {" "}
+                        signup
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

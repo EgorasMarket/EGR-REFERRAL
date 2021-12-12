@@ -184,15 +184,21 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                   </div>
                   <form class="sign_up_form" action="/action_page.php">
                     <label for="name"></label>
-                    <input
-                      type="text"
-                      placeholder="Username"
-                      name="username"
-                      required
-                      className="input_me"
-                      value={username}
-                      onChange={onChange}
-                    />
+                    <div className="useName">
+                      <input
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        required
+                        className="input_me"
+                        value={username}
+                        onChange={onChange}
+                      />
+                      <div className="input_atleast_seven_chars">
+                        *Please input at least 7 characters.
+                      </div>
+                    </div>
+
                     <label for="email"></label>
                     <input
                       type="text"
@@ -325,14 +331,16 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                     </button>
                     <div className="login_btn">
                       <div className="or">Have an account?</div>
-                      <button
-                        // type="submit"
-                        className="loginButton"
-                      >
-                        <a href="/login" className="login">
-                          Login
-                        </a>
-                      </button>
+                      <a href="/login" className="login2">
+                        {" "}
+                        <button
+                          className="signupbtn sm_width"
+                          // type="submit"
+                        >
+                          {" "}
+                          login
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -370,14 +378,16 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                   </div>
 
                   <div className="sign_up_btns">
-                    <button
-                      className="signupbtn"
-                      // type="submit"
-                    >
-                      <a href="/login" className="login2">
+                    <a href="/login" className="login2">
+                      {" "}
+                      <button
+                        className="signupbtn"
+                        // type="submit"
+                      >
+                        {" "}
                         Return to login
-                      </a>
-                    </button>
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
