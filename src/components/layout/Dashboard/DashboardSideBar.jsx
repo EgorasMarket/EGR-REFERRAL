@@ -104,11 +104,11 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
   }, []);
 
   const currentTimestamp = new Date().getTime();
-  console.log(new Date().toLocaleTimeString());
+  //console.log(new Date().toLocaleTimeString());
 
   useEffect(() => {
     // fetchDepositLinks();
-    console.log(auth.user);
+    //console.log(auth.user);
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {
@@ -117,12 +117,12 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
       setUserName(decoded.payload.user.username);
       setIsLoggedIn(true);
 
-      console.log(decoded.payload);
+      //console.log(decoded.payload);
       var eee = decoded.payload.exp * 1000;
       var exp = new Date(eee).getTime();
 
       if (currentTimestamp >= exp) {
-        // console.log('ex');
+        // //console.log('ex');
         localStorage.removeItem("token");
         window.location.href = "/login";
       }
@@ -131,7 +131,7 @@ const DashboardSideBar = ({ auth, isAuthenticated }) => {
 
   const triggerLogout = (event) => {
     // setBusinessDuration(event.target.value);
-    // console.log('okkkk');
+    // //console.log('okkkk');
     localStorage.removeItem("token");
     window.location.href = "/login";
   };

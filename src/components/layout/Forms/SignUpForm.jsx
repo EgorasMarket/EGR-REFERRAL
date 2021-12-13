@@ -39,21 +39,21 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      // console.log("input something here");
     } else {
-      console.log("something is here");
+      // console.log("something is here");
     }
   };
 
   const submitData = async (e) => {
     setIsLoading(true);
-    console.log(
-      username,
-      email,
-      password
-      // walletAddress
-      // ref
-    );
+    // console.log(
+    //   username,
+    //   email,
+    //   password
+    //   // walletAddress
+    //   // ref
+    // );
 
     if (
       username === "" ||
@@ -62,12 +62,14 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
       confirmpassword === ""
     ) {
       setAlert("All fields are required", "danger");
+      // setIsLoading(false);
     } else {
       if (password !== confirmpassword) {
         setAlert("Passwords do not match", "danger");
+        setIsLoading(false);
       } else {
         if (typeof localStorage.referrer !== "undefined") {
-          console.log(localStorage.referrer);
+          // console.log(localStorage.referrer);
           // setUserAuth()
           let res = await getAuthentication(
             username,
@@ -79,9 +81,12 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
           // console.log(res.data);
           if (res.data.success === true) {
             setIsSuccessful(true);
+            setIsLoading(false);
+
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
+            setIsLoading(false);
           }
         } else {
           let res = await getAuthentication(
@@ -94,9 +99,12 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
           // console.log(res.data);
           if (res.data.success === true) {
             setIsSuccessful(true);
+            setIsLoading(false);
+
             // console.log("okay Good Server");
           } else {
             setAlert(res.data.data.errors[0].msg, "danger");
+            setIsLoading(false);
           }
         }
       }
@@ -195,7 +203,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         onChange={onChange}
                       />
                       <div className="input_atleast_seven_chars">
-                        *Please input at least 7 characters.
+                        *Username must be at least 7 characters.
                       </div>
                     </div>
 
@@ -221,6 +229,9 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                         value={password}
                         onChange={onChange}
                       />
+                      <div className="input_atleast_seven_chars">
+                        *Password must be at least 7 characters long.
+                      </div>
 
                       <div className="show_pass_div">
                         <img

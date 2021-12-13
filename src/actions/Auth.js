@@ -17,14 +17,14 @@ export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     // setAuthToken(localStorage.token);
     const res = localStorage.token;
-    console.log("Load User is called");
+    //console.log("Load User is called");
     dispatch({
       type: USER_LOADED,
       payload: res,
     });
   } else {
     // const res = localStorage.token;
-    // console.log('Load User is empty');
+    // //console.log('Load User is empty');
     dispatch({
       type: AUTH_ERROR,
       payload: "",
@@ -64,18 +64,18 @@ export const getAuthentication =
       ref,
     });
 
-    console.log(body);
+    //console.log(body);
 
     try {
       const res = await axios.post(api_url + "/v1/user/register", body, config);
-      console.log(res);
+      //console.log(res);
 
       return {
         success: true,
         data: res.data,
       };
     } catch (err) {
-      console.log(err.response);
+      //console.log(err.response);
 
       return {
         success: false,
@@ -83,7 +83,7 @@ export const getAuthentication =
       };
 
       // const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
@@ -109,21 +109,21 @@ export const activate = (email_auth) => async (dispatch) => {
     email_auth,
   });
 
-  console.log(body);
+  //console.log(body);
 
   try {
     const res = await axios.post(api_url + "/v1/user/activate", body, config);
-    console.log(res);
-    console.log("yyyyy");
+    //console.log(res);
+    //console.log("yyyyy");
 
     return res;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
 
-    console.log("ok");
+    //console.log("ok");
 
     // const errors = err.response.data.errors;
-    // console.log(errors);
+    // //console.log(errors);
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     // }
@@ -150,23 +150,23 @@ export const reset =
       email_auth,
     });
 
-    console.log(body);
+    //console.log(body);
 
     try {
       const res = await axios.post(api_url + "/v1/user/reset", body, config);
-      console.log(res);
+      //console.log(res);
 
       return {
         status: true,
         data: res.data,
       };
     } catch (err) {
-      console.log(err.response);
+      //console.log(err.response);
 
-      console.log("ok");
+      //console.log("ok");
 
       const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
@@ -194,7 +194,7 @@ export const changePassword =
       newpassword,
     });
 
-    console.log(body);
+    //console.log(body);
 
     try {
       const res = await axios.post(
@@ -202,17 +202,17 @@ export const changePassword =
         body,
         config
       );
-      console.log(res);
-      // console.log("yyyyy");
+      //console.log(res);
+      // //console.log("yyyyy");
 
       return res;
     } catch (err) {
-      console.log(err.response);
+      //console.log(err.response);
 
-      console.log("ok");
+      //console.log("ok");
 
       // const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
@@ -237,20 +237,20 @@ export const ForgetPassword = (email) => async (dispatch) => {
     email,
   });
 
-  console.log(body);
+  //console.log(body);
 
   try {
     const res = await axios.post(api_url + "/v1/user/forgot", body, config);
-    console.log(res);
+    //console.log(res);
 
     return res;
   } catch (err) {
-    console.log(err);
+    //console.log(err);
 
-    console.log("ok");
+    //console.log("ok");
 
     // const errors = err.response.data.errors;
-    // console.log(errors);
+    // //console.log(errors);
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     // }
@@ -280,16 +280,16 @@ export const getLoginAuthentication =
       password,
     });
 
-    console.log(body);
+    //console.log(body);
 
     try {
       const res = await axios.post(api_url + "/v1/user/login", body, config);
-      // console.log(res.data.success);
+      // //console.log(res.data.success);
 
       if (res.data.success === false) {
-        console.log(res.data);
+        //console.log(res.data);
         const errors = res.data.errors;
-        console.log(errors);
+        //console.log(errors);
         // if (errors) {
         //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
         // }
@@ -315,10 +315,10 @@ export const getLoginAuthentication =
 
       // return res;
     } catch (err) {
-      console.log(err.response);
+      //console.log(err.response);
 
       // const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }

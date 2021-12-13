@@ -7,6 +7,7 @@ import {
 } from "../../../../actions/getreferer";
 import { CloseIcon } from "../../icons/CloseIcon";
 import { setAlert } from "../../../../actions/alert";
+import PropTypes from "prop-types";
 import jwt from "jsonwebtoken";
 // import BarChartIcon from "@mui/icons-material/BarChart";
 // import GroupIcon from "@mui/icons-material/Group";
@@ -25,7 +26,7 @@ import "../DashboardStyles/dasboard_tasks.css";
 // ==============================
 // ==============================
 // ==============================
-const Dashboard_tasks = ({ getSocialHandles, auth }) => {
+const Dashboard_tasks = ({ getSocialHandles, auth, setAlert }) => {
   const [username, setGetUsername] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -71,9 +72,9 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      // console.log("input something here");
+      // //console.log("input something here");
     } else {
-      // console.log("something is here");
+      // //console.log("something is here");
     }
 
     const { name, value, id } = e.target;
@@ -82,20 +83,20 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "twitterHandle":
         // code block
         if (e.target.value === "") {
-          // console.log("input something here");
+          // //console.log("input something here");
           setErrorMessage("error_message_div");
         } else {
-          // console.log("something is here");
+          // //console.log("something is here");
           setErrorMessage("not_error_message_div");
         }
 
         break;
       case "telegramHandle":
         if (e.target.value === "") {
-          // console.log("input something here");
+          // //console.log("input something here");
           setErrorMessage1("error_message_div1");
         } else {
-          // console.log("something is here");
+          // //console.log("something is here");
           setErrorMessage1("not_error_message_div1");
         }
         // code block
@@ -103,10 +104,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "facebookHandle":
         // code block
         if (e.target.value === "") {
-          // console.log("input something here");
+          // //console.log("input something here");
           setErrorMessage2("error_message_div2");
         } else {
-          // console.log("something is here");
+          // //console.log("something is here");
           setErrorMessage2("not_error_message_div2");
         }
 
@@ -114,10 +115,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "linkedInHandle":
         // code block
         if (e.target.value === "") {
-          // console.log("input something here");
+          // //console.log("input something here");
           setErrorMessage3("error_message_div3");
         } else {
-          // console.log("something is here");
+          // //console.log("something is here");
           setErrorMessage3("not_error_message_div3");
         }
 
@@ -125,10 +126,10 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       case "mediumHandle":
         // code block
         if (e.target.value === "") {
-          // console.log("input something here");
+          // //console.log("input something here");
           setErrorMessage4("error_message_div4");
         } else {
-          // console.log("something is here");
+          // //console.log("something is here");
           setErrorMessage4("not_error_message_div4");
         }
 
@@ -154,19 +155,19 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
 
   useEffect(() => {
     // fetchDepositLinks();
-    // console.log(auth.user);
+    // //console.log(auth.user);
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {
         complete: true,
       });
 
-      // console.log("====================================");
-      // console.log(decoded.payload.user.username);
-      // console.log("====================================");
+      // //console.log("====================================");
+      // //console.log(decoded.payload.user.username);
+      // //console.log("====================================");
       setGetUsername(decoded.payload.user.username);
       // setIsLoggedIn(true);
-      console.log(decoded.payload.user.username);
+      //console.log(decoded.payload.user.username);
       // username = decoded.payload.user.username;
     }
   }, [auth]);
@@ -191,9 +192,9 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
   // =========
 
   const submitData = async (e) => {
-    // console.log("====================================");
-    // console.log(username);
-    // console.log("====================================");
+    // //console.log("====================================");
+    // //console.log(username);
+    // //console.log("====================================");
     setIsLoading3(true);
     if (
       twitterHandle === "" &&
@@ -202,26 +203,26 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
       mediumHandle === "" &&
       linkedInHandle === ""
     ) {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage("error_message_div");
       setErrorMessage1("error_message_div1");
       setErrorMessage2("error_message_div2");
       setErrorMessage3("error_message_div3");
       setErrorMessage4("error_message_div4");
     } else if (twitterHandle === "") {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage("error_message_div");
     } else if (telegramHandle === "") {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage1("error_message_div1");
     } else if (facebookHandle === "") {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage2("error_message_div2");
     } else if (linkedInHandle === "") {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage3("error_message_div3");
     } else if (mediumHandle === "") {
-      // console.log("please supply");
+      // //console.log("please supply");
       setErrorMessage4("error_message_div4");
     } else {
       setErrorMessage("not_error_message_div");
@@ -239,10 +240,12 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
         // walletAddress,
       });
 
-      // console.log(res);
+      // //console.log(res);
 
       if (res.success === true) {
         setIsSuccessful(true);
+        setAlert("Check your internet connection", "danger");
+        setIsLoading(false);
         // setUserData({
         //   // username: getUsername,
         //   twitterHandle: "",
@@ -252,10 +255,20 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
         //   mediumHandle: "",
         // });
       } else {
-        setAlert(res.data[0].msg, "danger");
+        if (res.data.success === true) {
+          setIsLoading3(false);
+          // return <Redirect to="/" />;
+          // return window.location.replace("/dashboard");
+        } else {
+          setAlert(res.data[0].msg, "danger");
+          setIsLoading3(false);
+          // //console.log('res.data.errorMessage');
+          // setIsLoading(false);
+        }
+        // setAlert(res.data[0].msg, "danger");
       }
 
-      console.log(username);
+      // //console.log(username);
     }
   };
 
@@ -858,10 +871,16 @@ const Dashboard_tasks = ({ getSocialHandles, auth }) => {
     </div>
   );
 };
-
+Dashboard_tasks.propTypes = {
+  getLoginAuthentication: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
 const mapStateToProps = (state) => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { getSocialHandles })(Dashboard_tasks);
+export default connect(mapStateToProps, { getSocialHandles, setAlert })(
+  Dashboard_tasks
+);

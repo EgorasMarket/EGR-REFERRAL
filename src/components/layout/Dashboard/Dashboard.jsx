@@ -11,7 +11,7 @@ import Dashboard_total_rferrals from "./DashboardPages/Dashboard_total_rferrals"
 import PrivateRoute from "../../routing/PrivateRoute";
 
 function Dashboard({auth, isAuthenticated}) {
-  // console.log(isAuthenticated);
+  // //console.log(isAuthenticated);
 
   if (isAuthenticated == false) {
     // return <Redirect to="/" />;

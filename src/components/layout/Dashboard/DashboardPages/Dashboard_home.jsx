@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import DisplayMoney from "../../../DisplayMoney";
 import GroupIcon from "@mui/icons-material/Group";
 import { connect } from "react-redux";
 import { getTopReferrer } from "../../../../actions/getreferer";
@@ -62,7 +63,7 @@ const Dashboard_home = () => {
     setIsLoading(true);
 
     axios.get(api_url + "/v1/user/my/referers", null, config).then((data) => {
-      // console.log(data.data.user);
+      // //console.log(data.data.user);
       setMyReferral(data.data.user.slice(0, 5));
       if (data.status === 200) {
         setIsLoading(false);
@@ -78,12 +79,12 @@ const Dashboard_home = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        // console.log(data.data.allData);
+        // //console.log(data.data.allData);
         setTopReferral(data.data.allData.slice(0, 5));
         if (data.status === 200) {
           setIsLoading(false);
           data.data.allData.slice(0, 5);
-          console.log(data.data.allData.slice(0, 5));
+          //console.log(data.data.allData.slice(0, 5));
         } else {
           setIsLoading(true);
         }
@@ -94,7 +95,7 @@ const Dashboard_home = () => {
       });
 
     axios.get(api_url + "/v1/user/referal/count", null, config).then((data) => {
-      // console.log(data.data.user.count);
+      // //console.log(data.data.user.count);
       setReferralCount(data.data.user.count);
       if (data.status === 200) {
         setIsLoading(false);
@@ -115,7 +116,7 @@ const Dashboard_home = () => {
   //     axios
   //       .get(api_url + "/v1/user/all/top/referers", null, config)
   //       .then((data) => {
-  //         console.log(data.data.user);
+  //         //console.log(data.data.user);
   //         setMyReferral(data.data.user);
   //         setTopReferral(data.data.allData);
   //         if (data.status === 200) {
@@ -426,23 +427,23 @@ const Dashboard_home = () => {
                   {/* ========== */}
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">1st </h6>
-                    <h6 className="price_list_position">₦3,000,000.00</h6>
+                    <h6 className="price_list_position"><DisplayMoney amount="3000000" /></h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">2nd </h6>
-                    <h6 className="price_list_position">₦2,000,000.00</h6>
+                    <h6 className="price_list_position"><DisplayMoney amount="2000000" /></h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">3rd </h6>
-                    <h6 className="price_list_position">₦1,500,000.00</h6>
+                    <h6 className="price_list_position"><DisplayMoney amount="1500000" /></h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">4th </h6>
-                    <h6 className="price_list_position">₦1,000,000.00</h6>
+                    <h6 className="price_list_position"><DisplayMoney amount="1000000" /></h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">5th </h6>
-                    <h6 className="price_list_position">₦500,000.00</h6>
+                    <h6 className="price_list_position"><DisplayMoney amount="500000" /></h6>
                   </div>
                 </div>
               </div>

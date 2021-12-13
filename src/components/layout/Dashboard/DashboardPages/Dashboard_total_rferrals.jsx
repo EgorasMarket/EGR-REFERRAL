@@ -52,7 +52,7 @@ const Dashboard_total_rferrals = ({ auth }) => {
     setIsLoading(true);
 
     axios.get(api_url + "/v1/user/my/referers", null, config).then((data) => {
-      // console.log(data.data.user);
+      // //console.log(data.data.user);
       setMyReferral(data.data.user);
       if (data.status === 200) {
         setIsLoading(false);
@@ -67,7 +67,7 @@ const Dashboard_total_rferrals = ({ auth }) => {
       //  ?  : null;
     });
     axios.get(api_url + "/v1/user/referal/count", null, config).then((data) => {
-      // console.log(data.data.user.count);
+      // //console.log(data.data.user.count);
       setReferralCount(data.data.user.count);
       if (data.status === 200) {
         setIsLoading(false);
@@ -81,7 +81,7 @@ const Dashboard_total_rferrals = ({ auth }) => {
 
   useEffect(() => {
     // fetchDepositLinks();
-    // console.log(auth);
+    // //console.log(auth);
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {
@@ -91,7 +91,7 @@ const Dashboard_total_rferrals = ({ auth }) => {
         "https://earn.egoras.com/referral/" + decoded.payload.user.ref_auth
       );
       // setIsLoggedIn(true);
-      // console.log(decoded.payload.user);
+      // //console.log(decoded.payload.user);
     }
   }, [auth]);
 

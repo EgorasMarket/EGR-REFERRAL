@@ -85,11 +85,12 @@
 }
 
 .input_atleast_seven_chars {
-  font-size: 12px;
+  font-size: 11px;
   text-align: left;
   width: 90%;
   margin: auto;
   /* color: red; */
+  color: #429d67;
 }
 .useName {
   width: 100%;

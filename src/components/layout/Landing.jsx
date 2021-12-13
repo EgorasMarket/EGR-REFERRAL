@@ -82,9 +82,9 @@ const Landing = ({
     setUserData({ ...userData, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      //console.log("input something here");
     } else {
-      console.log("something is here");
+      //console.log("something is here");
     }
 
     const { name, value, id } = e.target;
@@ -93,20 +93,20 @@ const Landing = ({
       case "twitterHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          //console.log("input something here");
           setErrorMessage("error_message_div");
         } else {
-          console.log("something is here");
+          //console.log("something is here");
           setErrorMessage("not_error_message_div");
         }
 
         break;
       case "telegramHandle":
         if (e.target.value === "") {
-          console.log("input something here");
+          //console.log("input something here");
           setErrorMessage1("error_message_div1");
         } else {
-          console.log("something is here");
+          //console.log("something is here");
           setErrorMessage1("not_error_message_div1");
         }
         // code block
@@ -114,10 +114,10 @@ const Landing = ({
       case "facebookHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          //console.log("input something here");
           setErrorMessage2("error_message_div2");
         } else {
-          console.log("something is here");
+          //console.log("something is here");
           setErrorMessage2("not_error_message_div2");
         }
 
@@ -125,10 +125,10 @@ const Landing = ({
       case "linkedInHandle":
         // code block
         if (e.target.value === "") {
-          console.log("input something here");
+          //console.log("input something here");
           setErrorMessage3("error_message_div3");
         } else {
-          console.log("something is here");
+          //console.log("something is here");
           setErrorMessage3("not_error_message_div3");
         }
 
@@ -151,22 +151,22 @@ const Landing = ({
       facebookHandle === "" &&
       linkedInHandle === ""
     ) {
-      console.log("please supply");
+      //console.log("please supply");
       setErrorMessage("error_message_div");
       setErrorMessage1("error_message_div1");
       setErrorMessage2("error_message_div2");
       setErrorMessage3("error_message_div3");
     } else if (twitterHandle === "") {
-      console.log("please supply");
+      //console.log("please supply");
       setErrorMessage("error_message_div");
     } else if (telegramHandle === "") {
-      console.log("please supply");
+      //console.log("please supply");
       setErrorMessage1("error_message_div1");
     } else if (facebookHandle === "") {
-      console.log("please supply");
+      //console.log("please supply");
       setErrorMessage2("error_message_div2");
     } else if (linkedInHandle === "") {
-      console.log("please supply");
+      //console.log("please supply");
       setErrorMessage3("error_message_div3");
     } else {
       setErrorMessage("not_error_message_div");
@@ -182,7 +182,7 @@ const Landing = ({
         walletAddress,
       });
 
-      console.log(res);
+      //console.log(res);
 
       if (res.success === true) {
         setIsSuccessful(true);
@@ -194,15 +194,15 @@ const Landing = ({
 
   const submitData1 = async (e) => {
     // setAlert('Check your internet connection', 'danger');
-    console.log(email, password);
-    console.log("okay Good look at me");
+    //console.log(email, password);
+    //console.log("okay Good look at me");
     setIsLoading2(true);
 
     let res = await getLoginAuthentication({
       email,
       password,
     });
-    console.log(res);
+    //console.log(res);
     if (res === undefined) {
       setAlert("Check your internet connection", "danger");
       setIsLoading2(false);
@@ -217,7 +217,7 @@ const Landing = ({
       } else {
         setAlert(res.data.data.errors[0].msg, "danger");
         setIsLoading2(false);
-        // console.log('res.data.errorMessage');
+        // //console.log('res.data.errorMessage');
         // setIsLoading(false);
       }
     }

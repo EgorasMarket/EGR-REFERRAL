@@ -20,7 +20,7 @@ import {
   
     switch (type) {
       case USER_LOADED:
-        // console.log(payload);
+        // //console.log(payload);
         
         return {
           ...state,
@@ -39,7 +39,7 @@ import {
         };
       case REGISTER_FAIL:
       case LOGIN_FAIL:
-        //   console.log('gggg');
+        //   //console.log('gggg');
       case AUTH_ERROR:
       case LOG_OUT:
         localStorage.removeItem('token');
