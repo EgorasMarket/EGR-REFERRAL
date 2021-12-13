@@ -427,23 +427,33 @@ const Dashboard_home = () => {
                   {/* ========== */}
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">1st </h6>
-                    <h6 className="price_list_position"><DisplayMoney amount="3000000" /></h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="3000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">2nd </h6>
-                    <h6 className="price_list_position"><DisplayMoney amount="2000000" /></h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="2000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">3rd </h6>
-                    <h6 className="price_list_position"><DisplayMoney amount="1500000" /></h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="1500000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">4th </h6>
-                    <h6 className="price_list_position"><DisplayMoney amount="1000000" /></h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="1000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">5th </h6>
-                    <h6 className="price_list_position"><DisplayMoney amount="500000" /></h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="500000" />
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -452,7 +462,8 @@ const Dashboard_home = () => {
             <div className="Invite_refer_area">
               <h4 className="invite_refer_area_heading">Invite and Earn </h4>
               <p className="invite_refer_area_para">
-                For each registered user, you get rewarded.
+                For each registered user, you stand a chance to win the grand
+                prize.
               </p>
 
               <a href="/dashboard/referrals">
