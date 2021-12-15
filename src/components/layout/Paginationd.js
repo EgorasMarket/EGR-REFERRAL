@@ -59,7 +59,7 @@ export default function Paginationd() {
       .then((data) => {
         // //console.log(data.data.allData[0].firstname);
         // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
-        console.log(data.data.allData);
+        // console.log(data.data.allData);
         setTopReferral(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
