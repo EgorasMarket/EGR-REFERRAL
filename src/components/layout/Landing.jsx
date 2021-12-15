@@ -277,8 +277,8 @@ const Landing = ({
                 <span className="milli">
                   {" "}
                   {currentCountry === "Nigeria"
-                    ? "10MILLION NAIRA"
-                    : "$24,390.24"}
+                    ? "5MILLION NAIRA"
+                    : "$12,189.17"}
                 </span>{" "}
                 TO BE WON.
               </p>
@@ -411,8 +411,8 @@ const Landing = ({
                     all Egoras social media accounts will equally split an
                     exclusive prize of{" "}
                     {currentCountry === "Nigeria"
-                      ? "7million naira."
-                      : "$16,976.18."}
+                      ? "2million naira."
+                      : "$4,875.67 ."}
                   </div>
                 </div>
 
