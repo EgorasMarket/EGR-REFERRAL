@@ -254,14 +254,12 @@ const Landing = ({
   //   setOpenModal("modal_form_section");
   // };
 
-  
-
   useEffect(() => {
     // fetchDepositLinks();
 
     if (localStorage.origin) {
       console.log(localStorage.origin);
-      setCurrentCountry(localStorage.origin)
+      setCurrentCountry(localStorage.origin);
     }
   }, [auth]);
 
@@ -275,8 +273,14 @@ const Landing = ({
                 REFERRAL CONTEST WITH EGORAS.
               </h1>
               <p className="landing_area_txts_sub_heading">
-                REFERRAL COMPETITION <span className="milli"> {currentCountry === 'Nigeria' ? '10MILLION NAIRA' : '$24,390.24'}</span>{" "}
-                 TO BE WON.
+                REFERRAL COMPETITION{" "}
+                <span className="milli">
+                  {" "}
+                  {currentCountry === "Nigeria"
+                    ? "10MILLION NAIRA"
+                    : "$24,390.24"}
+                </span>{" "}
+                TO BE WON.
               </p>
               <p className="landing_area_txts_para">
                 Competition period:{" "}
@@ -391,7 +395,10 @@ const Landing = ({
                     All users that follow our social media handles with two
                     verified referrals or more that will also follow all our
                     social media handles will equally split an exclusive prize
-                    of 3million naira.
+                    of{" "}
+                    {currentCountry === "Nigeria"
+                      ? "3million naira"
+                      : "$7,275.50"}
                   </div>
                 </div>
               </div>
@@ -402,7 +409,10 @@ const Landing = ({
                   <div className="how_earn_cont_para">
                     The top 20 users ranked by verified referrals that follow
                     all Egoras social media accounts will equally split an
-                    exclusive prize of 7million naira.
+                    exclusive prize of{" "}
+                    {currentCountry === "Nigeria"
+                      ? "7million naira."
+                      : "$16,976.18."}
                   </div>
                 </div>
 
