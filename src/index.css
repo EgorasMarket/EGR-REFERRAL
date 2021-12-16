@@ -44,3 +44,12 @@ code {
   background-color: #4fcb81;
   color: #fff;
 }
+
+input:focus-visible {
+  outline: none;
+  border: solid;
+  border-color: #4fcb81;
+  border-width: 1px;
+  box-shadow: 0px 0px 1px 4px #54bc7e2e;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}

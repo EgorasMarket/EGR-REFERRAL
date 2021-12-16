@@ -7,16 +7,16 @@ import "./signup-form.css";
 const Activation = ({ match, activate }) => {
   const [email_auth, setEmail_auth] = useState(match.params.id);
 
-  console.log(email_auth);
+  //console.log(email_auth);
 
   useEffect(() => {
     async function fetchMyAPI() {
       let response = await activate(email_auth);
-      console.log(response.data.statusCode);
+      //console.log(response.data.statusCode);
       if (response.data.statusCode === 200) {
-        console.log("okay Good Server");
+        //console.log("okay Good Server");
       } else {
-        console.log("Nooo Bad Server");
+        //console.log("Nooo Bad Server");
       }
     }
 

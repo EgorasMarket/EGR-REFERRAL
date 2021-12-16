@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import DisplayMoney from "../../../DisplayMoney";
 import GroupIcon from "@mui/icons-material/Group";
 import { connect } from "react-redux";
 import { getTopReferrer } from "../../../../actions/getreferer";
@@ -62,8 +63,8 @@ const Dashboard_home = () => {
     setIsLoading(true);
 
     axios.get(api_url + "/v1/user/my/referers", null, config).then((data) => {
-      // console.log(data.data.user);
-      setMyReferral(data.data.user);
+      // //console.log(data.data.user);
+      setMyReferral(data.data.user.slice(0, 5));
       if (data.status === 200) {
         setIsLoading(false);
       } else {
@@ -78,10 +79,12 @@ const Dashboard_home = () => {
     axios
       .get(api_url + "/v1/user/all/top/referers", null, config)
       .then((data) => {
-        // console.log(data.data.allData);
-        setTopReferral(data.data.allData);
+        // //console.log(data.data.allData);
+        setTopReferral(data.data.allData.slice(0, 5));
         if (data.status === 200) {
           setIsLoading(false);
+          data.data.allData.slice(0, 5);
+          //console.log(data.data.allData.slice(0, 5));
         } else {
           setIsLoading(true);
         }
@@ -92,7 +95,7 @@ const Dashboard_home = () => {
       });
 
     axios.get(api_url + "/v1/user/referal/count", null, config).then((data) => {
-      // console.log(data.data.user.count);
+      // //console.log(data.data.user.count);
       setReferralCount(data.data.user.count);
       if (data.status === 200) {
         setIsLoading(false);
@@ -101,6 +104,9 @@ const Dashboard_home = () => {
       }
     });
     // }
+
+    // const FRUITS = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    // var citrus =
   }, []);
 
   // useEffect(() => {
@@ -110,7 +116,7 @@ const Dashboard_home = () => {
   //     axios
   //       .get(api_url + "/v1/user/all/top/referers", null, config)
   //       .then((data) => {
-  //         console.log(data.data.user);
+  //         //console.log(data.data.user);
   //         setMyReferral(data.data.user);
   //         setTopReferral(data.data.allData);
   //         if (data.status === 200) {
@@ -141,8 +147,7 @@ const Dashboard_home = () => {
                   <div className="assets_cont_heading_txt">
                     <BarChartIcon className="sidebarIcona" />
                     Rankings
-                  </div>
-                  {/* <div className="assets-cont-head-area">
+                    {/* <div className="assets-cont-head-area">
                   <div className="search-input">
                     {" "}
                     <input
@@ -157,19 +162,19 @@ const Dashboard_home = () => {
                     <SearchIcon className="search-icon" />
                   </div>
                 </div> */}
-                  <table className="assets-table">
-                    <thead className="assets-category-titles">
-                      <tr className="assets">
-                        <th className="assets-category-titles-heading1a">
-                          Username
-                        </th>
-                        <th className="assets-category-titles-heading1Last">
-                          Total Referrals
-                        </th>
-                      </tr>
-                    </thead>
+                    <table className="assets-table">
+                      <thead className="assets-category-titles">
+                        <tr className="assets">
+                          <th className="assets-category-titles-heading1a">
+                            Username
+                          </th>
+                          <th className="assets-category-titles-heading1Last">
+                            Total Referrals
+                          </th>
+                        </tr>
+                      </thead>
 
-                    {/* <div className="table-body-content">
+                      {/* <div className="table-body-content">
 
     // =====================
     // =====================
@@ -182,52 +187,52 @@ const Dashboard_home = () => {
 
                     
                   </div> */}
-                    {isLoading ? (
-                      <tbody>
-                        <tr>
-                          <td
-                            colSpan="2"
-                            style={{ padding: "2em", paddingBottom: "1em" }}
-                          >
-                            <BoxLoading />
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colSpan="2" style={{ textAlign: "center" }}>
-                            <span>Fetching data...</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    ) : (
-                      <tbody
-                        className="assets-table-body popular-categories"
-                        id="popular-categories"
-                      >
-                        {" "}
-                        {/* =============== */}
-                        {/* =============== */}
-                        {/* =============== */}
-                        {topReferral.map((asset) => (
-                          <tr className="assets-category-rowa">
-                            <td className="assets-category-data">
-                              <div className="assets-data">
-                                <div className="assets-data-nameLeft">
-                                  {asset.username}
-                                  {/* {asset.username.substring(0, 1) +
+                      {isLoading ? (
+                        <tbody>
+                          <tr>
+                            <td
+                              colSpan="2"
+                              style={{ padding: "2em", paddingBottom: "1em" }}
+                            >
+                              <BoxLoading />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan="2" style={{ textAlign: "center" }}>
+                              <span>Fetching data...</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      ) : (
+                        <tbody
+                          className="assets-table-body popular-categories"
+                          id="popular-categories"
+                        >
+                          {" "}
+                          {/* =============== */}
+                          {/* =============== */}
+                          {/* =============== */}
+                          {topReferral.map((asset) => (
+                            <tr className="assets-category-rowa">
+                              <td className="assets-category-data">
+                                <div className="assets-data">
+                                  <div className="assets-data-nameLeft">
+                                    {asset.username}
+                                    {/* {asset.username.substring(0, 1) +
                                     "****" +
                                     asset.username.substr(
                                       asset.username.length - 2
                                     )} */}
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="assets-category-data1">
-                              <div className="assets-data-nameRight">
-                                {asset.counts}
-                              </div>
-                            </td>
+                              </td>
+                              <td className="assets-category-data1">
+                                <div className="assets-data-nameRight">
+                                  {asset.counts}
+                                </div>
+                              </td>
 
-                            {/* <td className="assets-category-data-last">
+                              {/* <td className="assets-category-data-last">
                         <div className="assets-data-name-last">
                           <a
                             href="#"
@@ -238,15 +243,17 @@ const Dashboard_home = () => {
                           </a>
                         </div>
                       </td> */}
-                          </tr>
-                        ))}
-                        {/* =============== */}
-                        {/* =============== */}
-                        {/* =============== */}
-                      </tbody>
-                    )}
-                    {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
-                  </table>
+                            </tr>
+                          ))}
+                          {/* =============== */}
+                          {/* =============== */}
+                          {/* =============== */}
+                        </tbody>
+                      )}
+                      {/* {{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}} */}
+                    </table>
+                  </div>
+
                   <div>
                     {" "}
                     <div className={noData == "no_data" ? "no_data" : "data"}>
@@ -420,23 +427,33 @@ const Dashboard_home = () => {
                   {/* ========== */}
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">1st </h6>
-                    <h6 className="price_list_position">₦3,000,000.00</h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="3000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">2nd </h6>
-                    <h6 className="price_list_position">₦2,000,000.00</h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="2000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">3rd </h6>
-                    <h6 className="price_list_position">₦1,500,000.00</h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="1500000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">4th </h6>
-                    <h6 className="price_list_position">₦1,000,000.00</h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="1000000" />
+                    </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">5th </h6>
-                    <h6 className="price_list_position">₦500,000.00</h6>
+                    <h6 className="price_list_position">
+                      <DisplayMoney amount="500000" />
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -445,7 +462,8 @@ const Dashboard_home = () => {
             <div className="Invite_refer_area">
               <h4 className="invite_refer_area_heading">Invite and Earn </h4>
               <p className="invite_refer_area_para">
-                For each registered user, you get rewarded.
+                For each registered user, you stand a chance to win the grand
+                prize.
               </p>
 
               <a href="/dashboard/referrals">

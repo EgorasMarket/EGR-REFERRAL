@@ -25,7 +25,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
     // applicant_businessAddress: "",
   });
 
-  // console.log(isAuthenticated);
+  // //console.log(isAuthenticated);
 
   // ggggggg
   const [state, setState] = React.useState({
@@ -52,9 +52,9 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      //console.log("input something here");
     } else {
-      console.log("something is here");
+      //console.log("something is here");
     }
 
     // if (e.target.value === "" && e.target.value === "") {
@@ -83,15 +83,15 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
 
   const submitData = async (e) => {
     // setAlert('Check your internet connection', 'danger');
-    console.log(email, password);
-    console.log("okay Good look at me");
+    //console.log(email, password);
+    //console.log("okay Good look at me");
     setIsLoading(true);
 
     let res = await getLoginAuthentication({
       email,
       password,
     });
-    console.log(res);
+    //console.log(res);
     if (res === undefined) {
       setAlert("Check your internet connection", "danger");
       setIsLoading(false);
@@ -103,7 +103,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
       } else {
         setAlert(res.data, "danger");
         setIsLoading(false);
-        // console.log('res.data.errorMessage');
+        // //console.log('res.data.errorMessage');
         // setIsLoading(false);
       }
     }
@@ -131,8 +131,8 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
   // }
 
   return (
-    <div style={{height:"100vh"}}>
-      <section className="sign_up_section" style={{height:"100%"}}>
+    <div style={{ height: "100vh" }}>
+      <section className="sign_up_section" style={{ height: "100%" }}>
         <div className="container">
           <div className="sign_up_area">
             <div className="sign_up_cont">
@@ -235,14 +235,16 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
                   </button>
                   <div className="login_btn">
                     <div className="or">Don't have an account?</div>
-                    <button
-                      // type="submit"
-                      className="loginButton"
-                    >
-                      <a href="/signup" className="login">
-                        Signup
-                      </a>
-                    </button>
+                    <a href="/signup" className="login2">
+                      {" "}
+                      <button
+                        className="signupbtn sm_width"
+                        // type="submit"
+                      >
+                        {" "}
+                        signup
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

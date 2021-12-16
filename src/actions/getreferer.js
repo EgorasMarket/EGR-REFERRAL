@@ -5,11 +5,12 @@ import { API_URL as api_url } from "./types";
 // Get Social Media Handles
 export const getSocialHandles =
   ({
-    // username,
+    username,
     twitterHandle,
     telegramHandle,
     linkedInHandle,
     facebookHandle,
+    mediumHandle,
     // walletAddress,
   }) =>
   async (dispatch) => {
@@ -22,29 +23,30 @@ export const getSocialHandles =
     };
 
     const body = JSON.stringify({
-      // username,
+      username,
       twitterHandle,
       telegramHandle,
       linkedInHandle,
       facebookHandle,
+      mediumHandle,
       // walletAddress,
     });
 
-    console.log(body);
+    //console.log(body);
 
     try {
       const res = await axios.post(api_url + "/v1/user/giveaway", body, config);
-      // console.log(data);
+      // //console.log(data);
 
       return {
         success: true,
         data: res.data,
       };
     } catch (err) {
-      console.log(err.response);
+      //console.log(err.response);
 
       const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
@@ -97,7 +99,7 @@ export const getUsersData =
       updatedAt,
     });
 
-    console.log(`${body} working fineoooooooo`);
+    //console.log(`${body} working fineoooooooo`);
 
     try {
       const res = await axios.get(
@@ -105,7 +107,7 @@ export const getUsersData =
         body,
         config
       );
-      console.log(res);
+      //console.log(res);
 
       if (res.data.error === false) {
         dispatch({
@@ -127,10 +129,10 @@ export const getUsersData =
         };
       }
     } catch (err) {
-      console.log(err.message);
+      //console.log(err.message);
 
       // const errors = err.response.data.errors;
-      // console.log(errors);
+      // //console.log(errors);
       // if (errors) {
       //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       // }
@@ -160,7 +162,7 @@ export const getTopReferrer = (user) => async (dispatch) => {
     user,
   });
 
-  console.log(`${body} working fineoooooooo`);
+  //console.log(`${body} working fineoooooooo`);
 
   try {
     const res = await axios.get(
@@ -168,7 +170,7 @@ export const getTopReferrer = (user) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
+    //console.log(res);
 
     if (res.data.error === false) {
       dispatch({
@@ -190,10 +192,10 @@ export const getTopReferrer = (user) => async (dispatch) => {
       };
     }
   } catch (err) {
-    console.log(err.message);
+    //console.log(err.message);
 
     // const errors = err.response.data.errors;
-    // console.log(errors);
+    // //console.log(errors);
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     // }
@@ -223,11 +225,11 @@ export const getMyReferrals = (user) => async (dispatch) => {
     user,
   });
 
-  console.log(`${body} working fineoooooooo`);
+  //console.log(`${body} working fineoooooooo`);
 
   try {
     const res = await axios.get(api_url + "/v1/user/my/referers", body, config);
-    console.log(res);
+    //console.log(res);
 
     if (res.data.error === false) {
       dispatch({
@@ -249,10 +251,10 @@ export const getMyReferrals = (user) => async (dispatch) => {
       };
     }
   } catch (err) {
-    console.log(err.message);
+    //console.log(err.message);
 
     // const errors = err.response.data.errors;
-    // console.log(errors);
+    // //console.log(errors);
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     // }
@@ -276,7 +278,7 @@ export const getMyReferralCount = (user) => async (dispatch) => {
     user,
   });
 
-  console.log(`${body} working fineoooooooo`);
+  //console.log(`${body} working fineoooooooo`);
 
   try {
     const res = await axios.get(
@@ -284,7 +286,7 @@ export const getMyReferralCount = (user) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
+    //console.log(res);
 
     if (res.data.error === false) {
       dispatch({
@@ -306,10 +308,10 @@ export const getMyReferralCount = (user) => async (dispatch) => {
       };
     }
   } catch (err) {
-    console.log(err.message);
+    //console.log(err.message);
 
     // const errors = err.response.data.errors;
-    // console.log(errors);
+    // //console.log(errors);
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     // }

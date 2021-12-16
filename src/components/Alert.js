@@ -10,7 +10,7 @@ import "../components/layout/Forms/login-form.css";
 const Alert = ({ alerts }) => {
   const [open, setOpen] = React.useState(false);
 
-  // console.log(alerts, "Alert");
+  // //console.log(alerts, "Alert");
 
   const handleClick = () => {
     setOpen(true);

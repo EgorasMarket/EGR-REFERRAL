@@ -18,9 +18,9 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
     setUserAuth({ ...userAuth, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      //console.log("input something here");
     } else {
-      console.log("something is here");
+      //console.log("something is here");
     }
     if (email === "") {
       setDisable(true);
@@ -32,14 +32,14 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
   const submitData = async (e) => {
     setIsLoading(true);
     // if (res)
-    console.log(email);
+    //console.log(email);
     let res = await ForgetPassword(email);
-    console.log(email);
+    //console.log(email);
     if (res.data.success === true) {
       setIsSuccessful(true);
-      console.log("okay Good Server");
+      //console.log("okay Good Server");
     } else {
-      console.log("Nooo Bad Server");
+      //console.log("Nooo Bad Server");
     }
   };
 

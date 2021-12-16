@@ -10,7 +10,7 @@ const Header = ({auth, isAuthenticated }) => {
   const windowsPath = window.location.pathname;
   const myArr = windowsPath.split("/");
 
-  // console.log(isAuthenticated);
+  // //console.log(isAuthenticated);
 
   useEffect(() => {
     if (windowsPath === "/dashboard") {
@@ -35,14 +35,14 @@ const Header = ({auth, isAuthenticated }) => {
 
   useEffect(() => {
     // fetchDepositLinks();
-    // console.log(auth.user);
+    // //console.log(auth.user);
     var isAdmin;
     if (auth.user !== null) {
       var todecoded = auth.user;
       var decoded = jwt.decode(todecoded, {
           complete: true
       });
-      // console.log(decoded.payload.user.isAdmin);
+      // //console.log(decoded.payload.user.isAdmin);
       // setStaffEmail(decoded.payload.email)
       setIsLoggedIn(true);
       // setIsAdmin(decoded.payload.user.isAdmin)
@@ -52,20 +52,20 @@ const Header = ({auth, isAuthenticated }) => {
 
     if (windowsPath === "/super-admin/all/particpants" && isAdmin === true) {
       
-        console.log('falseeeeeee');
+        //console.log('falseeeeeee');
         
       } else if (windowsPath === "/super-admin/all/particpants" && isAdmin === false) {
       return window.location.replace("/dashboard");
-      // console.log('trueeeeee');
+      // //console.log('trueeeeee');
 
     }
   }, [auth]);
 
-  // console.log(isAdmin);
+  // //console.log(isAdmin);
 
   const triggerLogout = (event) => {
     // setBusinessDuration(event.target.value);
-    // console.log('okkkk');
+    // //console.log('okkkk');
     localStorage.removeItem("token");
     window.location.href = "/login";
   };

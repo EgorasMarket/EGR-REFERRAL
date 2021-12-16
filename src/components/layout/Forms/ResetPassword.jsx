@@ -12,7 +12,7 @@ const ResetPassword = ({ match, reset, setAlert }) => {
   const [passImg2, setPassImg2] = useState("show_pass2");
   const [isSuccessful, setIsSuccessful] = useState(false);
 
-  console.log(match.params.id);
+  //console.log(match.params.id);
 
   const [formData, setFormData] = useState({
     email_auth: match.params.id,
@@ -26,9 +26,9 @@ const ResetPassword = ({ match, reset, setAlert }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      //console.log("input something here");
     } else {
-      console.log("something is here");
+      //console.log("something is here");
     }
   };
 
@@ -36,7 +36,7 @@ const ResetPassword = ({ match, reset, setAlert }) => {
     
     // setIsLoading(true);
     // if (res)
-    console.log(email_auth, password);
+    //console.log(email_auth, password);
     
 
     if (password === '' || confirmpassword === '') {
@@ -46,10 +46,10 @@ const ResetPassword = ({ match, reset, setAlert }) => {
         setAlert('Passwords do not match', "danger");
       } else {
         let res = await reset({ password, email_auth });
-        console.log(res);
+        //console.log(res);
         if (res.data.success === true) {
           setIsSuccessful(true);
-          console.log("okay Good Server");
+          //console.log("okay Good Server");
         } else {
           setAlert(res.data[0].msg, "danger");
         }

@@ -13,7 +13,7 @@ export const Referal = ({ match }) => {
 
   
 useEffect(() => {
-    console.log(match.params);
+    //console.log(match.params);
     
     localStorage.setItem('referrer', match.params.ref);
     
@@ -26,7 +26,7 @@ useEffect(() => {
 
 if (typeof localStorage.referrer !== 'undefined') {
     return <Redirect to='/signup' />;
-    // console.log('okkkk');
+    // //console.log('okkkk');
     
   }
 

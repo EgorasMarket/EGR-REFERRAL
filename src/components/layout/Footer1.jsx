@@ -33,7 +33,7 @@ function Footer1() {
     if (windowsPath === "/activate/" + myArr[2]) {
       document.getElementById("footerId").style.display = "none";
     }
-    console.log(myArr);
+    //console.log(myArr);
   });
 
   return (

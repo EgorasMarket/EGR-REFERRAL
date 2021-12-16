@@ -23,30 +23,30 @@ const ChangePassword = ({ match, changePassword }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
     if (e.target.value === "") {
-      console.log("input something here");
+      //console.log("input something here");
     } else {
-      console.log("something is here");
+      //console.log("something is here");
     }
   };
 
   const submitData = async (e) => {
     // setIsLoading(true);
     // if (res)
-    // console.log(oldpassword, password, newpassword);
+    // //console.log(oldpassword, password, newpassword);
 
     if (oldpassword === '' || password === '' || newpassword === '') {
-        console.log('please suppply all fields');
+        //console.log('please suppply all fields');
     } else {
         if (password !== newpassword) {
-            console.log('passwords do not match');
+            //console.log('passwords do not match');
         } else {
             let res = await changePassword({ oldpassword, newpassword });
-            console.log(res);
+            //console.log(res);
             // if (res.data.success === true) {
             //   setIsSuccessful(true);
-            //   console.log("okay Good Server");
+            //   //console.log("okay Good Server");
             // } else {
-            //   console.log("Nooo Bad Server");
+            //   //console.log("Nooo Bad Server");
             // }
         }
     }
