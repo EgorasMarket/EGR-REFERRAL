@@ -13,6 +13,18 @@
   background: none !important;
   padding: 2em;
 }
+.refer_banner {
+  display: flex;
+  justify-content: center;
+}
+
+.ref_banner_lg {
+  width: 100%;
+}
+
+.ref_banner {
+  display: none;
+}
 
 /* collateral assets section start */
 
@@ -609,7 +621,15 @@
     grid-gap: 35px;
     gap: 35px;
   }
-
+  .ref_banner {
+    display: block;
+    width: 100%;
+    box-shadow: 0px 10px 30px #324d41;
+    border-radius: 15px;
+  }
+  .ref_banner_lg {
+    display: none;
+  }
   .referral_txt {
     margin-top: 1em;
   }

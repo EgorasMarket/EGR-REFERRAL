@@ -141,6 +141,18 @@ const Dashboard_home = () => {
       <section className=" no-bg">
         <div className="container">
           <div className="assets_area">
+            <div className="refer_banner">
+              <img
+                src="/img/ref_banner_large.svg"
+                alt=""
+                className="ref_banner_lg"
+              />
+              <img
+                src="/img/invite_refer_banner.svg"
+                alt=""
+                className="ref_banner"
+              />
+            </div>
             <div className="assets-container">
               <div className="rankings_home_cont">
                 <div className="assets_cont1 ab">
