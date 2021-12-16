@@ -163,7 +163,7 @@ const Dashboard_ranking = () => {
                         <tr className="assets-category-rowa">
                           <td className="assets-category-data">
                             <div className="assets-data">
-                              <div className="assets-data-nameLeft">
+                              <div className="assets-data-nameLeft user_vvv">
                                 {asset.username}
                                 {/* {asset.username.substring(0, 1) +
                                   "****" +
@@ -174,7 +174,7 @@ const Dashboard_ranking = () => {
                             </div>
                           </td>
                           <td className="assets-category-data1">
-                            <div className="assets-data-nameRight">
+                            <div className="assets-data-nameRight user_mmm">
                               {asset.counts}
                             </div>
                           </td>

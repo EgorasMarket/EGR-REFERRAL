@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css"
+import "./App.css";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -62,7 +62,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div   className="app_div" >
+        <div className="app_div">
           <Header />
           <Alert />
           <Switch>
@@ -76,7 +76,7 @@ function App() {
             <Route exact path="/referral/:ref" component={Referal} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/activate/:id" component={Activation} />
-            <Route exact path="/reset/password/:id" component={ResetPassword} />
+            <Route exact path="/reset/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />
             <Route
               exact

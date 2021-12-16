@@ -186,13 +186,13 @@ const Dashboard_total_rferrals = ({ auth }) => {
                         <tr className="assets-category-rowa">
                           <td className="assets-category-data">
                             <div className="assets-data">
-                              <div className="assets-data-nameLeft">
+                              <div className="assets-data-nameLeft user_nnn">
                                 {asset.username}
                               </div>
                             </div>
                           </td>
                           <td className="assets-category-data1">
-                            <div className="assets-data-nameRight">
+                            <div className="assets-data-nameRight user_vvv">
                               {asset.email}
                             </div>
                           </td>
