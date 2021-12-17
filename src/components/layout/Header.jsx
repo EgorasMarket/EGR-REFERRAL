@@ -42,7 +42,7 @@ const Header = ({auth, isAuthenticated }) => {
       var decoded = jwt.decode(todecoded, {
           complete: true
       });
-      // //console.log(decoded.payload.user.isAdmin);
+      console.log(decoded.payload.user);
       // setStaffEmail(decoded.payload.email)
       setIsLoggedIn(true);
       // setIsAdmin(decoded.payload.user.isAdmin)
@@ -50,15 +50,23 @@ const Header = ({auth, isAuthenticated }) => {
 
     }
 
-    if (windowsPath === "/super-admin/all/particpants" && isAdmin === true) {
-      
-        //console.log('falseeeeeee');
-        
-      } else if (windowsPath === "/super-admin/all/particpants" && isAdmin === false) {
-      return window.location.replace("/dashboard");
-      // //console.log('trueeeeee');
+    // if (windowsPath === "/super-admin/all/particpants" && isAdmin === false) {
+    //   return window.location.replace("/dashboard");
+    //   // //console.log('trueeeeee');
 
-    }
+    // } else if (auth.user == null && windowsPath === "/super-admin/all/particpants") {
+    //   // console.log(auth.user);
+    //   return window.location.replace("/");
+    // }
+
+    // if (windowsPath === "/super-admin/registered/users" && isAdmin === false) {
+    //   return window.location.replace("/dashboard");
+    //   // //console.log('trueeeeee');
+
+    // } else if (auth.user == null && windowsPath === "/super-admin/registered/users") {
+    //   // console.log(auth.user);
+    //   return window.location.replace("/");
+    // }
   }, [auth]);
 
   // //console.log(isAdmin);
