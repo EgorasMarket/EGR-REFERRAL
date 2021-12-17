@@ -7,6 +7,7 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOG_OUT = "LOG_OUT";
-export const API_URL = "https://earner.egoras.com";
-// export const API_URL = "https://0d3aff184cb633.localhost.run";
+
+// export const API_URL = "https://d127bd2bcb6cb0.localhost.run";
 // export const API_URL = "http://localhost:4000";
+export const API_URL = "https://earner.egoras.com";
