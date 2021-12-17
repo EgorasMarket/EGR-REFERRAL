@@ -10,6 +10,7 @@ import axios from "axios";
 // import { loadUser } from "./actions/auth";
 import store from "./store";
 import Landing from "./components/layout/Landing";
+import Paginationd from "./components/layout/Paginationd";
 import Header from "./components/layout/Header";
 import Footer1 from "./components/layout/Footer1";
 import LoginForm from "./components/layout/Forms/LoginForm";
@@ -71,6 +72,7 @@ function App() {
 
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/pagination" component={Paginationd} />
             <Route exact path="/referral/:ref" component={Referal} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/activate/:id" component={Activation} />

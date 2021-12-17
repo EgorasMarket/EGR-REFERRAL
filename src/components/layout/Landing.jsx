@@ -30,6 +30,7 @@ const Landing = ({
   const [errorMessage2, setErrorMessage2] = useState("not_error_message_div2");
   const [errorMessage3, setErrorMessage3] = useState("not_error_message_div3");
   const [openJoin, setOpenJoin] = useState("button");
+  const [currentCountry, setCurrentCountry] = useState("Nigeria");
   const [visibility, setVisibility] = useState(false);
   const [passImg, setPassImg] = useState("show_pass");
   const [isSuccessful, setIsSuccessful] = useState(false);
@@ -253,6 +254,15 @@ const Landing = ({
   //   setOpenModal("modal_form_section");
   // };
 
+  useEffect(() => {
+    // fetchDepositLinks();
+
+    if (localStorage.origin) {
+      console.log(localStorage.origin);
+      setCurrentCountry(localStorage.origin);
+    }
+  }, [auth]);
+
   return (
     <div id="landing_div">
       <section className="landing_section">
@@ -263,8 +273,14 @@ const Landing = ({
                 REFERRAL CONTEST WITH EGORAS.
               </h1>
               <p className="landing_area_txts_sub_heading">
-                REFERRAL COMPETITION <span className="milli">10MILLION </span>{" "}
-                NAIRA TO BE WON.
+                REFERRAL COMPETITION{" "}
+                <span className="milli">
+                  {" "}
+                  {currentCountry === "Nigeria"
+                    ? "5MILLION NAIRA"
+                    : "$12,189.17"}
+                </span>{" "}
+                TO BE WON.
               </p>
               <p className="landing_area_txts_para">
                 Competition period:{" "}
@@ -379,7 +395,10 @@ const Landing = ({
                     All users that follow our social media handles with two
                     verified referrals or more that will also follow all our
                     social media handles will equally split an exclusive prize
-                    of 3million naira.
+                    of{" "}
+                    {currentCountry === "Nigeria"
+                      ? "3million naira"
+                      : "$7,275.50"}
                   </div>
                 </div>
               </div>
@@ -390,7 +409,10 @@ const Landing = ({
                   <div className="how_earn_cont_para">
                     The top 20 users ranked by verified referrals that follow
                     all Egoras social media accounts will equally split an
-                    exclusive prize of 7million naira.
+                    exclusive prize of{" "}
+                    {currentCountry === "Nigeria"
+                      ? "2million naira."
+                      : "$4,875.67 ."}
                   </div>
                 </div>
 

@@ -434,25 +434,25 @@ const Dashboard_home = () => {
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">2nd </h6>
                     <h6 className="price_list_position">
-                      <DisplayMoney amount="2000000" />
+                      <DisplayMoney amount="1000000" />
                     </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">3rd </h6>
                     <h6 className="price_list_position">
-                      <DisplayMoney amount="1500000" />
+                      <DisplayMoney amount="500000" />
                     </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">4th </h6>
                     <h6 className="price_list_position">
-                      <DisplayMoney amount="1000000" />
+                      <DisplayMoney amount="300000" />
                     </h6>
                   </div>
                   <div className="egc_token_price_heading">
                     <h6 className="price_list_position">5th </h6>
                     <h6 className="price_list_position">
-                      <DisplayMoney amount="500000" />
+                      <DisplayMoney amount="200000" />
                     </h6>
                   </div>
                 </div>
