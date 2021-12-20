@@ -28,7 +28,7 @@ const Admin = () => {
     axios
       .get(api_url + "/v1/user/all/participant/response", null, config)
       .then((data) => {
-        //console.log(data);
+        console.log(data);
         setstaffData(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);

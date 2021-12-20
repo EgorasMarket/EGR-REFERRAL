@@ -68,7 +68,7 @@ export const getAuthentication =
 
     try {
       const res = await axios.post(api_url + "/v1/user/register", body, config);
-      //console.log(res);
+      console.log(res);
 
       return {
         success: true,

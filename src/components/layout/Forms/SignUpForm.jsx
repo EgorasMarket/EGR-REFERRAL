@@ -78,7 +78,7 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
             // walletAddress,
             localStorage.referrer
           );
-          // console.log(res.data);
+          console.log(res);
           if (res.data.success === true) {
             setIsSuccessful(true);
             setIsLoading(false);
