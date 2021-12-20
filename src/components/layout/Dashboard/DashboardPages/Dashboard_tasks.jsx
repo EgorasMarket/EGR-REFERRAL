@@ -244,7 +244,7 @@ const Dashboard_tasks = ({ getSocialHandles, auth, setAlert }) => {
 
       if (res.success === true) {
         setIsSuccessful(true);
-        setAlert("Check your internet connection", "danger");
+        // setAlert("Check your internet connection", "danger");
         setIsLoading(false);
         // setUserData({
         //   // username: getUsername,
