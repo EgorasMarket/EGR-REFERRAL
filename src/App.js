@@ -30,6 +30,7 @@ import Dashboard from "./components/layout/Dashboard/Dashboard";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 import ResendActivation from "./components/layout/Forms/ResendActivation";
+import ActiveUsers from "./components/layout/Admin/ActiveUsers";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -73,13 +74,14 @@ function App() {
 
             <Route exact path="/signup" component={SignUpForm} />
             <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/super-admin/registered/users" component={Paginationd} />
             <Route exact path="/referral/:ref" component={Referal} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/activate/:id" component={Activation} />
             <Route exact path="/resend-activation-email" component={ResendActivation} />
             <Route exact path="/reset/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />
+            <Route exact path="/super-admin/registered/users" component={Paginationd} />
+            <Route exact path="/super-admin/active/users" component={ActiveUsers} />
             <Route
               exact
               path="/super-admin/all/particpants"

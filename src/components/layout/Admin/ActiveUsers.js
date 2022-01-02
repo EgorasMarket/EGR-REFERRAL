@@ -38,7 +38,7 @@ const columns = [
 ];
 
 
-export default function Paginationd() {
+export default function ActiveUsers() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(100);
   const [topReferral, setTopReferral] = React.useState([]);
@@ -55,7 +55,7 @@ export default function Paginationd() {
     setIsLoading(true);
 
     axios
-      .get(api_url + "/v1/user/all/registered/users", null, config)
+      .get(api_url + "/v1/user/all/active/users", null, config)
       .then((data) => {
         // //console.log(data.data.allData[0].firstname);
         // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
