@@ -103,7 +103,10 @@ const Admin = () => {
       ) : (
         <section className="collateral-assets-section">
           <div className="container">
-            <div className="assets-container">
+            <div
+              className="assets-container"
+              style={{ justifyContent: "center" }}
+            >
               {/* <div className="assets-cont-head-area">
               <div className="search-input">
                 {" "}
