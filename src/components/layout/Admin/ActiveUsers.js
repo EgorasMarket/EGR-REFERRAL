@@ -1,43 +1,44 @@
-import React, { useState, useEffect } from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
+import * as React from 'react';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
 
 import axios from "axios";
 import { API_URL as api_url } from "../../../actions/types";
 
 const columns = [
-  { id: "username", label: "Username", minWidth: 170 },
-  { id: "email", label: "Email", minWidth: 100 },
+  { id: 'username', label: 'Username', minWidth: 170 },
+  { id: 'email', label: 'Email', minWidth: 100 },
   {
-    id: "is_active",
-    label: "Is Active",
+    id: 'is_active',
+    label: 'Is Active',
     minWidth: 170,
-    align: "right",
+    align: 'right',
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: "referer",
-    label: "Referer",
+    id: 'referer',
+    label: 'Referer',
     minWidth: 170,
-    align: "right",
+    align: 'right',
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: "walletAddress",
-    label: "Wallet Address",
+    id: 'walletAddress',
+    label: 'Wallet Address',
     minWidth: 170,
-    align: "right",
+    align: 'right',
     // format: (value) => value.toFixed(2),
   },
 ];
 
-export default function Paginationd() {
+
+export default function ActiveUsers() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(100);
   const [topReferral, setTopReferral] = React.useState([]);
@@ -54,7 +55,7 @@ export default function Paginationd() {
     setIsLoading(true);
 
     axios
-      .get(api_url + "/v1/user/all/registered/users", null, config)
+      .get(api_url + "/v1/user/all/active/users", null, config)
       .then((data) => {
         // //console.log(data.data.allData[0].firstname);
         // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
@@ -85,10 +86,7 @@ export default function Paginationd() {
   };
 
   return (
-    <Paper
-      style={{ marginTop: "120px" }}
-      sx={{ width: "100%", overflow: "hidden" }}
-    >
+    <Paper style={{marginTop: '120px'}} sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 800 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -102,7 +100,7 @@ export default function Paginationd() {
                   {column.label}
                 </TableCell>
               ))}
-
+              
               {/* <TableCell
                 // key={column.id}
                 align='center'
@@ -141,17 +139,19 @@ export default function Paginationd() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {topReferral
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            {
+              topReferral.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableRow hover role="checkbox" tabIndex={-1} >
                     {columns.map((column) => {
                       const value = row[column.id];
                       // console.log(value);
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {value === true ? 1 : value === false ? 0 : value}
+                          {value === true
+                            ? 1
+                            : value === false ? 0 : value}
                         </TableCell>
                       );
                     })}

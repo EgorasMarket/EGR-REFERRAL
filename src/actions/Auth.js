@@ -134,6 +134,43 @@ export const activate = (email_auth) => async (dispatch) => {
     // }
   }
 };
+
+
+export const resendEmail = (email) => async (dispatch) => {
+  const config = {
+    headers: {
+      Accept: "*",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+
+  const body = JSON.stringify({
+    email,
+  });
+
+  // console.log(body);
+
+  try {
+    const res = await axios.post(api_url + "/v1/user/resend/activation", body, config);
+    console.log(res);
+
+    return {
+      success: true,
+      data: res.data,
+    };
+    
+  } catch (err) {
+    console.log(err.response.data);
+
+    return {
+      success: false,
+      data: err.response,
+    };
+
+  }
+};
+
 export const reset =
   ({ password, email_auth }) =>
   async (dispatch) => {
@@ -237,28 +274,25 @@ export const ForgetPassword = (email) => async (dispatch) => {
     email,
   });
 
-  //console.log(body);
+  // console.log(body);
 
   try {
     const res = await axios.post(api_url + "/v1/user/forgot", body, config);
-    //console.log(res);
+    console.log(res);
 
-    return res;
+    return {
+      success: true,
+      data: res.data,
+    };
+    
   } catch (err) {
-    //console.log(err);
+    console.log(err.response.data);
 
-    //console.log("ok");
+    return {
+      success: false,
+      data: err.response,
+    };
 
-    // const errors = err.response.data.errors;
-    // //console.log(errors);
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    // }
-
-    //   return {
-    //   status: false,
-    //   id: null
-    // }
   }
 };
 

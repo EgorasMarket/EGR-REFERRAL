@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { ForgetPassword } from "../../../actions/Auth";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const ForgotPasswordForm = ({ ForgetPassword }) => {
+import { setAlert } from "../../../actions/alert";
+
+const ForgotPasswordForm = ({ ForgetPassword, setAlert }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [disable, setDisable] = React.useState(false);
@@ -29,17 +31,21 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
     }
   };
 
+  console.log('forgot');
+
   const submitData = async (e) => {
     setIsLoading(true);
     // if (res)
     //console.log(email);
     let res = await ForgetPassword(email);
-    //console.log(email);
+    console.log(res);
     if (res.data.success === true) {
       setIsSuccessful(true);
       //console.log("okay Good Server");
     } else {
-      //console.log("Nooo Bad Server");
+      setAlert(res.data.data.errors[0].msg, "danger");
+      // console.log(res.data.data.errors[0].msg);
+      setIsLoading(false);
     }
   };
 
@@ -182,4 +188,4 @@ const ForgotPasswordForm = ({ ForgetPassword }) => {
   );
 };
 
-export default connect(null, { ForgetPassword })(ForgotPasswordForm);
+export default connect(null, { ForgetPassword, setAlert })(ForgotPasswordForm);

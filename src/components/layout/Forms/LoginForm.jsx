@@ -158,7 +158,7 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
                 <div className="sign_up_area1_cont1">
                   <h4 className="h444k">Welcome Back</h4>
                 </div>
-                <form class="sign_up_form baba" action="/action_page.php">
+                <form class="sign_up_form baba">
                   <label for="email"></label>
                   <input
                     type="text"
@@ -204,9 +204,12 @@ const LoginForm = ({ getLoginAuthentication, isAuthenticated, setAlert }) => {
                     </div>
                   </div>
 
-                  <div className="forgot_link">
+                  <div className="forgot_link justify-content-between">
                     <a href="/forgot-password" className="forgot_password">
                       Forgot Password?
+                    </a>
+                    <a href="/resend-activation-email" className="forgot_password">
+                      Resend Email
                     </a>
                   </div>
                 </form>

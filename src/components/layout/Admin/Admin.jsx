@@ -102,11 +102,8 @@ const Admin = () => {
         </div>
       ) : (
         <section className="collateral-assets-section">
-          <div className="container">
-            <div
-              className="assets-container"
-              style={{ justifyContent: "center" }}
-            >
+          <div className="container-fluid">
+            <div className="assets-container">
               {/* <div className="assets-cont-head-area">
               <div className="search-input">
                 {" "}
@@ -149,9 +146,9 @@ const Admin = () => {
                     <th className="assets-category-titles-heading1 right">
                       Created At
                     </th>
-                    <th className="assets-category-titles-heading1 right">
+                    {/* <th className="assets-category-titles-heading1 right">
                       Updated At
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
 
@@ -257,14 +254,22 @@ const Admin = () => {
                         </button>
                       </td>
                       <td className="assets-category-data1b ratio-content">
-                        <div
+                        <button
                           className="assets-data-name "
-                          // onClick={() =>
-                          //   navigator.clipboard.writeText(asset.walletAddress)
-                          // }
+                          style={{
+                            border: "solid",
+                            borderWidth: "1px",
+                            padding: "0.3em 1em",
+                            borderColor: "lightgrey",
+                            background: "none",
+                            borderRadius: "20px",
+                          }}
+                          onClick={() =>
+                            navigator.clipboard.writeText(asset.mediumHandle)
+                          }
                         >
-                          {asset.walletAddress}
-                        </div>
+                          {asset.mediumHandle}
+                        </button>
                       </td>
                       <td className="assets-category-data1b ratio-content">
                         <button
@@ -286,14 +291,14 @@ const Admin = () => {
                       </td>
                       <td className="assets-category-data1b ratio-content">
                         <div className="assets-data-name ">
-                          {asset.createdAt}
+                          {asset.createdAt.split("T")[0]}
                         </div>
                       </td>
-                      <td className="assets-category-data1b ratio-content">
+                      {/* <td className="assets-category-data1b ratio-content">
                         <div className="assets-data-name ">
                           {asset.updatedAt}
                         </div>
-                      </td>
+                      </td> */}
                       {/* <td className="assets-category-data-last">
                     <div className="assets-data-name-last">
                       <a
