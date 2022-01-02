@@ -375,9 +375,9 @@ const SignUpForm = ({ getAuthentication, setAlert }) => {
                       <h4 className="check_mail">Check your email</h4>
 
                       <p>
-                        An email has been sent to{" "}
+                        An activation email has been sent to{" "}
                         <span className="email_name">{email}</span> with
-                        instructions to reset your password.
+                        instructions to activate your account.
                       </p>
                       <p className="note">
                         {" "}

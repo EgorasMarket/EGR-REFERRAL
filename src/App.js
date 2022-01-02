@@ -29,6 +29,7 @@ import Referal from "./components/layout/Forms/Referal";
 import Dashboard from "./components/layout/Dashboard/Dashboard";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
+import ResendActivation from "./components/layout/Forms/ResendActivation";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -76,7 +77,8 @@ function App() {
             <Route exact path="/referral/:ref" component={Referal} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/activate/:id" component={Activation} />
-            <Route exact path="/reset/password/:id" component={ResetPassword} />
+            <Route exact path="/resend-activation-email" component={ResendActivation} />
+            <Route exact path="/reset/:id" component={ResetPassword} />
             <Route exact path="/change/password" component={ChangePassword} />
             <Route
               exact

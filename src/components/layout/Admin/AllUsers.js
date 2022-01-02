@@ -61,6 +61,7 @@ export default function Paginationd() {
         // let initial = data.data.allData.firstname.match(/\b(\w)/g).join("mama");
         // console.log(data.data.allData);
         setTopReferral(data.data.allData);
+        console.log(data.data.allData);
         if (data.status === 200) {
           setIsLoading(false);
         } else {
@@ -145,7 +146,7 @@ export default function Paginationd() {
                   <TableRow hover role="checkbox" tabIndex={-1} >
                     {columns.map((column) => {
                       const value = row[column.id];
-                      console.log(value);
+                      // console.log(value);
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {value === true
