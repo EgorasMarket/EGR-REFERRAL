@@ -9,7 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 
 import axios from "axios";
-import { API_URL as api_url } from "../../actions/types";
+import { API_URL as api_url } from "../../../actions/types";
 
 const columns = [
   { id: "username", label: "Username", minWidth: 170 },

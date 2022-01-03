@@ -141,6 +141,18 @@ const Dashboard_home = () => {
       <section className=" no-bg">
         <div className="container">
           <div className="assets_area">
+            <div className="refer_banner">
+              <img
+                src="/img/ref_banner_large.svg"
+                alt=""
+                className="ref_banner_lg"
+              />
+              <img
+                src="/img/invite_refer_banner.svg"
+                alt=""
+                className="ref_banner"
+              />
+            </div>
             <div className="assets-container">
               <div className="rankings_home_cont">
                 <div className="assets_cont1 ab">
@@ -216,7 +228,7 @@ const Dashboard_home = () => {
                             <tr className="assets-category-rowa">
                               <td className="assets-category-data">
                                 <div className="assets-data">
-                                  <div className="assets-data-nameLeft">
+                                  <div className="assets-data-nameLeft user_nnn">
                                     {asset.username}
                                     {/* {asset.username.substring(0, 1) +
                                     "****" +
@@ -227,7 +239,7 @@ const Dashboard_home = () => {
                                 </div>
                               </td>
                               <td className="assets-category-data1">
-                                <div className="assets-data-nameRight">
+                                <div className="assets-data-nameRight user_mmm">
                                   {asset.counts}
                                 </div>
                               </td>
@@ -356,13 +368,13 @@ const Dashboard_home = () => {
                             <tr className="assets-category-rowa">
                               <td className="assets-category-data">
                                 <div className="assets-data">
-                                  <div className="assets-data-nameLeft">
+                                  <div className="assets-data-nameLeft user_nnn">
                                     {asset.username}
                                   </div>
                                 </div>
                               </td>
                               <td className="assets-category-data1">
-                                <div className="assets-data-nameRight">
+                                <div className="assets-data-nameRight user_vvv">
                                   {asset.email}
                                 </div>
                               </td>
