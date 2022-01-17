@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./DashboardStyles/dashboard.css";
@@ -10,7 +15,7 @@ import Dashboard_tasks from "./DashboardPages/Dashboard_tasks";
 import Dashboard_total_rferrals from "./DashboardPages/Dashboard_total_rferrals";
 import PrivateRoute from "../../routing/PrivateRoute";
 
-function Dashboard({auth, isAuthenticated}) {
+function Dashboard({ auth, isAuthenticated }) {
   // //console.log(isAuthenticated);
 
   if (isAuthenticated == false) {
@@ -19,7 +24,6 @@ function Dashboard({auth, isAuthenticated}) {
   }
   return (
     <Route>
-     
       <div className="dashboard">
         <DashboardSideBar />
         <Switch>
@@ -35,19 +39,17 @@ function Dashboard({auth, isAuthenticated}) {
             path="/dashboard/referrals"
             component={Dashboard_total_rferrals}
           />
-       
         </Switch>
       </div>
-     </Route>
+    </Route>
   );
 }
 
 Dashboard.propTypes = {
-
   isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
 });
